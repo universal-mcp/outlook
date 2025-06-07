@@ -15,7 +15,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Get inferenceClassification from users
+        Retrieves inference classification data for a specific user, allowing optional selection and expansion of fields using query parameters.
 
         Args:
             user_id (string): user-id
@@ -48,7 +48,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property inferenceClassification in users
+        Updates the inference classification details for a specific user using the PATCH method, applying partial modifications to the existing resource based on the provided JSON body.
 
         Args:
             user_id (string): user-id
@@ -90,7 +90,7 @@ class UsersApiMail(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get overrides from users
+        Retrieves and lists override classifications for a specific user using the provided parameters for filtering, sorting, and selecting data.
 
         Args:
             user_id (string): user-id
@@ -141,7 +141,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to overrides for users
+        Overrides inference classification settings for a specific user by sending a JSON payload with the updated override details.
 
         Args:
             user_id (string): user-id
@@ -188,7 +188,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Get overrides from users
+        Retrieves details of a specific inference classification override for a user by ID, allowing optional selection and expansion of specific fields.
 
         Args:
             user_id (string): user-id
@@ -228,7 +228,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property overrides in users
+        Updates specific properties of an inference classification override for a user using JSON Patch operations.
 
         Args:
             user_id (string): user-id
@@ -271,7 +271,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property overrides for users
+        Deletes a specific inference classification override for a user using the provided user ID and inference classification override ID.
 
         Args:
             user_id (string): user-id
@@ -302,7 +302,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of inference classification overrides for a specified user ID using optional search and filter parameters.
 
         Args:
             user_id (string): user-id
@@ -342,7 +342,7 @@ class UsersApiMail(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get mailFolders from users
+        Retrieves a list of mail folders for a specified user, allowing for optional filtering, sorting, and expansion of results.
 
         Args:
             user_id (string): user-id
@@ -404,7 +404,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to mailFolders for users
+        Creates a new mail folder for a specified user using the provided JSON body and returns a relevant status response.
 
         Args:
             user_id (string): user-id
@@ -470,7 +470,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Get mailFolders from users
+        Retrieves information about a specific mail folder for a user, optionally including hidden folders and allowing selective expansion of related data.
 
         Args:
             user_id (string): user-id
@@ -524,7 +524,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property mailFolders in users
+        Updates a specific mail folder for a user by applying partial modifications using a JSON request body.
 
         Args:
             user_id (string): user-id
@@ -581,7 +581,7 @@ class UsersApiMail(APISegmentBase):
     def user_delete_mail_folder(self, user_id: str, mailFolder_id: str) -> Any:
         """
 
-        Delete navigation property mailFolders for users
+        Deletes a specific mail folder for a user using the "DELETE" method, requiring the user ID and mail folder ID as path parameters and an "If-Match" header for optimistic concurrency control.
 
         Args:
             user_id (string): user-id
@@ -621,7 +621,7 @@ class UsersApiMail(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get childFolders from users
+        Retrieves a list of child folders for a specified mail folder of a user using the "GET" method, allowing optional filtering and sorting through query parameters.
 
         Args:
             user_id (string): user-id
@@ -687,7 +687,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to childFolders for users
+        Creates a new child folder within a specified mail folder for a given user using the provided JSON request body.
 
         Args:
             user_id (string): user-id
@@ -757,7 +757,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Get childFolders from users
+        Retrieves a list of child folders within a specified mail folder for a given user, allowing optional filtering by hidden folders and selection of specific fields.
 
         Args:
             user_id (string): user-id
@@ -815,7 +815,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property childFolders in users
+        Updates the properties of a child mail folder within a specified mail folder for a given user using the PATCH method.
 
         Args:
             user_id (string): user-id
@@ -877,7 +877,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property childFolders for users
+        Deletes a child mail folder from a specified mail folder for a given user.
 
         Args:
             user_id (string): user-id
@@ -920,7 +920,7 @@ class UsersApiMail(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get messageRules from users
+        Retrieves message rules for a child folder in a specific mail folder of a user, supporting filtering, sorting, and optional expansion of related data.
 
         Args:
             user_id (string): user-id
@@ -985,7 +985,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to messageRules for users
+        Creates a message rule in a specific child folder of a user's mailbox by specifying conditions and actions to be applied to incoming messages.
 
         Args:
             user_id (string): user-id
@@ -1052,7 +1052,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Get messageRules from users
+        Retrieves a specific message rule in a mail folder, allowing optional selection and expansion of properties.
 
         Args:
             user_id (string): user-id
@@ -1104,7 +1104,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property messageRules in users
+        Updates a specific message rule in a child folder of a user's mail folder using JSON Patch operations.
 
         Args:
             user_id (string): user-id
@@ -1163,7 +1163,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property messageRules for users
+        Deletes a specific message rule from a child folder of a mail folder associated with a user using the DELETE method.
 
         Args:
             user_id (string): user-id
@@ -1203,7 +1203,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of message rules for a specific child mail folder, identified by `mailFolder-id1`, within a parent mail folder, identified by `mailFolder-id`, belonging to a user with ID `user-id`.
 
         Args:
             user_id (string): user-id
@@ -1250,7 +1250,7 @@ class UsersApiMail(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get messages from users
+        Retrieves a list of messages within a specific child folder of a mail folder for a given user, allowing for filtering, sorting, and expansion of related data.
 
         Args:
             user_id (string): user-id
@@ -1341,7 +1341,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to messages for users
+        Creates a new message in a specified child mail folder of a user's mail folder using the provided JSON body.
 
         Args:
             user_id (string): user-id
@@ -1460,7 +1460,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Get messages from users
+        Retrieves a specific message from a child folder within a mail folder associated with a user's mailbox, allowing optional selection and expansion of properties.
 
         Args:
             user_id (string): user-id
@@ -1538,7 +1538,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property messages in users
+        Modifies a specific email message in a nested mail folder using the PATCH method, updating properties as specified in the JSON request body.
 
         Args:
             user_id (string): user-id
@@ -1649,7 +1649,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property messages for users
+        Deletes a specific email message identified by the message ID from a child folder within a mail folder of a user's mailbox.
 
         Args:
             user_id (string): user-id
@@ -1684,7 +1684,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Get media content for the navigation property messages from users
+        Retrieves the content of a specific email message using the specified user ID, mail folder ID, child folder ID, and message ID.
 
         Args:
             user_id (string): user-id
@@ -1724,7 +1724,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Update media content for the navigation property messages in users
+        Updates or replaces a specific email message in a Microsoft Exchange mailbox using its ID, located within a nested folder structure, by sending the message content as a binary stream.
 
         Args:
             user_id (string): user-id
@@ -1767,7 +1767,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Delete media content for the navigation property messages in users
+        Deletes a message from a specific folder within a user's mailbox using the DELETE method, requiring the user ID, mail folder IDs, and message ID, and optionally an If-Match header for concurrency control.
 
         Args:
             user_id (string): user-id
@@ -1814,7 +1814,7 @@ class UsersApiMail(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get attachments from users
+        Retrieves an attachment from a specific message in a child folder of a mail folder belonging to a user, optionally allowing filtering, sorting, and selecting specific properties.
 
         Args:
             user_id (string): user-id
@@ -1880,7 +1880,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to attachments for users
+        Adds an attachment to a specific message in a child folder of a mail folder for a user using a JSON payload.
 
         Args:
             user_id (string): user-id
@@ -1945,7 +1945,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Get attachments from users
+        Retrieves a specific attachment from a message in a nested mail folder using the "GET" method, allowing optional filtering with `$select` and `$expand` parameters.
 
         Args:
             user_id (string): user-id
@@ -1992,7 +1992,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property attachments for users
+        Deletes an attachment from a message in a child folder of a mail folder belonging to a user using the DELETE method, requiring the user ID, mail folder IDs, message ID, and attachment ID.
 
         Args:
             user_id (string): user-id
@@ -2036,7 +2036,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of attachments for a specific message in a nested mail folder using the "GET" method.
 
         Args:
             user_id (string): user-id
@@ -2080,7 +2080,7 @@ class UsersApiMail(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke action createUploadSession
+        Creates an upload session to allow attaching a file to a specific message located within a nested mail folder for a user using Microsoft Graph.
 
         Args:
             user_id (string): user-id
@@ -2138,7 +2138,7 @@ class UsersApiMail(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get extensions from users
+        Retrieves an email message with specified extensions from a specific child folder within a mail folder belonging to a user.
 
         Args:
             user_id (string): user-id
@@ -2199,7 +2199,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to extensions for users
+        Adds a new extension to a specific message in a child folder of a mail folder for a user using the POST method, requiring a JSON body with the extension details.
 
         Args:
             user_id (string): user-id
@@ -2252,7 +2252,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Get extensions from users
+        Retrieves the specified extension for a message in a child folder of a mail folder belonging to a user, allowing for optional selection and expansion of specific properties.
 
         Args:
             user_id (string): user-id
@@ -2300,7 +2300,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property extensions in users
+        Updates an extension of a specific message in a child folder of a mail folder for a user using the PATCH method.
 
         Args:
             user_id (string): user-id
@@ -2349,7 +2349,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property extensions for users
+        Deletes an extension with the specified ID from a message in a child folder of a mail folder associated with a user.
 
         Args:
             user_id (string): user-id
@@ -2393,7 +2393,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of extensions for a specific message in a nested mail folder using the "GET" method.
 
         Args:
             user_id (string): user-id
@@ -2437,7 +2437,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action copy
+        Copies a message to a folder within a user's mailbox using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -2490,7 +2490,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action createForward
+        Creates a draft to forward an existing message using the Microsoft Graph API, allowing specification of recipients and content in JSON or MIME format.
 
         Args:
             user_id (string): user-id
@@ -2548,7 +2548,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action createReply
+        Creates a draft message to reply to an existing email in a user's mailbox, using either JSON or MIME format, and requires specifying the user ID, mail folder IDs, and the message ID to be replied to.
 
         Args:
             user_id (string): user-id
@@ -2601,7 +2601,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action createReplyAll
+        Creates a draft message to reply to the sender and all recipients of a specified message using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -2655,7 +2655,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action forward
+        Forwards a specified email message using the Microsoft Graph API by sending a POST request, allowing the message to be forwarded in JSON format with specified recipients and optional comments, and saves the forwarded message in the Sent Items folder.
 
         Args:
             user_id (string): user-id
@@ -2712,7 +2712,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action move
+        Moves a message with the specified ID from a child folder to another folder within the same user's mailbox, using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -2758,7 +2758,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action permanentDelete
+        Permanently deletes a specified message in a nested mail folder of a user's mailbox using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -2805,7 +2805,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action reply
+        Replies to an email message using the Microsoft Graph API by sending a response from a specific user's mailbox, maintaining the conversation thread.
 
         Args:
             user_id (string): user-id
@@ -2858,7 +2858,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action replyAll
+        Sends a reply to all recipients of the specified message and saves it in the Sent Items folder[1][4].
 
         Args:
             user_id (string): user-id
@@ -2905,7 +2905,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action send
+        Sends the specified email message from a deeply nested mail folder of the user using Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -2951,7 +2951,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of messages within a specific child folder of a user's mail folder using the "GET" method.
 
         Args:
             user_id (string): user-id
@@ -2999,7 +2999,7 @@ class UsersApiMail(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke function delta
+        Retrieves incremental changes—such as additions, updates, or deletions—to messages in a specified nested mail folder for a given user, supporting optional filtering and pagination parameters[3][1][2].
 
         Args:
             user_id (string): user-id
@@ -3058,7 +3058,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action copy
+        Copies a child mail folder and its contents to another mail folder within a user's mailbox using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -3105,7 +3105,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action move
+        Moves a mail folder and its contents to another mail folder using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -3148,7 +3148,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action permanentDelete
+        Permanently deletes a mail folder and its child folder, removing all items from the user's mailbox using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -3190,7 +3190,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of child folders within a specified mail folder for a user.
 
         Args:
             user_id (string): user-id
@@ -3233,7 +3233,7 @@ class UsersApiMail(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke function delta
+        Retrieves changes to child folders under a specified mail folder for a user using delta query, allowing applications to track newly created, updated, or deleted child folders without performing a full read of the data.
 
         Args:
             user_id (string): user-id
@@ -3293,7 +3293,7 @@ class UsersApiMail(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get messageRules from users
+        Retrieves a list of message rules for a specified user and mail folder, supporting optional query parameters for filtering, sorting, and pagination.
 
         Args:
             user_id (string): user-id
@@ -3354,7 +3354,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to messageRules for users
+        Creates a new message rule for a specific mail folder belonging to a user using the provided request body.
 
         Args:
             user_id (string): user-id
@@ -3417,7 +3417,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Get messageRules from users
+        Retrieves a specific message rule for a user’s mail folder using the provided user, mail folder, and rule identifiers.
 
         Args:
             user_id (string): user-id
@@ -3465,7 +3465,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property messageRules in users
+        Updates a specific message rule for a given mail folder of a user using a JSON body with operations to modify its properties.
 
         Args:
             user_id (string): user-id
@@ -3521,7 +3521,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property messageRules for users
+        Deletes a specific message rule for a user's mail folder using the DELETE method.
 
         Args:
             user_id (string): user-id
@@ -3557,7 +3557,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Returns the total count of message rules for a specified mail folder belonging to a given user.
 
         Args:
             user_id (string): user-id
@@ -3600,7 +3600,7 @@ class UsersApiMail(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get messages from users
+        Retrieves a list of messages from a specific mail folder belonging to a user, allowing for filtering, sorting, and selecting specific fields.
 
         Args:
             user_id (string): user-id
@@ -3687,7 +3687,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to messages for users
+        Creates a new message in the specified mail folder for the given user.
 
         Args:
             user_id (string): user-id
@@ -3802,7 +3802,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Get messages from users
+        Retrieves a specific message from a user's mail folder using the provided user ID, mail folder ID, and message ID, optionally selecting specific fields and expanding related data.
 
         Args:
             user_id (string): user-id
@@ -3876,7 +3876,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property messages in users
+        Updates a specific email message in a given mail folder for a user, using JSON Patch operations to modify its properties.
 
         Args:
             user_id (string): user-id
@@ -3984,7 +3984,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property messages for users
+        Deletes a specific email message from a user's mail folder using the provided user ID, mail folder ID, and message ID.
 
         Args:
             user_id (string): user-id
@@ -4016,7 +4016,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Get media content for the navigation property messages from users
+        Retrieves the content of a specific email message from a designated mail folder for a user.
 
         Args:
             user_id (string): user-id
@@ -4048,7 +4048,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Update media content for the navigation property messages in users
+        Updates or replaces the content of a specific email message in a user's mailbox using the provided binary data.
 
         Args:
             user_id (string): user-id
@@ -4088,7 +4088,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Delete media content for the navigation property messages in users
+        Deletes a message from a user's mail folder using the specified message ID, requiring the user ID and mail folder ID for identification.
 
         Args:
             user_id (string): user-id
@@ -4131,7 +4131,7 @@ class UsersApiMail(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get attachments from users
+        Retrieves an attachment from a specific message in a mail folder for a user, allowing optional filtering and sorting of the response.
 
         Args:
             user_id (string): user-id
@@ -4193,7 +4193,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to attachments for users
+        Adds an attachment to a specific message in a mail folder using the provided JSON payload.
 
         Args:
             user_id (string): user-id
@@ -4254,7 +4254,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Get attachments from users
+        Retrieves an attachment by its ID from a specific message in a mail folder belonging to a user, allowing for optional selection and expansion of specific properties.
 
         Args:
             user_id (string): user-id
@@ -4293,7 +4293,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property attachments for users
+        Deletes an attachment from a specific message in a mail folder of a user, using the specified user ID, mail folder ID, message ID, and attachment ID.
 
         Args:
             user_id (string): user-id
@@ -4333,7 +4333,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the total number of email attachments for a specified message in a user’s mail folder.
 
         Args:
             user_id (string): user-id
@@ -4373,7 +4373,7 @@ class UsersApiMail(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke action createUploadSession
+        Creates an upload session to iteratively upload ranges of a file as an attachment to a specified email message in the user's mailbox.
 
         Args:
             user_id (string): user-id
@@ -4427,7 +4427,7 @@ class UsersApiMail(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get extensions from users
+        Retrieves and returns extensions for a specific message in a mail folder, allowing for optional filtering, sorting, and expansion of related data.
 
         Args:
             user_id (string): user-id
@@ -4484,7 +4484,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to extensions for users
+        Adds an extension to a specific message in a mail folder using the provided JSON payload.
 
         Args:
             user_id (string): user-id
@@ -4533,7 +4533,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Get extensions from users
+        Retrieves a specific extension for a message within a mail folder of a user, allowing optional selection and expansion of properties through query parameters.
 
         Args:
             user_id (string): user-id
@@ -4577,7 +4577,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property extensions in users
+        Updates an extension for a specific message in a mail folder of a user using the PATCH method, with the request body specifying the modifications to apply.
 
         Args:
             user_id (string): user-id
@@ -4618,7 +4618,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property extensions for users
+        Deletes an extension from a specific message in a mail folder for a given user.
 
         Args:
             user_id (string): user-id
@@ -4658,7 +4658,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of message extensions for a specific message in a mail folder belonging to a user.
 
         Args:
             user_id (string): user-id
@@ -4698,7 +4698,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action copy
+        Copies a message to a specified folder within a user's mailbox using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -4747,7 +4747,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action createForward
+        Creates a draft to forward an existing email message by specifying recipients and optional comments or message body content using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -4801,7 +4801,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action createReply
+        Creates a draft reply message to the specified email using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -4850,7 +4850,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action createReplyAll
+        Creates a draft message to reply to the sender and all recipients of a specified message using the Microsoft Graph API, allowing for customization in either JSON or MIME format.
 
         Args:
             user_id (string): user-id
@@ -4900,7 +4900,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action forward
+        Forwards an email message using the Microsoft Graph API by specifying the user ID, mail folder ID, and message ID in the path, and providing the recipient details in the request body.
 
         Args:
             user_id (string): user-id
@@ -4953,7 +4953,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action move
+        Moves a message from a specified folder to another folder within the same user's mailbox by creating a new copy of the message in the destination folder and removing the original.
 
         Args:
             user_id (string): user-id
@@ -4996,7 +4996,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action permanentDelete
+        Permanently deletes a message from a specified mail folder in a user's mailbox using the Microsoft Graph API, moving it to the Purges folder where it cannot be recovered.
 
         Args:
             user_id (string): user-id
@@ -5039,7 +5039,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action reply
+        Replies to an email message using the Microsoft Graph API, specifying the user ID, mail folder ID, and message ID, and requiring a JSON body in the request.
 
         Args:
             user_id (string): user-id
@@ -5088,7 +5088,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action replyAll
+        Replies to all recipients of a specified email message using the Microsoft Graph API, creating and sending the reply in a single call.
 
         Args:
             user_id (string): user-id
@@ -5132,7 +5132,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action send
+        Sends a specified email message from a user’s mail folder using its message ID via the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -5174,7 +5174,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of messages in a specified mail folder for a given user using the GET method.
 
         Args:
             user_id (string): user-id
@@ -5218,7 +5218,7 @@ class UsersApiMail(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke function delta
+        Tracks changes to messages in a specified mail folder of a user using the Microsoft Graph delta query, allowing retrieval of created, updated, or deleted messages based on optional query parameters such as change type.
 
         Args:
             user_id (string): user-id
@@ -5270,7 +5270,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action copy
+        Copies a specified mail folder and its contents to another mail folder for a given user using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -5310,7 +5310,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action move
+        Moves a mail folder and its contents to another mail folder using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -5350,7 +5350,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action permanentDelete
+        Permanently deletes a specified mail folder and its items from a user's mailbox using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -5385,7 +5385,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of mail folders for a specified user using the provided search and filter parameters.
 
         Args:
             user_id (string): user-id
@@ -5424,7 +5424,7 @@ class UsersApiMail(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke function delta
+        Tracks changes to mail folders for a specified user using the delta function, allowing applications to discover newly created, updated, or deleted entities without performing a full read.
 
         Args:
             user_id (string): user-id
@@ -5481,7 +5481,7 @@ class UsersApiMail(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get messages from users
+        Retrieves a list of messages for a specified user, allowing optional filtering and sorting with query parameters such as includeHiddenMessages, top, skip, search, filter, count, orderby, select, and expand.
 
         Args:
             user_id (string): user-id
@@ -5566,7 +5566,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to messages for users
+        Sends a message to a specified user using their ID and returns a status message.
 
         Args:
             user_id (string): user-id
@@ -5678,7 +5678,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Get messages from users
+        Retrieves a specific message identified by `{message-id}` for a user with `{user-id}`, allowing optional filtering with `includeHiddenMessages`, selection of specific fields with `$select`, and expansion of related data with `$expand`.
 
         Args:
             user_id (string): user-id
@@ -5755,7 +5755,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property messages in users
+        Updates a specific message for a user using the provided JSON Patch operations and returns a status message based on the outcome.
 
         Args:
             user_id (string): user-id
@@ -5858,7 +5858,7 @@ class UsersApiMail(APISegmentBase):
     def user_delete_message(self, user_id: str, message_id: str) -> Any:
         """
 
-        Delete navigation property messages for users
+        Deletes a specific message identified by `message-id` for a user with the specified `user-id`, returning a successful status if the operation is completed.
 
         Args:
             user_id (string): user-id
@@ -5885,7 +5885,7 @@ class UsersApiMail(APISegmentBase):
     def user_get_messages_content(self, user_id: str, message_id: str) -> Any:
         """
 
-        Get media content for the navigation property messages from users
+        Retrieves the raw value of a specific message for a specified user.
 
         Args:
             user_id (string): user-id
@@ -5914,7 +5914,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Update media content for the navigation property messages in users
+        Updates the content of a specific message identified by `{message-id}` for a user with `{user-id}` using a binary payload.
 
         Args:
             user_id (string): user-id
@@ -5949,7 +5949,7 @@ class UsersApiMail(APISegmentBase):
     def user_delete_messages_content(self, user_id: str, message_id: str) -> Any:
         """
 
-        Delete media content for the navigation property messages in users
+        Deletes a specific message for a user using the provided user ID and message ID, potentially requiring an If-Match header for conditional requests.
 
         Args:
             user_id (string): user-id
@@ -5988,7 +5988,7 @@ class UsersApiMail(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get attachments from users
+        Retrieves attachments for a specific message belonging to a user, with optional filtering and sorting capabilities.
 
         Args:
             user_id (string): user-id
@@ -6046,7 +6046,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to attachments for users
+        Adds a new attachment to a specific message for a user using the provided JSON payload.
 
         Args:
             user_id (string): user-id
@@ -6103,7 +6103,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Get attachments from users
+        Retrieves a specific attachment from a message associated with a user, allowing optional selection and expansion of fields through query parameters.
 
         Args:
             user_id (string): user-id
@@ -6139,7 +6139,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property attachments for users
+        Deletes an attachment from a specific message belonging to a user using the provided IDs and returns a status message, optionally requiring an "If-Match" header for version control.
 
         Args:
             user_id (string): user-id
@@ -6175,7 +6175,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the number of attachments for a specific message of a user using the GET method.
 
         Args:
             user_id (string): user-id
@@ -6211,7 +6211,7 @@ class UsersApiMail(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke action createUploadSession
+        Creates an upload session to iteratively upload a file as an attachment to a specified Outlook message, returning an upload URL for subsequent file upload operations.
 
         Args:
             user_id (string): user-id
@@ -6261,7 +6261,7 @@ class UsersApiMail(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get extensions from users
+        Retrieves message extensions for a specific message belonging to a user, allowing for optional filtering, sorting, and selection of fields.
 
         Args:
             user_id (string): user-id
@@ -6311,7 +6311,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to extensions for users
+        Adds an extension to a specific message for a given user using the provided JSON data.
 
         Args:
             user_id (string): user-id
@@ -6356,7 +6356,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Get extensions from users
+        Retrieves details about a specific extension for a message associated with a user, allowing optional filtering and expansion of the response using query parameters.
 
         Args:
             user_id (string): user-id
@@ -6392,7 +6392,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property extensions in users
+        Updates specific properties of an extension within a message for a specified user using the PATCH method, requiring a JSON body with the changes.
 
         Args:
             user_id (string): user-id
@@ -6430,7 +6430,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property extensions for users
+        Deletes a specific extension from a message identified by its ID associated with a user, using the "DELETE" method.
 
         Args:
             user_id (string): user-id
@@ -6466,7 +6466,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of message extensions for a specified message owned by a specific user, optionally filtered or searched according to query parameters.
 
         Args:
             user_id (string): user-id
@@ -6499,7 +6499,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action copy
+        Copies a message to a folder within the specified user's mailbox using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -6544,7 +6544,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action createForward
+        Creates a draft to forward an existing message, allowing specification of recipients and content in either JSON or MIME format, which can be updated and sent in a subsequent operation.
 
         Args:
             user_id (string): user-id
@@ -6594,7 +6594,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action createReply
+        Creates a draft message in JSON format to reply to an existing message using the Microsoft Graph API, allowing the specification of the reply content in the request body.
 
         Args:
             user_id (string): user-id
@@ -6639,7 +6639,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action createReplyAll
+        Creates a draft reply message addressed to the sender and all recipients of the specified message, supporting JSON or MIME format in the request body[1][4].
 
         Args:
             user_id (string): user-id
@@ -6685,7 +6685,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action forward
+        Forwards an email message using the Microsoft Graph API by specifying the recipient and optionally adding a comment, saving the forwarded message in the Sent Items folder.
 
         Args:
             user_id (string): user-id
@@ -6731,7 +6731,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action move
+        Moves a message to another folder within the specified user's mailbox by creating a new copy of the message in the destination folder.
 
         Args:
             user_id (string): user-id
@@ -6769,7 +6769,7 @@ class UsersApiMail(APISegmentBase):
     def user_message_permanent_delete(self, user_id: str, message_id: str) -> Any:
         """
 
-        Invoke action permanentDelete
+        Permanently deletes a message in a user's mailbox and moves it to the Purges folder using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -6808,7 +6808,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action reply
+        Replies to an email message using the Microsoft Graph API by sending a response to the original message based on the provided message ID and user ID.
 
         Args:
             user_id (string): user-id
@@ -6853,7 +6853,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action replyAll
+        Sends a reply to all recipients of a specified message using the Microsoft Graph API, creating and sending the email in a single call.
 
         Args:
             user_id (string): user-id
@@ -6892,7 +6892,7 @@ class UsersApiMail(APISegmentBase):
     def user_message_send(self, user_id: str, message_id: str) -> Any:
         """
 
-        Invoke action send
+        Sends a specified message using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -6927,7 +6927,7 @@ class UsersApiMail(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of messages for a specific user, using the provided user ID and optionally applying search and filter parameters.
 
         Args:
             user_id (string): user-id
@@ -6967,7 +6967,7 @@ class UsersApiMail(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke function delta
+        Tracks changes in messages for a specific user using the Microsoft Graph API, allowing retrieval of newly created, updated, or deleted messages based on optional query parameters such as change type and filtering options.
 
         Args:
             user_id (string): user-id

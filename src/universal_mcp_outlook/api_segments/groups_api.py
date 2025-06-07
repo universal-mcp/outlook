@@ -15,7 +15,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get calendar from groups
+        Retrieves the calendar for a specified group, allowing optional selection and expansion of specific fields.
 
         Args:
             group_id (string): group-id
@@ -54,7 +54,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get calendarPermissions from groups
+        Retrieves the calendar permissions for a specified group using the "GET" method, allowing for filtering and sorting of results.
 
         Args:
             group_id (string): group-id
@@ -108,7 +108,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to calendarPermissions for groups
+        Updates calendar permissions for a specified group using a JSON payload.
 
         Args:
             group_id (string): group-id
@@ -161,7 +161,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get calendarPermissions from groups
+        Retrieves details about a specific calendar permission for a group using the provided group ID and calendar permission ID, allowing optional selection and expansion of fields.
 
         Args:
             group_id (string): group-id
@@ -202,7 +202,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property calendarPermissions in groups
+        Updates the specified calendar permission for a given group using the PATCH method, allowing for partial modifications to the permission details.
 
         Args:
             group_id (string): group-id
@@ -249,7 +249,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property calendarPermissions for groups
+        Deletes a specific calendar permission for a group using the provided `group-id` and `calendarPermission-id`, ensuring the request is valid with an `If-Match` header for concurrency control.
 
         Args:
             group_id (string): group-id
@@ -278,7 +278,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of calendar permissions for a specific group using the "GET" method, allowing for optional search and filter parameters.
 
         Args:
             group_id (string): group-id
@@ -319,7 +319,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get calendarView from groups
+        Retrieves a calendar view for a specified group within a defined time range, allowing for filtering and customization of the returned data.
 
         Args:
             group_id (string): group-id
@@ -376,7 +376,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get calendarView from groups
+        Retrieves a specific event from a group's calendar within a specified time range, allowing optional selection and expansion of event details.
 
         Args:
             group_id (string): group-id
@@ -428,7 +428,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get attachments from groups
+        Retrieves attachments for a specific event in a group's calendar view using the "GET" method, allowing for optional filtering and ordering of results.
 
         Args:
             group_id (string): group-id
@@ -486,7 +486,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to attachments for groups
+        Adds an attachment to a specific event in a group calendar using a JSON payload.
 
         Args:
             group_id (string): group-id
@@ -543,7 +543,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get attachments from groups
+        Retrieves a specific attachment from an event in a group's calendar view, allowing optional selection and expansion of fields.
 
         Args:
             group_id (string): group-id
@@ -579,7 +579,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property attachments for groups
+        Deletes an attachment from a specific event in a group's calendar view using the provided attachment ID.
 
         Args:
             group_id (string): group-id
@@ -615,7 +615,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of attachments for a specific event in a group's calendar view.
 
         Args:
             group_id (string): group-id
@@ -651,7 +651,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke action createUploadSession
+        Creates an upload session to iteratively upload ranges of a file as an attachment to a specified event in a group calendar using the Microsoft Graph API.
 
         Args:
             group_id (string): group-id
@@ -695,7 +695,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get calendar from groups
+        Retrieves the calendar view details for a specific event within a group calendar, allowing optional selection and expansion of fields.
 
         Args:
             group_id (string): group-id
@@ -738,7 +738,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get extensions from groups
+        Retrieves the collection of extensions for a specified event in a group's calendar using filtering, sorting, and pagination options.
 
         Args:
             group_id (string): group-id
@@ -788,7 +788,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to extensions for groups
+        Creates a new extension for a calendar event of a group using the specified group ID and event ID, with the extension details provided in the request body.
 
         Args:
             group_id (string): group-id
@@ -833,7 +833,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get extensions from groups
+        Retrieves a specific extension associated with a calendar event from a group’s calendar view, optionally allowing selection and expansion of properties.
 
         Args:
             group_id (string): group-id
@@ -869,7 +869,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property extensions in groups
+        Updates a specific extension of a calendar event for a group using a JSON payload with the specified group, event, and extension identifiers.
 
         Args:
             group_id (string): group-id
@@ -907,7 +907,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property extensions for groups
+        Deletes an extension from a calendar event in a group using the provided group ID, event ID, and extension ID.
 
         Args:
             group_id (string): group-id
@@ -943,7 +943,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of extensions for a specific calendar event in a group using the GET method.
 
         Args:
             group_id (string): group-id
@@ -988,7 +988,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get instances from groups
+        Retrieves event instances for a specified event within a group calendar, allowing filtering by date range and other parameters.
 
         Args:
             group_id (string): group-id
@@ -1049,7 +1049,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get instances from groups
+        Retrieves event instances for a specified event within a group calendar, filtered by start and end date, with optional selection and expansion of specific properties.
 
         Args:
             group_id (string): group-id
@@ -1105,7 +1105,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get attachments from groups
+        Retrieves attachments for a specific event instance in a group calendar using the provided group ID, event ID, and event instance ID, with optional filtering and sorting parameters.
 
         Args:
             group_id (string): group-id
@@ -1167,7 +1167,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to attachments for groups
+        Adds an attachment to a specific event instance in a group calendar using the provided JSON data.
 
         Args:
             group_id (string): group-id
@@ -1228,7 +1228,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get attachments from groups
+        Retrieves details about a specific attachment in an event instance within a group's calendar view, allowing optional selection and expansion of fields.
 
         Args:
             group_id (string): group-id
@@ -1267,7 +1267,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property attachments for groups
+        Deletes a specific attachment from an event instance in a group's calendar using the provided group ID, event IDs, and attachment ID.
 
         Args:
             group_id (string): group-id
@@ -1307,7 +1307,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of attachments for a specific event instance in a group's calendar view.
 
         Args:
             group_id (string): group-id
@@ -1347,7 +1347,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke action createUploadSession
+        Creates an upload session to iteratively upload ranges of a file as an attachment to a specific instance of an event in a group's calendar view.
 
         Args:
             group_id (string): group-id
@@ -1395,7 +1395,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get calendar from groups
+        Retrieves detailed information about a specific event instance within a calendar view for a given group using the "GET" method, allowing optional selection and expansion of fields.
 
         Args:
             group_id (string): group-id
@@ -1442,7 +1442,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get extensions from groups
+        Retrieves a specific extension associated with a calendar event instance from a group’s calendar view.
 
         Args:
             group_id (string): group-id
@@ -1495,7 +1495,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to extensions for groups
+        Adds an extension to a specific event instance in a group calendar using the "POST" method with a JSON request body.
 
         Args:
             group_id (string): group-id
@@ -1544,7 +1544,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get extensions from groups
+        Retrieves specific extensions for event instances in a group calendar using the "GET" method, allowing optional selection and expansion of returned data.
 
         Args:
             group_id (string): group-id
@@ -1588,7 +1588,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property extensions in groups
+        Updates a specific extension for an event instance in a group's calendar by sending a JSON payload using the PATCH method[1][2][4].
 
         Args:
             group_id (string): group-id
@@ -1629,7 +1629,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property extensions for groups
+        Deletes an extension with the specified ID from an event instance in a calendar view associated with a group using the DELETE method.
 
         Args:
             group_id (string): group-id
@@ -1669,7 +1669,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of event instances for a specific event within a group's calendar view using the "GET" method.
 
         Args:
             group_id (string): group-id
@@ -1710,7 +1710,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action accept
+        Accepts a specific instance of a recurring event in a group calendar using the Microsoft Graph API.
 
         Args:
             group_id (string): group-id
@@ -1758,7 +1758,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action cancel
+        Cancels a specific instance of a recurring event in a group calendar using the Microsoft Graph API and sends a cancellation message to attendees.
 
         Args:
             group_id (string): group-id
@@ -1807,7 +1807,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action decline
+        Declines an invitation to a specific event instance in a group calendar using the Microsoft Graph API, allowing the attendee to optionally propose a new time.
 
         Args:
             group_id (string): group-id
@@ -1856,7 +1856,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action dismissReminder
+        Dismisses a reminder for a specific instance of an event in a group calendar using the Microsoft Graph API.
 
         Args:
             group_id (string): group-id
@@ -1899,7 +1899,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action forward
+        Forwards a specific instance of an event in a group calendar to new recipients using the Microsoft Graph API.
 
         Args:
             group_id (string): group-id
@@ -1943,7 +1943,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action permanentDelete
+        Permanently deletes an event instance in a group's calendar view and places it in the Purges folder in the user's mailbox, although the exact path specified does not match documented Microsoft Graph API endpoints.
 
         Args:
             group_id (string): group-id
@@ -1985,7 +1985,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action snoozeReminder
+        Snoozes a reminder for a specific instance of an event in a group calendar by posting a new reminder time.
 
         Args:
             group_id (string): group-id
@@ -2034,7 +2034,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action tentativelyAccept
+        Tentatively accepts an event instance in a group calendar using the POST method, allowing for optional parameters such as comments and proposed new times.
 
         Args:
             group_id (string): group-id
@@ -2087,7 +2087,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the number of instances of a specific event in a group's calendar using the "GET" method, with options for searching and filtering.
 
         Args:
             group_id (string): group-id
@@ -2132,7 +2132,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke function delta
+        Retrieves a delta of event instances for a specified recurring event in a group calendar view, filtered by a date range, using parameters such as start and end date times, and optionally applying additional filters like top, skip, search, and select.
 
         Args:
             group_id (string): group-id
@@ -2190,7 +2190,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action accept
+        Accepts an event in a specified group calendar using the Microsoft Graph API.
 
         Args:
             group_id (string): group-id
@@ -2231,7 +2231,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action cancel
+        Cancels a meeting event in a group calendar and sends a cancellation message to attendees using the Microsoft Graph API.
 
         Args:
             group_id (string): group-id
@@ -2276,7 +2276,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action decline
+        Declines an event invitation in a group calendar using the specified event ID and group ID, allowing for an optional proposal for a new time.
 
         Args:
             group_id (string): group-id
@@ -2322,7 +2322,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action dismissReminder
+        Dismisses a triggered reminder for a specific event in a group calendar and returns a success status.
 
         Args:
             group_id (string): group-id
@@ -2361,7 +2361,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action forward
+        Forwards a specific event in a group calendar using the Microsoft Graph API and returns a status message.
 
         Args:
             group_id (string): group-id
@@ -2402,7 +2402,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action permanentDelete
+        Permanently deletes a specified event from the group calendar and places it in the Purges folder, bypassing recoverability via email clients like Outlook[1][3][4].
 
         Args:
             group_id (string): group-id
@@ -2440,7 +2440,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action snoozeReminder
+        This API operation postpones a reminder for an event in a group calendar by sending a POST request to the specified path, requiring a JSON body with the new reminder time.
 
         Args:
             group_id (string): group-id
@@ -2485,7 +2485,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action tentativelyAccept
+        Tentatively accepts a meeting event in a group calendar using the Microsoft Graph API, allowing users to propose an alternative time if supported by the event settings.
 
         Args:
             group_id (string): group-id
@@ -2531,7 +2531,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the number of calendar view items for a specified group using the provided search and filter parameters.
 
         Args:
             group_id (string): group-id
@@ -2572,7 +2572,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke function delta
+        Retrieves incremental changes to events in a group calendar view using the delta function, allowing for synchronization of new, updated, or deleted events within a specified date range.
 
         Args:
             group_id (string): group-id
@@ -2632,7 +2632,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get events from groups
+        Retrieves a list of calendar events for a specified group, allowing for optional filtering, sorting, and expansion of related data.
 
         Args:
             group_id (string): group-id
@@ -2727,7 +2727,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to events for groups
+        Creates a new calendar event for a specific group using the provided JSON data and returns a response indicating the operation's success.
 
         Args:
             group_id (string): group-id
@@ -2862,7 +2862,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get events from groups
+        Retrieves details of a specific event within a group's calendar, allowing optional selection and expansion of specific fields.
 
         Args:
             group_id (string): group-id
@@ -2944,7 +2944,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Update event
+        Updates a specific calendar event in a group using the PATCH method by applying partial modifications defined in the JSON request body.
 
         Args:
             group_id (string): group-id
@@ -3071,7 +3071,7 @@ class GroupsApi(APISegmentBase):
     def group_calendar_delete_event(self, group_id: str, event_id: str) -> Any:
         """
 
-        Delete navigation property events for groups
+        Deletes a specific calendar event identified by the event ID within a group using the HTTP DELETE method.
 
         Args:
             group_id (string): group-id
@@ -3110,7 +3110,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get attachments from groups
+        Retrieves a list of attachments for a specific event within a group's calendar, allowing for optional filtering and sorting of the results.
 
         Args:
             group_id (string): group-id
@@ -3168,7 +3168,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to attachments for groups
+        Adds an attachment to a specific event in a group calendar using the provided JSON data.
 
         Args:
             group_id (string): group-id
@@ -3225,7 +3225,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get attachments from groups
+        Retrieves details of a specific attachment from an event in a group's calendar, allowing optional selection and expansion of properties via query parameters.
 
         Args:
             group_id (string): group-id
@@ -3261,7 +3261,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property attachments for groups
+        Deletes an attachment from a specific event in a group's calendar using the provided group ID, event ID, and attachment ID.
 
         Args:
             group_id (string): group-id
@@ -3297,7 +3297,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the number of attachments for a specific event in a group calendar using the GET method.
 
         Args:
             group_id (string): group-id
@@ -3333,7 +3333,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke action createUploadSession
+        Creates an upload session to iteratively upload ranges of a file as an attachment to a specified event in a group calendar using the Microsoft Graph API.
 
         Args:
             group_id (string): group-id
@@ -3377,7 +3377,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get calendar from groups
+        Retrieves the calendar associated with a specific event in a group using the "GET" method, allowing optional selection and expansion of properties via query parameters.
 
         Args:
             group_id (string): group-id
@@ -3420,7 +3420,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get extensions from groups
+        Retrieves extensions for a specific event in a group's calendar, allowing for optional filtering, sorting, and selection of returned data.
 
         Args:
             group_id (string): group-id
@@ -3470,7 +3470,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to extensions for groups
+        Adds an extension to a specific event in a group calendar using the provided JSON data.
 
         Args:
             group_id (string): group-id
@@ -3515,7 +3515,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get extensions from groups
+        Retrieves and returns details of a specific extension for an event in a group's calendar, allowing optional selection and expansion of fields.
 
         Args:
             group_id (string): group-id
@@ -3551,7 +3551,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property extensions in groups
+        Updates an extension of a specific event in a group calendar using the PATCH method.
 
         Args:
             group_id (string): group-id
@@ -3589,7 +3589,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property extensions for groups
+        Deletes an extension associated with a specific event in a group's calendar using the DELETE method.
 
         Args:
             group_id (string): group-id
@@ -3625,7 +3625,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of extensions for a specific calendar event in a group using the GET method.
 
         Args:
             group_id (string): group-id
@@ -3670,7 +3670,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get instances from groups
+        Retrieves instances of a specific event within a group's calendar by ID, allowing filtering by date range and optional parameters for sorting, selecting, and expanding data.
 
         Args:
             group_id (string): group-id
@@ -3731,7 +3731,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get instances from groups
+        Retrieves specific instances of a calendar event within a group, using parameters such as start and end date times, and optionally selecting or expanding specific event details.
 
         Args:
             group_id (string): group-id
@@ -3787,7 +3787,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get attachments from groups
+        Retrieves a list of attachments for a specific event instance in a group's calendar, allowing for filtering and sorting of results.
 
         Args:
             group_id (string): group-id
@@ -3849,7 +3849,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to attachments for groups
+        Adds an attachment to a specific event instance in a group calendar using the provided JSON payload.
 
         Args:
             group_id (string): group-id
@@ -3910,7 +3910,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get attachments from groups
+        Retrieves details about a specific attachment associated with an event instance in a group calendar.
 
         Args:
             group_id (string): group-id
@@ -3949,7 +3949,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property attachments for groups
+        Deletes a specific attachment from a calendar event instance using the "DELETE" method, based on the provided group ID, event ID, event instance ID, and attachment ID.
 
         Args:
             group_id (string): group-id
@@ -3989,7 +3989,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the number of attachments for a specific event instance in a group calendar using the "GET" method.
 
         Args:
             group_id (string): group-id
@@ -4029,7 +4029,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke action createUploadSession
+        Creates an upload session for attaching files to a specific event instance in a group calendar, allowing iterative file uploads.
 
         Args:
             group_id (string): group-id
@@ -4077,7 +4077,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get calendar from groups
+        Retrieves detailed information about a specific calendar event instance within a group's calendar, allowing optional selection and expansion of specific event properties.
 
         Args:
             group_id (string): group-id
@@ -4124,7 +4124,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get extensions from groups
+        Retrieves extended details of a specific event instance from a calendar event in a group, allowing for filtering, sorting, and selecting specific fields.
 
         Args:
             group_id (string): group-id
@@ -4177,7 +4177,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to extensions for groups
+        Adds an extension to a specific event instance in a group calendar using a JSON payload.
 
         Args:
             group_id (string): group-id
@@ -4226,7 +4226,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get extensions from groups
+        Retrieves an extension for a specific event instance within a group's calendar event using the "GET" method, allowing optional selection and expansion of specific properties.
 
         Args:
             group_id (string): group-id
@@ -4270,7 +4270,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property extensions in groups
+        Updates a specific extension of an event instance in a group calendar using the PATCH method, modifying its properties with a JSON payload.
 
         Args:
             group_id (string): group-id
@@ -4311,7 +4311,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property extensions for groups
+        Deletes an extension associated with a specific event instance in a group's calendar using the provided group ID, event ID, event instance ID, and extension ID.
 
         Args:
             group_id (string): group-id
@@ -4351,7 +4351,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of calendar event instances for a specific event within a group using the provided search and filter parameters.
 
         Args:
             group_id (string): group-id
@@ -4392,7 +4392,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action accept
+        Accepts a specific event instance in a group calendar using the Microsoft Graph API, requiring a POST request with a JSON body.
 
         Args:
             group_id (string): group-id
@@ -4440,7 +4440,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action cancel
+        Cancels a specific instance of a recurring event in a group calendar, allowing the organizer to send a cancellation message to attendees.
 
         Args:
             group_id (string): group-id
@@ -4489,7 +4489,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action decline
+        Declines an event instance in a group calendar using the Microsoft Graph API, allowing the invitee to optionally propose a new time.
 
         Args:
             group_id (string): group-id
@@ -4538,7 +4538,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action dismissReminder
+        Dismisses a reminder for a specific event instance in a group calendar using the Microsoft Graph API.
 
         Args:
             group_id (string): group-id
@@ -4581,7 +4581,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action forward
+        Forwards a specific instance of a calendar event to new recipients using the Microsoft Graph API.
 
         Args:
             group_id (string): group-id
@@ -4625,7 +4625,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action permanentDelete
+        Permanently deletes a specific instance of a recurring event in a group calendar and moves it to the Purges folder, although this exact endpoint is not documented in the provided sources, similar operations are available for deleting events using the Microsoft Graph API.
 
         Args:
             group_id (string): group-id
@@ -4667,7 +4667,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action snoozeReminder
+        Postpones a reminder for a specific event instance in a group calendar until a new time using the Microsoft Graph API.
 
         Args:
             group_id (string): group-id
@@ -4716,7 +4716,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action tentativelyAccept
+        Tentatively accepts a specified event instance in a group calendar using the provided parameters.
 
         Args:
             group_id (string): group-id
@@ -4769,7 +4769,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of instances for a specific event in a group's calendar.
 
         Args:
             group_id (string): group-id
@@ -4814,7 +4814,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke function delta
+        Retrieves a delta of event instances for a recurring event in a Microsoft 365 group calendar, allowing for efficient tracking of changes within a specified time range.
 
         Args:
             group_id (string): group-id
@@ -4872,7 +4872,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action accept
+        Accepts a specified event in a group calendar using the Microsoft Graph API.
 
         Args:
             group_id (string): group-id
@@ -4913,7 +4913,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action cancel
+        Cancels a specified event from a group calendar and sends a cancellation message to attendees using the Microsoft Graph API.
 
         Args:
             group_id (string): group-id
@@ -4958,7 +4958,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action decline
+        Declines an event invitation for a specified group calendar and optionally sends a response or proposes a new meeting time using the Microsoft Graph API.
 
         Args:
             group_id (string): group-id
@@ -5004,7 +5004,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action dismissReminder
+        Dismisses a reminder for a specified event in a group calendar using the Microsoft Graph API.
 
         Args:
             group_id (string): group-id
@@ -5043,7 +5043,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action forward
+        Forwards a meeting event specified by the event ID within a group's calendar to new recipients using the Microsoft Graph API.
 
         Args:
             group_id (string): group-id
@@ -5084,7 +5084,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action permanentDelete
+        Permanently deletes a specified event from a group's calendar and places it in the Purges folder in the user's mailbox using the Microsoft Graph API.
 
         Args:
             group_id (string): group-id
@@ -5122,7 +5122,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action snoozeReminder
+        Snoozes a reminder for a specified event in a group calendar by postponing it to a new time using the Microsoft Graph API.
 
         Args:
             group_id (string): group-id
@@ -5167,7 +5167,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action tentativelyAccept
+        Tentatively accepts an event in a group calendar using the Microsoft Graph API, allowing the option to propose alternative meeting times.
 
         Args:
             group_id (string): group-id
@@ -5213,7 +5213,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the number of calendar events for a specific group identified by {group-id}, allowing for search and filtering options.
 
         Args:
             group_id (string): group-id
@@ -5256,7 +5256,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke function delta
+        Retrieves incremental changes to events in a group calendar within a specified time range using delta query tracking.
 
         Args:
             group_id (string): group-id
@@ -5314,7 +5314,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke function allowedCalendarSharingRoles
+        Retrieves the allowed calendar sharing roles for a specified user in a group's calendar using the Microsoft Graph API.
 
         Args:
             group_id (string): group-id
@@ -5363,7 +5363,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke action getSchedule
+        Retrieves the free/busy availability information for a group's calendar using the Microsoft Graph API.
 
         Args:
             group_id (string): group-id
@@ -5406,7 +5406,7 @@ class GroupsApi(APISegmentBase):
     def group_calendar_permanent_delete(self, group_id: str) -> Any:
         """
 
-        Invoke action permanentDelete
+        Permanently deletes a group calendar and its associated events using the Microsoft Graph API.
 
         Args:
             group_id (string): group-id
@@ -5449,7 +5449,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        List group calendarView
+        Retrieves a calendar view for a specified group, allowing filtering and sorting of events between a specified start and end date.
 
         Args:
             group_id (string): group-id
@@ -5506,7 +5506,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get calendarView from groups
+        Retrieves the occurrences, exceptions, and single instances of a specific event in a group's calendar view, filtered by a specified time range and optionally expanded or selected fields.
 
         Args:
             group_id (string): group-id
@@ -5560,7 +5560,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get attachments from groups
+        Retrieves the attachments associated with a specified event in a group’s calendar view, supporting optional query parameters for filtering, sorting, and pagination.
 
         Args:
             group_id (string): group-id
@@ -5618,7 +5618,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to attachments for groups
+        Adds an attachment to a specific calendar event in a group using a JSON payload and returns a successful response upon completion.
 
         Args:
             group_id (string): group-id
@@ -5675,7 +5675,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get attachments from groups
+        Retrieves a specific attachment from an event in a group's calendar view, allowing optional selection and expansion of properties.
 
         Args:
             group_id (string): group-id
@@ -5711,7 +5711,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property attachments for groups
+        Deletes an attachment from a specific event in a group's calendar view using the "DELETE" method.
 
         Args:
             group_id (string): group-id
@@ -5747,7 +5747,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of attachments for a specific event in a group's calendar view.
 
         Args:
             group_id (string): group-id
@@ -5783,7 +5783,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke action createUploadSession
+        Creates an upload session to attach files to a specific event in a group's calendar view, allowing iterative uploads of file ranges.
 
         Args:
             group_id (string): group-id
@@ -5827,7 +5827,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get calendar from groups
+        Retrieves a specific event from a group's calendar view, allowing selection and expansion of specified fields.
 
         Args:
             group_id (string): group-id
@@ -5870,7 +5870,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get extensions from groups
+        Retrieves and possibly filters or expands extensions for a specific event in a group's calendar view, supporting options like sorting and selecting specific data fields.
 
         Args:
             group_id (string): group-id
@@ -5920,7 +5920,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to extensions for groups
+        Adds an extension to a specific event in a calendar view of a group using the provided JSON data.
 
         Args:
             group_id (string): group-id
@@ -5965,7 +5965,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get extensions from groups
+        Retrieves the specified extension for an event in a group's calendar view, allowing optional selection and expansion of specific properties.
 
         Args:
             group_id (string): group-id
@@ -6001,7 +6001,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property extensions in groups
+        Updates the specified extension of an event in a group's calendar view using a JSON body containing patch operations.
 
         Args:
             group_id (string): group-id
@@ -6039,7 +6039,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property extensions for groups
+        Deletes an extension from a calendar event in a specified group using the provided group ID, event ID, and extension ID.
 
         Args:
             group_id (string): group-id
@@ -6075,7 +6075,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of extensions for a specific event in a group's calendar view using the "GET" method.
 
         Args:
             group_id (string): group-id
@@ -6120,7 +6120,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get instances from groups
+        Retrieves instances of a specific event in a group's calendar view, filtered by a specified date range and customizable query parameters.
 
         Args:
             group_id (string): group-id
@@ -6181,7 +6181,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get instances from groups
+        Retrieves instances of a specific event within a calendar view of a group, allowing filtering by start and end dates and optional selection or expansion of specific fields.
 
         Args:
             group_id (string): group-id
@@ -6237,7 +6237,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get attachments from groups
+        Retrieves attachments for a specific event instance in a calendar view of a group, allowing for optional filtering, sorting, and selection of specific fields.
 
         Args:
             group_id (string): group-id
@@ -6299,7 +6299,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to attachments for groups
+        Adds an attachment to a specific event instance in a calendar view for a group using a JSON payload.
 
         Args:
             group_id (string): group-id
@@ -6360,7 +6360,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get attachments from groups
+        Retrieves details about a specific attachment associated with an event instance in a group calendar view, allowing optional selection and expansion of properties.
 
         Args:
             group_id (string): group-id
@@ -6399,7 +6399,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property attachments for groups
+        Deletes an attachment from a specific event instance in a group's calendar view using the provided group ID, event IDs, and attachment ID.
 
         Args:
             group_id (string): group-id
@@ -6439,7 +6439,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of attachments for a specific event instance in a group's calendar view using the "GET" method.
 
         Args:
             group_id (string): group-id
@@ -6479,7 +6479,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke action createUploadSession
+        Creates an upload session to allow an app to iteratively upload ranges of a file as an attachment to a specific event instance in a group's calendar view.
 
         Args:
             group_id (string): group-id
@@ -6527,7 +6527,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get calendar from groups
+        Retrieves calendar view details for a specific event instance within a group's calendar using the "GET" method, allowing optional selection and expansion of fields through query parameters.
 
         Args:
             group_id (string): group-id
@@ -6574,7 +6574,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get extensions from groups
+        Retrieves and returns the extension details for a specific event instance within a group's calendar view, allowing for optional filtering, sorting, and selection of specific fields.
 
         Args:
             group_id (string): group-id
@@ -6627,7 +6627,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to extensions for groups
+        Adds an extension to a specific event instance within a group's calendar view using a POST request with JSON data.
 
         Args:
             group_id (string): group-id
@@ -6676,7 +6676,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get extensions from groups
+        Retrieves an extension for a specific instance of an event in a group's calendar view using the "GET" method.
 
         Args:
             group_id (string): group-id
@@ -6720,7 +6720,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property extensions in groups
+        Updates the specified extension of an event instance in a group's calendar view using the PATCH method and returns a status message.
 
         Args:
             group_id (string): group-id
@@ -6761,7 +6761,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property extensions for groups
+        Deletes the specified extension from an instance of a recurring group event using a DELETE request to the provided URI path.
 
         Args:
             group_id (string): group-id
@@ -6801,7 +6801,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of extension instances for a specific event in a group calendar using the "GET" method.
 
         Args:
             group_id (string): group-id
@@ -6842,7 +6842,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action accept
+        Accepts a specific instance of an event in a shared calendar view of a group using the Microsoft Graph API, requiring a valid event ID and group ID.
 
         Args:
             group_id (string): group-id
@@ -6890,7 +6890,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action cancel
+        Cancels a specific instance of a recurring event in a group calendar using the Microsoft Graph API, allowing the organizer to send a cancellation message to attendees.
 
         Args:
             group_id (string): group-id
@@ -6939,7 +6939,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action decline
+        Declines an invitation to a specific instance of a recurring event in a group calendar using the Microsoft Graph API, allowing the option to propose a new time if supported by the event.
 
         Args:
             group_id (string): group-id
@@ -6988,7 +6988,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action dismissReminder
+        Dismisses a reminder for a specified event instance in a group calendar using the Microsoft Graph API.
 
         Args:
             group_id (string): group-id
@@ -7031,7 +7031,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action forward
+        Forwards a specific instance of a meeting event in a group calendar to new recipients using the Microsoft Graph API.
 
         Args:
             group_id (string): group-id
@@ -7075,7 +7075,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action permanentDelete
+        Permanently deletes a specific event instance from a group's calendar view, placing it in the Purges folder in the dumpster, using the Microsoft Graph API.
 
         Args:
             group_id (string): group-id
@@ -7117,7 +7117,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action snoozeReminder
+        Postpones a reminder for a specific event instance in a group calendar until a new time by sending a POST request with the new reminder time.
 
         Args:
             group_id (string): group-id
@@ -7166,7 +7166,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action tentativelyAccept
+        Tentatively accepts an instance of a recurring event from a group’s calendar and optionally proposes a new time while sending a response.
 
         Args:
             group_id (string): group-id
@@ -7219,7 +7219,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the number of event instances for a specified recurring event from a group calendar using provided search and filter criteria.
 
         Args:
             group_id (string): group-id
@@ -7264,7 +7264,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke function delta
+        Retrieves incremental changes to instances of a specific recurring event in a group's calendar view using the delta function, based on the provided start and end dates.
 
         Args:
             group_id (string): group-id
@@ -7322,7 +7322,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action accept
+        Accepts an event in a group calendar using the Microsoft Graph API by sending a POST request to the specified event ID within a group's calendar view.
 
         Args:
             group_id (string): group-id
@@ -7363,7 +7363,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action cancel
+        Cancels a specified event for a group calendar and sends a cancellation message to attendees using the Microsoft Graph API.
 
         Args:
             group_id (string): group-id
@@ -7408,7 +7408,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action decline
+        Declines an event invitation specified by the event ID in a group calendar using the Microsoft Graph API, allowing for optional parameters such as comments and proposed new times.
 
         Args:
             group_id (string): group-id
@@ -7452,7 +7452,7 @@ class GroupsApi(APISegmentBase):
     def group_calendar_view_dismiss_reminder(self, group_id: str, event_id: str) -> Any:
         """
 
-        Invoke action dismissReminder
+        Dismisses a triggered reminder for a specified event in a group calendar.
 
         Args:
             group_id (string): group-id
@@ -7491,7 +7491,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action forward
+        Forwards a calendar event from a specified group's calendar view to new recipients using the Microsoft Graph API, allowing organizers or attendees to share meeting requests with others.
 
         Args:
             group_id (string): group-id
@@ -7530,7 +7530,7 @@ class GroupsApi(APISegmentBase):
     def group_calendar_view_permanent_delete(self, group_id: str, event_id: str) -> Any:
         """
 
-        Invoke action permanentDelete
+        Permanently deletes a specified event from a group's calendar and places it in the purges folder of the mailbox dumpster, making it inaccessible to clients unless a mailbox hold is in place[1][3][4].
 
         Args:
             group_id (string): group-id
@@ -7568,7 +7568,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action snoozeReminder
+        Snoozes a reminder for a specific event in a group calendar by setting a new reminder time using the Microsoft Graph API.
 
         Args:
             group_id (string): group-id
@@ -7613,7 +7613,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action tentativelyAccept
+        Tentatively accepts an event in a group calendar using the Microsoft Graph API, requiring a group ID and event ID, and accepts a JSON payload with response details.
 
         Args:
             group_id (string): group-id
@@ -7664,7 +7664,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of calendar events for a specified group between a start and end date using the "GET" method.
 
         Args:
             group_id (string): group-id
@@ -7714,7 +7714,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke function delta
+        Retrieves incremental changes to events in a specified group calendar view using the delta function, allowing for synchronization of new, updated, or deleted events between the specified start and end dates.
 
         Args:
             group_id (string): group-id
@@ -7774,7 +7774,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        List events
+        Retrieves a list of events for a specific group identified by its group ID, allowing for optional filtering and sorting of the results.
 
         Args:
             group_id (string): group-id
@@ -7869,7 +7869,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Create event
+        Creates an event for a specific group using the provided JSON data and returns a status message.
 
         Args:
             group_id (string): group-id
@@ -8004,7 +8004,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get event
+        Retrieves details of a specific event within a group using the provided group ID and event ID, supporting optional filtering and expansion of response data.
 
         Args:
             group_id (string): group-id
@@ -8086,7 +8086,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property events in groups
+        Updates an event in a specific group by applying partial modifications using JSON Patch operations.
 
         Args:
             group_id (string): group-id
@@ -8213,7 +8213,7 @@ class GroupsApi(APISegmentBase):
     def group_delete_event(self, group_id: str, event_id: str) -> Any:
         """
 
-        Delete event
+        Deletes an event specified by the event ID within a group identified by the group ID, using the DELETE method with optional If-Match header for conditional requests.
 
         Args:
             group_id (string): group-id
@@ -8252,7 +8252,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get attachments from groups
+        Retrieves attachments for a specific event within a group using the provided group ID and event ID.
 
         Args:
             group_id (string): group-id
@@ -8310,7 +8310,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to attachments for groups
+        Creates an attachment for a specific event within a group using the provided JSON data.
 
         Args:
             group_id (string): group-id
@@ -8367,7 +8367,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get attachments from groups
+        Retrieves a specific attachment from an event in a group using the provided group ID, event ID, and attachment ID, optionally allowing for selection and expansion of specific properties.
 
         Args:
             group_id (string): group-id
@@ -8403,7 +8403,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property attachments for groups
+        Deletes an attachment from an event in a group using the specified identifiers and returns a successful status if the operation is completed without errors.
 
         Args:
             group_id (string): group-id
@@ -8439,7 +8439,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of attachments for a specific event within a group using the "GET" method.
 
         Args:
             group_id (string): group-id
@@ -8475,7 +8475,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke action createUploadSession
+        Creates an upload session to iteratively upload ranges of a file as an attachment to a specified event in Microsoft Graph, allowing for the upload of large files in segments.
 
         Args:
             group_id (string): group-id
@@ -8519,7 +8519,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get calendar from groups
+        Retrieves a specific event from a group's calendar by event ID, allowing optional selection and expansion of specific event details.
 
         Args:
             group_id (string): group-id
@@ -8562,7 +8562,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get open extension
+        Retrieves event extensions for a specific event within a group using the provided group ID and event ID, allowing for filtering and sorting of results.
 
         Args:
             group_id (string): group-id
@@ -8612,7 +8612,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Create open extension
+        Adds an extension to a specific event within a group using the provided JSON data.
 
         Args:
             group_id (string): group-id
@@ -8657,7 +8657,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get open extension
+        Retrieves details of a specific extension for an event within a group, allowing optional filtering and expansion of the returned data using query parameters like `$select` and `$expand`.
 
         Args:
             group_id (string): group-id
@@ -8693,7 +8693,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property extensions in groups
+        Modifies the specified extension of an event within a group by applying partial updates using a JSON Patch document.
 
         Args:
             group_id (string): group-id
@@ -8731,7 +8731,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property extensions for groups
+        Deletes a specific extension from an event in a group using the provided group ID, event ID, and extension ID.
 
         Args:
             group_id (string): group-id
@@ -8767,7 +8767,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of extensions for a specific event within a group using the "GET" method, allowing for optional search and filter parameters.
 
         Args:
             group_id (string): group-id
@@ -8812,7 +8812,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get instances from groups
+        Retrieves a list of event instances for a specific event in a group, filtered by a date range and optionally sorted, selected, or expanded based on additional query parameters.
 
         Args:
             group_id (string): group-id
@@ -8873,7 +8873,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get instances from groups
+        Retrieves specific instances of an event within a group, allowing for filtering by start and end dates, and optionally selecting specific fields or expanding related data.
 
         Args:
             group_id (string): group-id
@@ -8929,7 +8929,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get attachments from groups
+        Retrieves a list of attachments for a specific event instance within a group, allowing for filtering, sorting, and selecting specific fields.
 
         Args:
             group_id (string): group-id
@@ -8991,7 +8991,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to attachments for groups
+        Adds an attachment to a specific instance of an event within a group using a JSON payload.
 
         Args:
             group_id (string): group-id
@@ -9052,7 +9052,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get attachments from groups
+        Retrieves details of a specific attachment within an event instance using the provided group, event, event instance, and attachment IDs, allowing optional selection and expansion of fields via query parameters.
 
         Args:
             group_id (string): group-id
@@ -9091,7 +9091,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property attachments for groups
+        Deletes an attachment from a specific event instance within a group using the provided group ID, event ID, event instance ID, and attachment ID.
 
         Args:
             group_id (string): group-id
@@ -9131,7 +9131,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of attachments for a specific event instance within a group using the provided group, event, and instance identifiers.
 
         Args:
             group_id (string): group-id
@@ -9171,7 +9171,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke action createUploadSession
+        Creates an upload session to attach files to a specific instance of an event within a group using the Microsoft Graph API.
 
         Args:
             group_id (string): group-id
@@ -9219,7 +9219,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get calendar from groups
+        Retrieves calendar information for a specific event instance within a group using the "GET" method, allowing optional selection and expansion of returned data.
 
         Args:
             group_id (string): group-id
@@ -9266,7 +9266,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get extensions from groups
+        Retrieves the collection of extensions associated with a specific event instance within a group, allowing optional filtering, sorting, and pagination via query parameters.
 
         Args:
             group_id (string): group-id
@@ -9319,7 +9319,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to extensions for groups
+        Creates an extension for a specific event instance within a group's event using the provided JSON payload.
 
         Args:
             group_id (string): group-id
@@ -9368,7 +9368,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get extensions from groups
+        Retrieves an extension for a specific event instance within a group using the "GET" method, allowing optional filtering via the `$select` and `$expand` query parameters.
 
         Args:
             group_id (string): group-id
@@ -9412,7 +9412,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property extensions in groups
+        Updates specific details of an event instance extension using JSON Patch operations for the specified group, event, and extension IDs.
 
         Args:
             group_id (string): group-id
@@ -9453,7 +9453,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property extensions for groups
+        Deletes an extension associated with a specific event instance in a group using the provided group ID, event IDs, and extension ID.
 
         Args:
             group_id (string): group-id
@@ -9493,7 +9493,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of extensions for a specific instance of an event within a group, using the "GET" method and allowing for optional search and filter parameters.
 
         Args:
             group_id (string): group-id
@@ -9534,7 +9534,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action accept
+        Accepts a specific event instance in a group's event series using the Microsoft Graph API, which requires a JSON body with relevant details.
 
         Args:
             group_id (string): group-id
@@ -9582,7 +9582,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action cancel
+        Cancels a specific instance of a recurring event in a group's calendar using the Microsoft Graph API, allowing the organizer to send a cancellation message to attendees.
 
         Args:
             group_id (string): group-id
@@ -9631,7 +9631,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action decline
+        Declines an event instance in a group calendar using the Microsoft Graph API and returns a status message.
 
         Args:
             group_id (string): group-id
@@ -9680,7 +9680,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action dismissReminder
+        Dismisses a reminder for a specific event instance in a group calendar using the Microsoft Graph API.
 
         Args:
             group_id (string): group-id
@@ -9723,7 +9723,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action forward
+        Forwards a specific event instance to new recipients using the Microsoft Graph API by sending a POST request to the specified path, allowing the organizer or attendee to forward meeting requests.
 
         Args:
             group_id (string): group-id
@@ -9767,7 +9767,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action permanentDelete
+        Permanently deletes a specific event instance from a group using the Microsoft Graph API.
 
         Args:
             group_id (string): group-id
@@ -9809,7 +9809,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action snoozeReminder
+        Snoozes a reminder for a specific event instance in a group calendar by setting a new reminder time using the Microsoft Graph API.
 
         Args:
             group_id (string): group-id
@@ -9858,7 +9858,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action tentativelyAccept
+        Tentatively accepts a specific event instance in a group calendar using the Microsoft Graph API, allowing the inclusion of optional parameters like comments and proposed new times in the request body.
 
         Args:
             group_id (string): group-id
@@ -9911,7 +9911,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of instances for a specific event within a group using the "GET" method.
 
         Args:
             group_id (string): group-id
@@ -9956,7 +9956,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke function delta
+        Retrieves tracked changes and updated instances of a recurring event in a Microsoft 365 group calendar within a specified date range using the delta query pattern.
 
         Args:
             group_id (string): group-id
@@ -10014,7 +10014,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action accept
+        Accepts an event for a specified group in Microsoft Graph using the POST method, requiring the group ID and event ID in the path and a JSON body.
 
         Args:
             group_id (string): group-id
@@ -10055,7 +10055,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action cancel
+        Cancels a specified event in a group's calendar and sends a cancellation message to attendees, requiring the organizer role and moving the event to the Deleted Items folder.
 
         Args:
             group_id (string): group-id
@@ -10100,7 +10100,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action decline
+        Declines an event invitation for a specified group event using the Microsoft Graph API, allowing for optional proposals of new meeting times.
 
         Args:
             group_id (string): group-id
@@ -10144,7 +10144,7 @@ class GroupsApi(APISegmentBase):
     def group_event_dismiss_reminder(self, group_id: str, event_id: str) -> Any:
         """
 
-        Invoke action dismissReminder
+        Dismisses a reminder that has been triggered for a specified event within a group's calendar using the Microsoft Graph API.
 
         Args:
             group_id (string): group-id
@@ -10183,7 +10183,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action forward
+        Forwards a meeting event from a specified group to new recipients using the Microsoft Graph API, requiring a JSON body with a comment and a list of recipients.
 
         Args:
             group_id (string): group-id
@@ -10222,7 +10222,7 @@ class GroupsApi(APISegmentBase):
     def group_event_permanent_delete(self, group_id: str, event_id: str) -> Any:
         """
 
-        Invoke action permanentDelete
+        Permanently deletes a specified event from a group's calendar and places it in the Purges folder in the user's mailbox, making it inaccessible to email clients like Outlook.
 
         Args:
             group_id (string): group-id
@@ -10260,7 +10260,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action snoozeReminder
+        Snoozes a reminder for an event in a group's calendar using the Microsoft Graph API by specifying a new reminder time in the request body.
 
         Args:
             group_id (string): group-id
@@ -10305,7 +10305,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action tentativelyAccept
+        Tentatively accepts an event in a specified group's calendar using the Microsoft Graph API, allowing for optional proposals of new meeting times.
 
         Args:
             group_id (string): group-id
@@ -10351,7 +10351,7 @@ class GroupsApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of events for a specific group, identified by the provided group ID, using optional search and filter parameters.
 
         Args:
             group_id (string): group-id
@@ -10392,7 +10392,7 @@ class GroupsApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke function delta
+        Returns incremental changes to events within a specified group, including creations, updates, and deletions, for a given time period using Microsoft Graph delta query.
 
         Args:
             group_id (string): group-id

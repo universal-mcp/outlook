@@ -18,7 +18,7 @@ class PlacesApi(APISegmentBase):
     ) -> Any:
         """
 
-        Update place
+        Updates a specific place identified by its ID using the data provided in the request body.
 
         Args:
             place_id (string): place-id
@@ -58,7 +58,7 @@ class PlacesApi(APISegmentBase):
     def place_delete_place(self, place_id: str) -> Any:
         """
 
-        Delete entity from places
+        Deletes a specific place identified by the "{place-id}" path parameter, optionally using an "If-Match" header for conditional deletion.
 
         Args:
             place_id (string): place-id
@@ -87,7 +87,7 @@ class PlacesApi(APISegmentBase):
     ) -> Any:
         """
 
-        List places
+        Retrieves the properties and relationships of a specific room identified by its place ID, optionally selecting specific properties with `$select` and expanding related objects with `$expand`.
 
         Args:
             place_id (string): place-id
@@ -120,7 +120,7 @@ class PlacesApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get the item of type microsoft.graph.place as microsoft.graph.roomList
+        Retrieves a room list associated with a specific place in a tenant using the Microsoft Graph API.
 
         Args:
             place_id (string): place-id
@@ -159,7 +159,7 @@ class PlacesApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get rooms from places
+        Retrieves a list of rooms within a specified room list using the Microsoft Graph API, allowing for filtering and selection of specific room details.
 
         Args:
             place_id (string): place-id
@@ -225,7 +225,7 @@ class PlacesApi(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to rooms for places
+        Creates a new room in a specified room list using the Microsoft Graph API by sending a POST request to the "/places/{place-id}/microsoft.graph.roomList/rooms" endpoint.
 
         Args:
             place_id (string): place-id
@@ -302,7 +302,7 @@ class PlacesApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get rooms from places
+        Retrieves a specific room within a room list using the Microsoft Graph API, allowing for optional selection and expansion of room details.
 
         Args:
             place_id (string): place-id
@@ -355,7 +355,7 @@ class PlacesApi(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property rooms in places
+        Updates specific properties of a room within a room list in Microsoft Graph using the room ID.
 
         Args:
             place_id (string): place-id
@@ -424,7 +424,7 @@ class PlacesApi(APISegmentBase):
     def place_as_room_list_delete_room(self, place_id: str, room_id: str) -> Any:
         """
 
-        Delete navigation property rooms for places
+        Deletes a specific room from a room list at a given place using the Microsoft Graph API, potentially requiring an "If-Match" header for conditional deletion.
 
         Args:
             place_id (string): place-id
@@ -453,7 +453,7 @@ class PlacesApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of rooms in a specific room list using the Microsoft Graph API.
 
         Args:
             place_id (string): place-id
@@ -483,7 +483,7 @@ class PlacesApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Counts the total number of places matching the specified search and filter criteria.
 
         Args:
             search (string): Search items by search phrases
@@ -518,7 +518,7 @@ class PlacesApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        List places
+        Retrieves a list of rooms in a tenant, optionally filtering, sorting, and expanding the results, using parameters such as search, filter, orderby, select, and expand to customize the query.
 
         Args:
             top (integer): Show only the first n items Example: '50'.
@@ -562,7 +562,7 @@ class PlacesApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of rooms in a tenant using the Microsoft Graph API by querying the "/places/microsoft.graph.room/$count" path with the "GET" method, allowing for optional parameters like search and filter.
 
         Args:
             search (string): Search items by search phrases
@@ -597,7 +597,7 @@ class PlacesApi(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get the items of type microsoft.graph.roomList in the microsoft.graph.place collection
+        Retrieves a list of all room lists defined in the tenant using the Microsoft Graph API.
 
         Args:
             top (integer): Show only the first n items Example: '50'.
@@ -641,7 +641,7 @@ class PlacesApi(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of room lists in a tenant using the Microsoft Graph API with optional filtering and searching capabilities.
 
         Args:
             search (string): Search items by search phrases

@@ -15,7 +15,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get calendar from users
+        Retrieves a user's calendar details by their ID, allowing optional filtering and expansion of specific fields.
 
         Args:
             user_id (string): user-id
@@ -65,7 +65,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property calendar in users
+        Updates a user's calendar settings using the PATCH method, applying partial modifications to the specified user's calendar resource identified by the `{user-id}` path parameter.
 
         Args:
             user_id (string): user-id
@@ -144,7 +144,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        List calendarPermissions
+        Retrieves a list of calendar permissions for a specified user with support for query parameters including filtering, sorting, and pagination.
 
         Args:
             user_id (string): user-id
@@ -198,7 +198,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to calendarPermissions for users
+        Assigns or modifies calendar permissions for a specified user using a JSON payload.
 
         Args:
             user_id (string): user-id
@@ -251,7 +251,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get calendarPermission
+        Retrieves specific calendar permission details for a user based on the provided user ID and calendar permission ID, allowing optional filtering and expansion of results.
 
         Args:
             user_id (string): user-id
@@ -292,7 +292,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Update calendarPermission
+        Updates a specific calendar permission for a user using JSON Patch operations.
 
         Args:
             user_id (string): user-id
@@ -339,7 +339,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Delete calendarPermission
+        Deletes a specific calendar permission for a user using the provided IDs and returns a status message, potentially requiring an "If-Match" header for conditional deletion.
 
         Args:
             user_id (string): user-id
@@ -368,7 +368,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of calendar permissions for a specified user using their user ID.
 
         Args:
             user_id (string): user-id
@@ -409,7 +409,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get calendarView from users
+        Retrieves a calendar view for a specified user, allowing for filtering and sorting of events within a specified time range.
 
         Args:
             user_id (string): user-id
@@ -466,7 +466,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get calendarView from users
+        Retrieves specific instances of an event from a user's calendar view using the Microsoft Graph API, based on a specified event ID and time range defined by start and end dates.
 
         Args:
             user_id (string): user-id
@@ -518,7 +518,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get attachments from users
+        Retrieves attachments for a specific event in a user's calendar view, allowing for optional filtering and sorting of results.
 
         Args:
             user_id (string): user-id
@@ -576,7 +576,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to attachments for users
+        Adds an attachment to a specific event in a user's calendar view using the provided JSON data.
 
         Args:
             user_id (string): user-id
@@ -633,7 +633,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get attachments from users
+        Retrieves details about a specific attachment associated with an event in a user's calendar view, allowing optional filtering and expansion of response data.
 
         Args:
             user_id (string): user-id
@@ -669,7 +669,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property attachments for users
+        Deletes an attachment from a specific event in a user's calendar view using the provided attachment ID.
 
         Args:
             user_id (string): user-id
@@ -705,7 +705,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of attachments associated with a specific calendar event for a given user, allowing for optional filtering and searching.
 
         Args:
             user_id (string): user-id
@@ -741,7 +741,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke action createUploadSession
+        Creates an upload session to iteratively upload ranges of a file as an attachment to a specified calendar event, allowing for the upload of large files.
 
         Args:
             user_id (string): user-id
@@ -785,7 +785,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get calendar from users
+        Retrieves a specific calendar event for a user, allowing optional filtering and expansion of the event details.
 
         Args:
             user_id (string): user-id
@@ -828,7 +828,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get extensions from users
+        Retrieves extensions for a specific event in a user's calendar view using the "GET" method, allowing for optional filtering and sorting.
 
         Args:
             user_id (string): user-id
@@ -878,7 +878,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to extensions for users
+        Adds custom extensions to a specific calendar event identified by the user ID and event ID using a POST request with a JSON body.
 
         Args:
             user_id (string): user-id
@@ -923,7 +923,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get extensions from users
+        Retrieves the specified extension for a calendar event associated with a user, allowing optional selection and expansion of specific properties via query parameters.
 
         Args:
             user_id (string): user-id
@@ -959,7 +959,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property extensions in users
+        Updates an existing calendar event extension for a specified user using JSON Patch operations.
 
         Args:
             user_id (string): user-id
@@ -997,7 +997,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property extensions for users
+        Deletes an extension from a specific event in a user's calendar view using the "DELETE" method.
 
         Args:
             user_id (string): user-id
@@ -1033,7 +1033,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves a count of event extensions for a specific event in a user's calendar view, allowing for filtering and searching of event data.
 
         Args:
             user_id (string): user-id
@@ -1078,7 +1078,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get instances from users
+        Retrieves specific instances of a calendar event for a user, filtered by a time range and optionally sorted, selected, or expanded based on additional query parameters.
 
         Args:
             user_id (string): user-id
@@ -1139,7 +1139,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get instances from users
+        Retrieves instances of a recurring event within a specified time range for a user's calendar, allowing optional selection and expansion of event properties.
 
         Args:
             user_id (string): user-id
@@ -1195,7 +1195,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get attachments from users
+        Retrieves a list of attachments for a specific event instance within a user's calendar view, allowing for optional filtering, sorting, and expansion of results.
 
         Args:
             user_id (string): user-id
@@ -1257,7 +1257,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to attachments for users
+        Adds an attachment to a specific event instance in a user's calendar view using the provided JSON payload.
 
         Args:
             user_id (string): user-id
@@ -1318,7 +1318,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get attachments from users
+        Retrieves a specific attachment from an event instance in a calendar view for a given user, allowing for optional selection and expansion of specific data fields.
 
         Args:
             user_id (string): user-id
@@ -1357,7 +1357,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property attachments for users
+        Deletes a specific attachment from an event instance in a calendar view for a given user using the provided attachment ID.
 
         Args:
             user_id (string): user-id
@@ -1397,7 +1397,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of attachments for a specific event instance within a user's calendar using the GET method.
 
         Args:
             user_id (string): user-id
@@ -1437,7 +1437,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke action createUploadSession
+        Creates an upload session to iteratively upload ranges of a file as an attachment to a specific event instance in a user's calendar, allowing for large file uploads.
 
         Args:
             user_id (string): user-id
@@ -1485,7 +1485,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get calendar from users
+        Retrieves detailed instances of a specific recurring event from a user's calendar view using the "GET" method, allowing for optional selection and expansion of specific fields.
 
         Args:
             user_id (string): user-id
@@ -1532,7 +1532,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get extensions from users
+        Retrieves all extensions associated with a specific recurring calendar event instance for a given user, allowing optional filtering, sorting, and pagination.
 
         Args:
             user_id (string): user-id
@@ -1585,7 +1585,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to extensions for users
+        Adds custom extensions to a specific event instance in a user's calendar view using JSON data.
 
         Args:
             user_id (string): user-id
@@ -1634,7 +1634,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get extensions from users
+        Retrieves detailed information about a specific event instance extension for a user's calendar, supporting optional filtering and expansion of returned data.
 
         Args:
             user_id (string): user-id
@@ -1678,7 +1678,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property extensions in users
+        Updates specific details of an event instance extension in a user's calendar view using the PATCH method.
 
         Args:
             user_id (string): user-id
@@ -1719,7 +1719,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property extensions for users
+        Deletes an extension identified by the `extension-id` from a specific event instance in a user's calendar view.
 
         Args:
             user_id (string): user-id
@@ -1759,7 +1759,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of extensions for a specific event instance in a user's calendar view, using the provided user ID and event IDs.
 
         Args:
             user_id (string): user-id
@@ -1800,7 +1800,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action accept
+        Accepts a specific event instance in a user's calendar view using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -1844,7 +1844,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action cancel
+        Cancels a specific instance of a recurring event in a user's calendar using the Microsoft Graph API, allowing the organizer to send a cancellation message to attendees.
 
         Args:
             user_id (string): user-id
@@ -1893,7 +1893,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action decline
+        Declines an event invitation in a user's calendar view using the Microsoft Graph API, allowing the specification of a new time proposal if the event allows it.
 
         Args:
             user_id (string): user-id
@@ -1942,7 +1942,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action dismissReminder
+        Dismisses a triggered reminder for a specific event instance in a user's calendar using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -1985,7 +1985,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action forward
+        Forwards a specific instance of a calendar event to new recipients using the Microsoft Graph API, allowing organizers or attendees to share meeting requests with additional users.
 
         Args:
             user_id (string): user-id
@@ -2029,7 +2029,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action permanentDelete
+        Permanently deletes an event instance from a user's calendar view and places it in the Purges folder, using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -2071,7 +2071,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action snoozeReminder
+        Snoozes a reminder for a specific event instance in a user's calendar to a new time using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -2120,7 +2120,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action tentativelyAccept
+        Tentatively accepts an event instance in a user's calendar, allowing the option to propose an alternative meeting time if the event supports new time proposals.
 
         Args:
             user_id (string): user-id
@@ -2173,7 +2173,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves a specified number of instances of a recurring event from a user's calendar, using the provided user ID and event ID.
 
         Args:
             user_id (string): user-id
@@ -2218,7 +2218,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke function delta
+        Retrieves incremental changes to instances of a recurring event in a user's calendar view, allowing applications to track newly created, updated, or deleted event instances within a specified date range.
 
         Args:
             user_id (string): user-id
@@ -2276,7 +2276,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action accept
+        Accepts a specified event in a user's calendar using the Microsoft Graph API by sending a POST request with the user ID and event ID, requiring a JSON body with acceptance details.
 
         Args:
             user_id (string): user-id
@@ -2317,7 +2317,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action cancel
+        Cancels a specified event in a user's calendar and sends a cancellation message to attendees using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -2362,7 +2362,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action decline
+        Declines an event invitation for a specified user using the Microsoft Graph API, allowing the option to propose a new time if supported by the event.
 
         Args:
             user_id (string): user-id
@@ -2408,7 +2408,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action dismissReminder
+        Dismisses a triggered reminder for a specified event in a user's calendar using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -2447,7 +2447,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action forward
+        Forwards a specific calendar event identified by `{event-id}` for a user with `{user-id}` using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -2488,7 +2488,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action permanentDelete
+        Permanently deletes an event from a user's calendar and places it in the Purges folder in the user's mailbox using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -2526,7 +2526,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action snoozeReminder
+        Postpones a reminder for the specified calendar event by rescheduling it to a new date and time provided in the request body.
 
         Args:
             user_id (string): user-id
@@ -2571,7 +2571,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action tentativelyAccept
+        Tentatively accepts an event in a specified user's calendar, allowing for optional comments and proposed new times.
 
         Args:
             user_id (string): user-id
@@ -2617,7 +2617,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of calendar events for a specified user using the provided search and filter parameters.
 
         Args:
             user_id (string): user-id
@@ -2658,7 +2658,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke function delta
+        Retrieves incremental changes to events in a specified calendar view for a user, allowing synchronization of local event stores by fetching added, updated, or deleted events between the specified start and end dates.
 
         Args:
             user_id (string): user-id
@@ -2718,7 +2718,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get events from users
+        Retrieves a list of calendar events for a specified user, allowing for optional filtering, sorting, and data expansion.
 
         Args:
             user_id (string): user-id
@@ -2813,7 +2813,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to events for users
+        Creates a new calendar event for a specific user using the provided JSON data and returns a relevant status message.
 
         Args:
             user_id (string): user-id
@@ -2948,7 +2948,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get events from users
+        Retrieves a specific calendar event for a user by user ID and event ID, allowing optional filtering and expansion of returned data.
 
         Args:
             user_id (string): user-id
@@ -3030,7 +3030,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property events in users
+        Updates an existing calendar event specified by the event ID for a given user ID using partial modifications defined in the JSON body.
 
         Args:
             user_id (string): user-id
@@ -3157,7 +3157,7 @@ class UsersApiCalender(APISegmentBase):
     def user_calendar_delete_event(self, user_id: str, event_id: str) -> Any:
         """
 
-        Delete navigation property events for users
+        Deletes a calendar event identified by the specified event ID for a user with the given user ID, using the "DELETE" method.
 
         Args:
             user_id (string): user-id
@@ -3196,7 +3196,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get attachments from users
+        Retrieves attachments for a specific event in a user's calendar, allowing for optional filtering, sorting, and selection of specific fields.
 
         Args:
             user_id (string): user-id
@@ -3254,7 +3254,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to attachments for users
+        Uploads an attachment to a specific event in a user's calendar and returns a response indicating success or failure.
 
         Args:
             user_id (string): user-id
@@ -3311,7 +3311,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get attachments from users
+        Retrieves a specific attachment from an event in a user's calendar, allowing optional selection and expansion of properties using query parameters.
 
         Args:
             user_id (string): user-id
@@ -3347,7 +3347,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property attachments for users
+        Deletes an attachment from a specific event in a user's calendar using the provided user ID, event ID, and attachment ID.
 
         Args:
             user_id (string): user-id
@@ -3383,7 +3383,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the total count of attachments for a specific event in a user's calendar.
 
         Args:
             user_id (string): user-id
@@ -3419,7 +3419,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke action createUploadSession
+        Creates an upload session to iteratively upload ranges of a file as an attachment to a specified calendar event for a user.
 
         Args:
             user_id (string): user-id
@@ -3463,7 +3463,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get calendar from users
+        Retrieves a specific calendar event by its ID for a given user, with optional filtering and expansion of event details.
 
         Args:
             user_id (string): user-id
@@ -3506,7 +3506,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get extensions from users
+        Retrieves event extensions for a specific event in a user's calendar, allowing for optional filtering, sorting, and expansion of the response.
 
         Args:
             user_id (string): user-id
@@ -3556,7 +3556,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to extensions for users
+        Adds an extension to a specific calendar event for a user using the provided JSON data.
 
         Args:
             user_id (string): user-id
@@ -3601,7 +3601,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get extensions from users
+        Retrieves a specific extension for a given event in the calendar of a specified user, optionally allowing selective property retrieval or expansion.
 
         Args:
             user_id (string): user-id
@@ -3637,7 +3637,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property extensions in users
+        Updates a specific calendar event extension for a user using the PATCH method, modifying its properties as specified in the JSON request body.
 
         Args:
             user_id (string): user-id
@@ -3675,7 +3675,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property extensions for users
+        Deletes a specific calendar event extension by its ID for a user, using the provided user ID, event ID, and extension ID.
 
         Args:
             user_id (string): user-id
@@ -3711,7 +3711,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of extensions for a specific calendar event associated with a user using the GET method.
 
         Args:
             user_id (string): user-id
@@ -3756,7 +3756,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get instances from users
+        Retrieves and lists event instances for a specified event in a user's calendar, allowing filtering by start and end date, and optionally sorting, selecting, and expanding related data.
 
         Args:
             user_id (string): user-id
@@ -3817,7 +3817,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get instances from users
+        Retrieves specific instances of a calendar event for a user, filtered by start and end date, with optional selection and expansion of event details.
 
         Args:
             user_id (string): user-id
@@ -3873,7 +3873,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get attachments from users
+        Retrieves a list of attachments for a specific event instance within a user's calendar, allowing for filtering and sorting through query parameters.
 
         Args:
             user_id (string): user-id
@@ -3935,7 +3935,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to attachments for users
+        Adds an attachment to a specific event instance within a user's calendar using a JSON body.
 
         Args:
             user_id (string): user-id
@@ -3996,7 +3996,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get attachments from users
+        Retrieves a specific attachment from a recurring event instance associated with a user's calendar event using the provided identifiers, allowing optional selection and expansion of specific fields.
 
         Args:
             user_id (string): user-id
@@ -4035,7 +4035,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property attachments for users
+        Deletes an attachment from a specific event instance in a user's calendar using the provided identifiers and returns a status message.
 
         Args:
             user_id (string): user-id
@@ -4075,7 +4075,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Returns the count of attachments for a specific event instance in a user's calendar.
 
         Args:
             user_id (string): user-id
@@ -4115,7 +4115,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke action createUploadSession
+        Creates an upload session for attaching a file to a specific calendar event instance in Microsoft Graph, allowing iterative upload of file content.
 
         Args:
             user_id (string): user-id
@@ -4163,7 +4163,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get calendar from users
+        Retrieves specific calendar event instances for a user using the "GET" method, allowing for optional selection and expansion of properties through query parameters.
 
         Args:
             user_id (string): user-id
@@ -4210,7 +4210,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get extensions from users
+        Retrieves event instance extensions for a specific recurring event associated with a user, allowing for filtering, sorting, and selecting specific data.
 
         Args:
             user_id (string): user-id
@@ -4263,7 +4263,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to extensions for users
+        Adds a custom extension to a specific event instance in a user's calendar using the provided JSON data.
 
         Args:
             user_id (string): user-id
@@ -4312,7 +4312,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get extensions from users
+        Retrieves specific extension details for a calendar event instance belonging to a user, allowing optional selection and expansion of fields.
 
         Args:
             user_id (string): user-id
@@ -4356,7 +4356,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property extensions in users
+        Updates a specific extension of a recurring event instance in a user's calendar using the provided JSON data.
 
         Args:
             user_id (string): user-id
@@ -4397,7 +4397,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property extensions for users
+        Deletes an extension from a specific calendar event instance using the provided user ID, event IDs, and extension ID.
 
         Args:
             user_id (string): user-id
@@ -4437,7 +4437,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of event instances for a specific calendar event using the "GET" method, allowing for filtering and searching based on provided parameters.
 
         Args:
             user_id (string): user-id
@@ -4478,7 +4478,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action accept
+        Accepts a specific instance of an event in a user's calendar using the Microsoft Graph API, potentially requiring a JSON body with additional details.
 
         Args:
             user_id (string): user-id
@@ -4522,7 +4522,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action cancel
+        Cancels a specific instance of a recurring event or a single event, allowing the organizer to send a custom cancellation message to attendees.
 
         Args:
             user_id (string): user-id
@@ -4571,7 +4571,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action decline
+        Declines an event instance in a user's calendar using the Microsoft Graph API, allowing the option to propose a new time, and returns a status message.
 
         Args:
             user_id (string): user-id
@@ -4620,7 +4620,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action dismissReminder
+        Dismisses a triggered reminder for a specified event instance in a user's calendar.
 
         Args:
             user_id (string): user-id
@@ -4663,7 +4663,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action forward
+        Forwards a specific event instance to new recipients using the Microsoft Graph API, allowing the organizer or attendee to send the event to others.
 
         Args:
             user_id (string): user-id
@@ -4707,7 +4707,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action permanentDelete
+        Permanently deletes a specific instance of a recurring event in a user's calendar and places it in the Purges folder in the dumpster, using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -4749,7 +4749,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action snoozeReminder
+        Snoozes a reminder for a specific event instance in a user's calendar by sending a POST request with a new reminder time.
 
         Args:
             user_id (string): user-id
@@ -4798,7 +4798,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action tentativelyAccept
+        Tentatively accepts a specific instance of an event in a user's calendar, allowing the option to propose an alternative time, and returns a successful response upon completion.
 
         Args:
             user_id (string): user-id
@@ -4851,7 +4851,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of instances for a specific recurring event in a user's calendar using the provided user ID and event ID.
 
         Args:
             user_id (string): user-id
@@ -4896,7 +4896,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke function delta
+        Tracks changes to instances of a specific recurring event in a user's calendar using the delta query, allowing for incremental updates within a specified time range.
 
         Args:
             user_id (string): user-id
@@ -4954,7 +4954,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action accept
+        Accepts a specified event in the calendar of a given user using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -4995,7 +4995,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action cancel
+        Cancels a specified calendar event for a user using the Microsoft Graph API, allowing the organizer to send a cancellation message to attendees and move the event to the Deleted Items folder.
 
         Args:
             user_id (string): user-id
@@ -5040,7 +5040,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action decline
+        Declines an event invitation in a user's calendar using the Microsoft Graph API and allows for optionally proposing a new time if supported by the event.
 
         Args:
             user_id (string): user-id
@@ -5084,7 +5084,7 @@ class UsersApiCalender(APISegmentBase):
     def user_calendar_event_dismiss_reminder(self, user_id: str, event_id: str) -> Any:
         """
 
-        Invoke action dismissReminder
+        Dismisses a triggered reminder for a specified event in a user's calendar using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -5123,7 +5123,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action forward
+        Forwards a meeting event invitation to new recipients using the Microsoft Graph API, allowing the organizer or attendee to send the event to a specified list of recipients with an optional comment.
 
         Args:
             user_id (string): user-id
@@ -5162,7 +5162,7 @@ class UsersApiCalender(APISegmentBase):
     def user_calendar_event_permanent_delete(self, user_id: str, event_id: str) -> Any:
         """
 
-        Invoke action permanentDelete
+        Permanently deletes a specified event from a user's calendar and moves it to the Purges folder in the mailbox dumpster, where it is inaccessible to email clients like Outlook.
 
         Args:
             user_id (string): user-id
@@ -5200,7 +5200,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action snoozeReminder
+        Postpones a calendar event reminder for a specified user to a new time using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -5245,7 +5245,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action tentativelyAccept
+        Tentatively accepts a specified event in a user's calendar, allowing the option to propose an alternative time if the event supports new time proposals.
 
         Args:
             user_id (string): user-id
@@ -5291,7 +5291,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of calendar events for a specified user, allowing for optional search and filtering parameters.
 
         Args:
             user_id (string): user-id
@@ -5332,7 +5332,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke function delta
+        Tracks changes in calendar events for a specified user, using a delta query to retrieve incremental updates within a specified time range.
 
         Args:
             user_id (string): user-id
@@ -5390,7 +5390,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke function allowedCalendarSharingRoles
+        Retrieves the allowed calendar sharing roles for a specified user using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -5439,7 +5439,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke action getSchedule
+        Retrieves the free/busy availability information for a specified user's calendar over a defined time period using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -5482,7 +5482,7 @@ class UsersApiCalender(APISegmentBase):
     def user_calendar_permanent_delete(self, user_id: str) -> Any:
         """
 
-        Invoke action permanentDelete
+        Permanently deletes a user's calendar folder and all its events, removing them from the mailbox.
 
         Args:
             user_id (string): user-id
@@ -5523,7 +5523,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get calendarGroups from users
+        Retrieves a list of calendar groups for a specified user using the provided user ID, allowing for optional filtering, sorting, and selection of fields.
 
         Args:
             user_id (string): user-id
@@ -5576,7 +5576,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to calendarGroups for users
+        Creates a new calendar group for a specified user using the provided JSON payload and returns a response indicating the outcome of the operation.
 
         Args:
             user_id (string): user-id
@@ -5627,7 +5627,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get calendarGroups from users
+        Retrieves a specific calendar group for a user, allowing optional filtering and expansion of properties via query parameters.
 
         Args:
             user_id (string): user-id
@@ -5667,7 +5667,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property calendarGroups in users
+        Updates a specific calendar group for a user using the provided JSON data.
 
         Args:
             user_id (string): user-id
@@ -5710,7 +5710,7 @@ class UsersApiCalender(APISegmentBase):
     def user_delete_calendar_group(self, user_id: str, calendarGroup_id: str) -> Any:
         """
 
-        Delete navigation property calendarGroups for users
+        Deletes a specific calendar group associated with a user using the "DELETE" method.
 
         Args:
             user_id (string): user-id
@@ -5749,7 +5749,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get calendars from users
+        Retrieves a list of calendars for a specific calendar group belonging to a user, allowing for optional filtering, sorting, and selection of specific fields.
 
         Args:
             user_id (string): user-id
@@ -5820,7 +5820,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to calendars for users
+        Adds a new calendar to a specified calendar group for a user using the provided JSON data.
 
         Args:
             user_id (string): user-id
@@ -5903,7 +5903,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get calendars from users
+        Retrieves details of a specific calendar within a calendar group for a user, allowing optional selection and expansion of specific properties.
 
         Args:
             user_id (string): user-id
@@ -5961,7 +5961,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property calendars in users
+        Updates a specific calendar in a user's calendar group using the PATCH method, requiring a JSON body specifying the changes.
 
         Args:
             user_id (string): user-id
@@ -6037,7 +6037,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property calendars for users
+        Deletes the specified calendar within a calendar group for a given user.
 
         Args:
             user_id (string): user-id
@@ -6080,7 +6080,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get calendarPermissions from users
+        Retrieves the permissions for a specific calendar within a calendar group belonging to a user, allowing for optional filtering, sorting, and selection of specific fields.
 
         Args:
             user_id (string): user-id
@@ -6142,7 +6142,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to calendarPermissions for users
+        Assigns permissions to a calendar using the provided user ID, calendar group ID, and calendar ID, requiring a JSON body with the necessary permission details.
 
         Args:
             user_id (string): user-id
@@ -6203,7 +6203,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get calendarPermissions from users
+        Retrieves details about a specific calendar permission for a given calendar within a user's designated calendar group, optionally filtering or expanding the returned data.
 
         Args:
             user_id (string): user-id
@@ -6252,7 +6252,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property calendarPermissions in users
+        Updates specific calendar permissions for a designated user's calendar within a calendar group using a partial change request.
 
         Args:
             user_id (string): user-id
@@ -6309,7 +6309,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property calendarPermissions for users
+        Deletes a specific calendar permission identified by the calendar permission ID within a calendar in a calendar group of a user.
 
         Args:
             user_id (string): user-id
@@ -6349,7 +6349,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of calendar permissions for a specific calendar using the "GET" method, identified by user ID, calendar group ID, and calendar ID.
 
         Args:
             user_id (string): user-id
@@ -6398,7 +6398,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get calendarView from users
+        Retrieves a calendar view for a specified calendar within a calendar group, including events between a start and end date, and allows for filtering and sorting the results.
 
         Args:
             user_id (string): user-id
@@ -6463,7 +6463,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get calendarView from users
+        Retrieves a specific event from a calendar using the event ID, allowing optional filtering by start and end date, and selective inclusion or expansion of event details.
 
         Args:
             user_id (string): user-id
@@ -6523,7 +6523,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get attachments from users
+        Retrieves an attachment for a specific event in a calendar using the provided user ID, calendar group ID, calendar ID, and event ID, with optional query parameters for filtering and selecting data.
 
         Args:
             user_id (string): user-id
@@ -6589,7 +6589,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to attachments for users
+        Adds an attachment to a specified event in a calendar using the POST method, requiring a JSON body and path parameters for user ID, calendar group ID, calendar ID, and event ID.
 
         Args:
             user_id (string): user-id
@@ -6654,7 +6654,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get attachments from users
+        Retrieves the properties, relationships, or raw contents of a specific attachment associated with an event in a calendar belonging to a user's calendar group using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -6701,7 +6701,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property attachments for users
+        Deletes an attachment from a specific event in a calendar using the "DELETE" method.
 
         Args:
             user_id (string): user-id
@@ -6745,7 +6745,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of attachments for a specific event in a calendar using the "GET" method.
 
         Args:
             user_id (string): user-id
@@ -6789,7 +6789,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke action createUploadSession
+        Creates an upload session to iteratively upload file ranges as attachments to a specified calendar event, returning an upload URL for subsequent file upload operations.
 
         Args:
             user_id (string): user-id
@@ -6841,7 +6841,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get calendar from users
+        Retrieves a specific event from a user's calendar within a calendar group, allowing optional selection and expansion of event properties.
 
         Args:
             user_id (string): user-id
@@ -6892,7 +6892,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get extensions from users
+        Retrieves extensions for a specific event within a user’s calendar group using optional query parameters for filtering, ordering, and expanding results.
 
         Args:
             user_id (string): user-id
@@ -6953,7 +6953,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to extensions for users
+        Adds custom extensions to a specific event within a calendar using the calendar view.
 
         Args:
             user_id (string): user-id
@@ -7006,7 +7006,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get extensions from users
+        Retrieves an open extension for a specific event in a calendar using the Microsoft Graph API, allowing customization of event data.
 
         Args:
             user_id (string): user-id
@@ -7054,7 +7054,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property extensions in users
+        Updates an extension for a specific event in a calendar using the PATCH method by applying partial modifications to the resource identified by the user ID, calendar group ID, calendar ID, event ID, and extension ID.
 
         Args:
             user_id (string): user-id
@@ -7103,7 +7103,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property extensions for users
+        Deletes an extension from a specific event in a calendar using the provided user, calendar group, calendar, event, and extension identifiers.
 
         Args:
             user_id (string): user-id
@@ -7147,7 +7147,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of calendar extensions for a specific event in a calendar, using parameters such as user ID, calendar group ID, calendar ID, and event ID.
 
         Args:
             user_id (string): user-id
@@ -7200,7 +7200,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get instances from users
+        Retrieves instances of a recurring event in a specific calendar within a calendar group for a user, using specified start and end dates.
 
         Args:
             user_id (string): user-id
@@ -7269,7 +7269,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get instances from users
+        Retrieves details of a specific calendar event instance within a user's calendar group, filtered by time range and customizable field selection.
 
         Args:
             user_id (string): user-id
@@ -7333,7 +7333,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get attachments from users
+        Retrieves attachments for a specific instance of an event within a calendar, using various query parameters to filter, order, and select the output.
 
         Args:
             user_id (string): user-id
@@ -7403,7 +7403,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to attachments for users
+        Adds an attachment to a specific calendar event instance using a POST request with a JSON body containing the attachment details.
 
         Args:
             user_id (string): user-id
@@ -7472,7 +7472,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get attachments from users
+        Retrieves the properties, relationships, or raw contents of a specific attachment associated with a recurring event instance in a calendar belonging to a user's calendar group.
 
         Args:
             user_id (string): user-id
@@ -7523,7 +7523,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property attachments for users
+        Deletes a specific attachment from an event instance recurrence in a user's calendar group using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -7571,7 +7571,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of attachments for a specific event instance in a calendar using the "GET" method.
 
         Args:
             user_id (string): user-id
@@ -7619,7 +7619,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke action createUploadSession
+        Creates an upload session to iteratively upload ranges of a file as an attachment to a specific event instance in a calendar group, allowing for the attachment of files up to the maximum file size.
 
         Args:
             user_id (string): user-id
@@ -7675,7 +7675,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get calendar from users
+        Retrieves specific instances of recurring events within a calendar view for a specified user's calendar group, allowing for optional expansion and selection of event properties.
 
         Args:
             user_id (string): user-id
@@ -7730,7 +7730,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get extensions from users
+        Retrieves specific instances of a recurring event from a calendar, using parameters such as search, filter, and ordering options to customize the query.
 
         Args:
             user_id (string): user-id
@@ -7795,7 +7795,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to extensions for users
+        Adds custom extensions to a specific instance of an event in a user's calendar using a POST request, specifying the user ID, calendar group ID, calendar ID, event ID, and instance event ID.
 
         Args:
             user_id (string): user-id
@@ -7852,7 +7852,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get extensions from users
+        Retrieves specific extensions for a recurring event instance within a calendar, allowing for the selection and expansion of additional properties.
 
         Args:
             user_id (string): user-id
@@ -7904,7 +7904,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property extensions in users
+        Updates an extension of a specific event instance in a calendar view using the PATCH method, applying partial modifications to the extension's properties.
 
         Args:
             user_id (string): user-id
@@ -7957,7 +7957,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property extensions for users
+        Deletes a specific extension from an event instance in a calendar view under a calendar group associated with a user, using the "DELETE" method.
 
         Args:
             user_id (string): user-id
@@ -8005,7 +8005,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the number of instances of a specific recurring event in a user's calendar, using the provided event IDs and calendar details.
 
         Args:
             user_id (string): user-id
@@ -8054,7 +8054,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action accept
+        Accepts a specified event instance in a user's calendar group using the Microsoft Graph API by sending a POST request to the defined path.
 
         Args:
             user_id (string): user-id
@@ -8110,7 +8110,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action cancel
+        Cancels a specific instance of a recurring meeting event in a user's calendar group using the Microsoft Graph API, allowing the organizer to send a custom cancellation message to attendees.
 
         Args:
             user_id (string): user-id
@@ -8167,7 +8167,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action decline
+        Declines an invitation to a specific event instance within a calendar group's calendar using the Microsoft Graph API, allowing the option to propose a new time if supported by the event.
 
         Args:
             user_id (string): user-id
@@ -8227,7 +8227,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action dismissReminder
+        Dismisses a reminder for a specific event instance in a user's calendar using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -8278,7 +8278,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action forward
+        Forwards a meeting event to new recipients using the Microsoft Graph API, allowing the organizer or attendee to send the meeting request to additional participants.
 
         Args:
             user_id (string): user-id
@@ -8333,7 +8333,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action permanentDelete
+        Permanently deletes a specific instance of a recurring event from a user's calendar group, calendar, and calendar view, placing it in the purges folder of the user's mailbox[1][2][5].
 
         Args:
             user_id (string): user-id
@@ -8383,7 +8383,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action snoozeReminder
+        Postpones the reminder for a specific recurrence of a calendar event in a user's calendar group until a new specified time.
 
         Args:
             user_id (string): user-id
@@ -8440,7 +8440,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action tentativelyAccept
+        Tentatively accepts a specified recurring event instance from a user's calendar group and calendar, optionally including a comment or alternative time proposal in the request, and returns an accepted status if successful[1][3].
 
         Args:
             user_id (string): user-id
@@ -8501,7 +8501,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of instances for a specific event in a calendar using the provided user, calendar group, calendar, and event identifiers.
 
         Args:
             user_id (string): user-id
@@ -8554,7 +8554,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke function delta
+        Queries changes to instances of a specific event in a calendar using the delta function, allowing for incremental tracking of newly created, updated, or deleted event instances within a specified time frame.
 
         Args:
             user_id (string): user-id
@@ -8620,7 +8620,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action accept
+        Accepts a specified event in a user's calendar group using the Microsoft Graph API, requiring the user ID, calendar group ID, calendar ID, and event ID in the path, and additional details in the request body.
 
         Args:
             user_id (string): user-id
@@ -8672,7 +8672,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action cancel
+        Cancels a specified event in a calendar, allowing the organizer to send a cancellation message to attendees, and moves the event to the Deleted Items folder.
 
         Args:
             user_id (string): user-id
@@ -8725,7 +8725,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action decline
+        Declines an event invitation in a user's calendar group using the specified event ID and returns a response indicating the status of the decline operation.
 
         Args:
             user_id (string): user-id
@@ -8777,7 +8777,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action dismissReminder
+        Dismisses a triggered reminder for a specified event in a user's calendar using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -8824,7 +8824,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action forward
+        Forwards a meeting event from a specific calendar to new recipients, allowing the organizer or attendee to send the meeting request to additional people.
 
         Args:
             user_id (string): user-id
@@ -8871,7 +8871,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action permanentDelete
+        Permanently deletes a specified calendar event and places it in the Purges folder of the user's mailbox, where it is inaccessible to email clients like Outlook, and will be permanently deleted after a set period unless a mailbox hold is in place.
 
         Args:
             user_id (string): user-id
@@ -8917,7 +8917,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action snoozeReminder
+        Postpones a reminder for a specified event in a user's calendar to a new time using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -8970,7 +8970,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action tentativelyAccept
+        Tentatively accepts a specified event in a user's calendar group, allowing for an optional new time proposal if the event allows it, and returns a status indicating the acceptance.
 
         Args:
             user_id (string): user-id
@@ -9027,7 +9027,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of calendar views for a specific calendar within a calendar group associated with a user.
 
         Args:
             user_id (string): user-id
@@ -9076,7 +9076,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke function delta
+        Retrieves incremental changes to events in a specified calendar view within a calendar group using the delta function, returning added, deleted, or updated events between the specified start and end dates.
 
         Args:
             user_id (string): user-id
@@ -9144,7 +9144,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get events from users
+        Retrieves a list of events for a specified calendar, allowing for filtering, sorting, and selecting specific fields, within a calendar group owned by a particular user.
 
         Args:
             user_id (string): user-id
@@ -9247,7 +9247,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to events for users
+        Creates a new event in a specific calendar using the provided JSON data, specified by the user ID, calendar group ID, and calendar ID.
 
         Args:
             user_id (string): user-id
@@ -9390,7 +9390,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get events from users
+        Retrieves details of a specific event identified by its ID in a calendar within a specified calendar group belonging to a user, allowing optional selection and expansion of specific event properties.
 
         Args:
             user_id (string): user-id
@@ -9480,7 +9480,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property events in users
+        Updates an existing event in a calendar within a specific calendar group of a user using the PATCH method.
 
         Args:
             user_id (string): user-id
@@ -9615,7 +9615,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property events for users
+        Deletes a specific event identified by `{event-id}` within a calendar specified by `{calendar-id}`, belonging to a calendar group identified by `{calendarGroup-id}`, which is associated with a user identified by `{user-id}`.
 
         Args:
             user_id (string): user-id
@@ -9662,7 +9662,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get attachments from users
+        Retrieves attachments for a specific event in a calendar within a calendar group associated with a user, allowing for query parameters such as filtering, sorting, and expanding related data.
 
         Args:
             user_id (string): user-id
@@ -9728,7 +9728,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to attachments for users
+        Adds an attachment to a specific event in a calendar using the provided JSON data.
 
         Args:
             user_id (string): user-id
@@ -9793,7 +9793,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get attachments from users
+        Retrieves the properties or raw content of a specific attachment from an event within a designated calendar and calendar group for a specified user[1].
 
         Args:
             user_id (string): user-id
@@ -9840,7 +9840,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property attachments for users
+        Deletes an attachment from a specific event in a calendar using the provided attachment ID.
 
         Args:
             user_id (string): user-id
@@ -9884,7 +9884,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of attachments for a specified calendar event belonging to a user, calendar group, and calendar.
 
         Args:
             user_id (string): user-id
@@ -9928,7 +9928,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke action createUploadSession
+        Creates an upload session for attaching a file to a specific event in a calendar, allowing iterative uploads of file ranges.
 
         Args:
             user_id (string): user-id
@@ -9980,7 +9980,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get calendar from users
+        Retrieves a specific event from a user's calendar by its ID, optionally allowing for the selection and expansion of certain event properties.
 
         Args:
             user_id (string): user-id
@@ -10031,7 +10031,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get extensions from users
+        Retrieves event extensions for a specific event in a calendar, allowing for filtering, sorting, and selecting specific properties.
 
         Args:
             user_id (string): user-id
@@ -10092,7 +10092,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to extensions for users
+        Adds custom extensions to an existing event in a specific calendar using the "POST" method, allowing for the creation of additional metadata or properties for the event.
 
         Args:
             user_id (string): user-id
@@ -10145,7 +10145,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get extensions from users
+        Retrieves a specific extension from an event in a calendar within a calendar group, allowing selection and expansion of properties using `$select` and `$expand` parameters.
 
         Args:
             user_id (string): user-id
@@ -10193,7 +10193,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property extensions in users
+        Modifies the specified event extension for a calendar, located within a calendar group associated with a user, by applying partial updates contained in the request body.
 
         Args:
             user_id (string): user-id
@@ -10242,7 +10242,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property extensions for users
+        Deletes a specific extension from a calendar event in the specified calendar group and calendar for the given user.
 
         Args:
             user_id (string): user-id
@@ -10286,7 +10286,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of extensions for a specific event identified by its ID, within a calendar specified by its ID, belonging to a calendar group and user, using the "GET" method.
 
         Args:
             user_id (string): user-id
@@ -10339,7 +10339,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get instances from users
+        Retrieves specific event instances from a user's calendar, allowing for filtering by date range and other parameters.
 
         Args:
             user_id (string): user-id
@@ -10408,7 +10408,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get instances from users
+        Retrieves a specific occurrence (instance) of a recurring event from a user's calendar within a specified calendar group and calendar, using the provided time range and optional query parameters[2][5].
 
         Args:
             user_id (string): user-id
@@ -10472,7 +10472,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get attachments from users
+        Retrieves attachments for a specific instance of an event in a calendar, using the provided user ID, calendar group ID, calendar ID, event ID, and instance ID, with optional filtering and sorting parameters.
 
         Args:
             user_id (string): user-id
@@ -10542,7 +10542,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to attachments for users
+        Adds an attachment to a specific event instance in a calendar using the "POST" method, requiring a JSON-formatted request body and identifying the event instance by user ID, calendar group ID, calendar ID, event ID, and a second event ID.
 
         Args:
             user_id (string): user-id
@@ -10611,7 +10611,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get attachments from users
+        Retrieves a specific attachment from a recurring event instance in a user’s calendar group and specified calendar using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -10662,7 +10662,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property attachments for users
+        Deletes an attachment from a specific event instance in a calendar associated with a user's calendar group using the provided identifiers.
 
         Args:
             user_id (string): user-id
@@ -10710,7 +10710,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of attachments for a specific event instance within a calendar using the "GET" method.
 
         Args:
             user_id (string): user-id
@@ -10758,7 +10758,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke action createUploadSession
+        Creates an upload session for attaching files to a specific event instance in a calendar, allowing iterative uploads of file ranges.
 
         Args:
             user_id (string): user-id
@@ -10814,7 +10814,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get calendar from users
+        Retrieves the calendar object for a specific event instance within a user's calendar group, allowing selection and expansion of event properties.
 
         Args:
             user_id (string): user-id
@@ -10869,7 +10869,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get extensions from users
+        Retrieves an instance of a specific event within a calendar using the provided user, calendar group, calendar, event, and instance identifiers, allowing for optional filtering, sorting, and expansion of related data through query parameters.
 
         Args:
             user_id (string): user-id
@@ -10934,7 +10934,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to extensions for users
+        Creates a new extension on a specific event instance of a user’s calendar.
 
         Args:
             user_id (string): user-id
@@ -10991,7 +10991,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get extensions from users
+        Retrieves a specific extension attached to an instance of a recurring calendar event for a user’s designated calendar group and calendar using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -11043,7 +11043,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property extensions in users
+        Updates the specified extension of an event instance in a calendar using the PATCH method, allowing for partial modifications to the resource.
 
         Args:
             user_id (string): user-id
@@ -11096,7 +11096,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property extensions for users
+        Deletes an extension associated with a specific event instance in a user's calendar using the provided `user-id`, `calendarGroup-id`, `calendar-id`, `event-id`, `event-id1`, and `extension-id`.
 
         Args:
             user_id (string): user-id
@@ -11144,7 +11144,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the total count of extensions associated with a specific calendar event instance for a given user, calendar group, and calendar, using the specified event and event instance identifiers.
 
         Args:
             user_id (string): user-id
@@ -11193,7 +11193,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action accept
+        Accepts a specific instance of an event in a user's calendar group using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -11249,7 +11249,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action cancel
+        Cancels a specific instance of a recurring event in a calendar group, allowing the organizer to send a cancellation message to attendees.
 
         Args:
             user_id (string): user-id
@@ -11306,7 +11306,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action decline
+        Declines an invitation to a specific instance of a recurring event in a user's calendar group using the Microsoft Graph API, allowing the invitee to optionally propose a new time.
 
         Args:
             user_id (string): user-id
@@ -11366,7 +11366,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action dismissReminder
+        Dismisses a reminder for a specified event instance in a user's calendar using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -11417,7 +11417,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action forward
+        Forwards a meeting event to new recipients using the Microsoft Graph API, allowing organizers or attendees to share the event with others.
 
         Args:
             user_id (string): user-id
@@ -11472,7 +11472,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action permanentDelete
+        Permanently deletes a specific instance of a recurring event in a calendar and places it in the Purges folder, using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -11522,7 +11522,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action snoozeReminder
+        Snoozes a reminder for a specific event instance in a user's calendar group until a new time.
 
         Args:
             user_id (string): user-id
@@ -11579,7 +11579,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action tentativelyAccept
+        Tentatively accepts a specified event instance in a user's calendar group, allowing the option to propose a new time for the event.
 
         Args:
             user_id (string): user-id
@@ -11640,7 +11640,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of event instances for a specific event in a calendar, using the provided user ID, calendar group ID, calendar ID, and event ID, with optional search and filter parameters.
 
         Args:
             user_id (string): user-id
@@ -11693,7 +11693,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke function delta
+        Tracks changes in instances of a specific event within a calendar using the Microsoft Graph delta query, allowing applications to discover newly created, updated, or deleted event instances without performing a full read of the data.
 
         Args:
             user_id (string): user-id
@@ -11759,7 +11759,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action accept
+        Accepts the specified event in a user’s calendar within a given calendar group and calendar using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -11811,7 +11811,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action cancel
+        Cancels a calendar event for a specified user, sending a cancellation message to attendees and moving the event to the Deleted Items folder, using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -11864,7 +11864,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action decline
+        Declines an event invitation in a specified user's calendar group using the Microsoft Graph API, allowing the invitee to optionally propose a new time.
 
         Args:
             user_id (string): user-id
@@ -11916,7 +11916,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action dismissReminder
+        Dismisses a triggered reminder for a specified event in a user's calendar group using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -11963,7 +11963,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action forward
+        Forwards a meeting event to new recipients using the Microsoft Graph API, allowing organizers or attendees to share meeting requests with others.
 
         Args:
             user_id (string): user-id
@@ -12010,7 +12010,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action permanentDelete
+        Permanently deletes an event from a specific calendar in a calendar group and places it in the Purges folder in the user's mailbox.
 
         Args:
             user_id (string): user-id
@@ -12056,7 +12056,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action snoozeReminder
+        Postpones a reminder for a specified event in a user's calendar group until a new time using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -12109,7 +12109,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action tentativelyAccept
+        Tentatively accepts an event in a specific user's calendar group using the Microsoft Graph API, allowing for optional proposals of new meeting times.
 
         Args:
             user_id (string): user-id
@@ -12166,7 +12166,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of events in a specific calendar associated with a user's calendar group using the provided user ID, calendar group ID, and calendar ID, allowing for optional search and filter parameters.
 
         Args:
             user_id (string): user-id
@@ -12215,7 +12215,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke function delta
+        Retrieves incremental changes to events in a specific calendar using delta query, allowing for synchronization of new, updated, or deleted events between the specified start and end dates.
 
         Args:
             user_id (string): user-id
@@ -12281,7 +12281,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke function allowedCalendarSharingRoles
+        Retrieves the allowed calendar sharing roles for a specified user in a specific calendar within a calendar group.
 
         Args:
             user_id (string): user-id
@@ -12338,7 +12338,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke action getSchedule
+        Retrieves the schedule for a specific calendar within a calendar group belonging to a user, allowing for the retrieval of availability information for a specified period.
 
         Args:
             user_id (string): user-id
@@ -12389,7 +12389,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action permanentDelete
+        Permanently deletes a specified calendar and its associated events from a user's mailbox using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -12431,7 +12431,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the number of calendars in a specific calendar group for a given user using the "GET" method.
 
         Args:
             user_id (string): user-id
@@ -12464,7 +12464,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of calendar groups for a specified user using the provided user ID.
 
         Args:
             user_id (string): user-id
@@ -12503,7 +12503,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get calendars from users
+        Retrieves a list of calendars for a specified user, allowing for filtering, sorting, and expansion of additional details.
 
         Args:
             user_id (string): user-id
@@ -12570,7 +12570,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to calendars for users
+        Creates a new calendar for a specified user using the provided JSON data and returns a status message.
 
         Args:
             user_id (string): user-id
@@ -12649,7 +12649,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get calendars from users
+        Retrieves detailed information about a specific calendar associated with a user, allowing optional selection and expansion of specific fields.
 
         Args:
             user_id (string): user-id
@@ -12703,7 +12703,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property calendars in users
+        Updates a specified calendar for a user by applying partial modifications to its properties using a JSON request body.
 
         Args:
             user_id (string): user-id
@@ -12774,7 +12774,7 @@ class UsersApiCalender(APISegmentBase):
     def user_delete_calendar(self, user_id: str, calendar_id: str) -> Any:
         """
 
-        Delete navigation property calendars for users
+        Deletes a calendar associated with a specific user using the provided user ID and calendar ID.
 
         Args:
             user_id (string): user-id
@@ -12813,7 +12813,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get calendarPermissions from users
+        Retrieves a list of calendar permissions for a specific user's calendar, allowing for filtering and sorting through query parameters.
 
         Args:
             user_id (string): user-id
@@ -12871,7 +12871,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to calendarPermissions for users
+        Creates a new calendar permission for a specific calendar belonging to a user.
 
         Args:
             user_id (string): user-id
@@ -12928,7 +12928,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get calendarPermissions from users
+        Retrieves specific calendar permission details for a user, allowing optional filtering and expansion of results.
 
         Args:
             user_id (string): user-id
@@ -12973,7 +12973,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property calendarPermissions in users
+        Updates the specified calendar permission for a user's calendar using a partial modification request.
 
         Args:
             user_id (string): user-id
@@ -13023,7 +13023,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property calendarPermissions for users
+        Deletes a specific calendar permission for a user's calendar using the "DELETE" method.
 
         Args:
             user_id (string): user-id
@@ -13059,7 +13059,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of calendar permissions for a specific calendar belonging to a user using the GET method.
 
         Args:
             user_id (string): user-id
@@ -13104,7 +13104,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get calendarView from users
+        Retrieves a calendar view for a specific user and calendar, using specified start and end dates, with optional filtering and sorting parameters.
 
         Args:
             user_id (string): user-id
@@ -13165,7 +13165,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get calendarView from users
+        Retrieves a specific event from a user's calendar using its ID, allowing for optional filtering by date range and selection of specific properties.
 
         Args:
             user_id (string): user-id
@@ -13221,7 +13221,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get attachments from users
+        Retrieves attachments for a specific event in a calendar view of a user's calendar.
 
         Args:
             user_id (string): user-id
@@ -13283,7 +13283,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to attachments for users
+        Adds an attachment to a specific event in a calendar view using the provided JSON data.
 
         Args:
             user_id (string): user-id
@@ -13344,7 +13344,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get attachments from users
+        Retrieves a specific attachment from an event in a user’s calendar using the specified identifiers and optional query parameters.
 
         Args:
             user_id (string): user-id
@@ -13383,7 +13383,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property attachments for users
+        Deletes an attachment from a specific event in a calendar view for a user using the "DELETE" method.
 
         Args:
             user_id (string): user-id
@@ -13423,7 +13423,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of attachments associated with a specific event in a user's calendar.
 
         Args:
             user_id (string): user-id
@@ -13463,7 +13463,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke action createUploadSession
+        Creates an upload session to iteratively upload file ranges as an attachment to a specified calendar event, allowing for large file uploads.
 
         Args:
             user_id (string): user-id
@@ -13511,7 +13511,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get calendar from users
+        Retrieves a specific event from a user's calendar view using the "GET" method, allowing optional selection and expansion of event details.
 
         Args:
             user_id (string): user-id
@@ -13558,7 +13558,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get extensions from users
+        Retrieves an extension for a specific event in a calendar view associated with a user and calendar, allowing for optional filtering and sorting of the response.
 
         Args:
             user_id (string): user-id
@@ -13611,7 +13611,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to extensions for users
+        Adds an extension to a specific calendar event in a user's calendar using the provided JSON data.
 
         Args:
             user_id (string): user-id
@@ -13660,7 +13660,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get extensions from users
+        Retrieves details about a specific calendar event extension for a user, allowing optional selection and expansion of specific fields.
 
         Args:
             user_id (string): user-id
@@ -13704,7 +13704,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property extensions in users
+        Updates an extension for a specific event in a calendar view associated with a user's calendar using the PATCH method.
 
         Args:
             user_id (string): user-id
@@ -13745,7 +13745,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property extensions for users
+        Deletes an extension from a specific event in a calendar view for a user using the DELETE method, requiring user ID, calendar ID, event ID, and extension ID, and optionally including an If-Match header.
 
         Args:
             user_id (string): user-id
@@ -13785,7 +13785,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of calendar view extensions for a specific event in a calendar associated with a user.
 
         Args:
             user_id (string): user-id
@@ -13834,7 +13834,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get instances from users
+        Retrieves specific instances of a calendar event by event ID, within a specified date range, for a user's calendar, allowing for filtering and sorting of the results.
 
         Args:
             user_id (string): user-id
@@ -13899,7 +13899,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get instances from users
+        This API operation retrieves instances of a specific event in a user's calendar, allowing for the retrieval of occurrences and exceptions within a specified time range.
 
         Args:
             user_id (string): user-id
@@ -13959,7 +13959,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get attachments from users
+        Retrieves attachment details for a specific event instance within a calendar view, using the provided user ID, calendar ID, event ID, and event instance ID, with optional filtering and ordering parameters.
 
         Args:
             user_id (string): user-id
@@ -14025,7 +14025,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to attachments for users
+        Adds an attachment to a specific event instance in a calendar view for a user using the provided JSON data.
 
         Args:
             user_id (string): user-id
@@ -14090,7 +14090,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get attachments from users
+        Retrieves a specific attachment for an event instance within a calendar view using the "GET" method, allowing optional selection and expansion of specific data fields.
 
         Args:
             user_id (string): user-id
@@ -14137,7 +14137,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property attachments for users
+        Deletes an attachment from a specific event instance in a calendar view using the provided user ID, calendar ID, and event IDs.
 
         Args:
             user_id (string): user-id
@@ -14181,7 +14181,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of attachments for a specific event instance in a calendar using the provided user ID, calendar ID, event ID, and event instance ID.
 
         Args:
             user_id (string): user-id
@@ -14225,7 +14225,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke action createUploadSession
+        Creates an upload session to iteratively upload ranges of a file as an attachment to a specified event instance in a user's calendar.
 
         Args:
             user_id (string): user-id
@@ -14277,7 +14277,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get calendar from users
+        Retrieves detailed information about a calendar event instance for a specific user and calendar using the "GET" method, allowing optional filtering with the `$select` and `$expand` query parameters.
 
         Args:
             user_id (string): user-id
@@ -14328,7 +14328,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get extensions from users
+        Retrieves detailed information about specific event instances within a calendar, allowing for filtering, sorting, and selecting specific data fields.
 
         Args:
             user_id (string): user-id
@@ -14389,7 +14389,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to extensions for users
+        Adds custom extensions to a specific event instance in a calendar using the provided JSON data.
 
         Args:
             user_id (string): user-id
@@ -14442,7 +14442,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get extensions from users
+        Retrieves and potentially expands specific details of a calendar event instance's extension using the "GET" method, allowing selection and expansion of specified fields.
 
         Args:
             user_id (string): user-id
@@ -14490,7 +14490,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property extensions in users
+        Updates a specific extension of an event instance in a calendar view for a given user, using a JSON PATCH document to apply partial modifications.
 
         Args:
             user_id (string): user-id
@@ -14539,7 +14539,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property extensions for users
+        Deletes a specific extension from an event instance in a calendar view for a given user.
 
         Args:
             user_id (string): user-id
@@ -14583,7 +14583,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of instances for a specific event in a calendar view, using the provided user ID, calendar ID, event ID, and optional search and filter parameters.
 
         Args:
             user_id (string): user-id
@@ -14628,7 +14628,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action accept
+        Accepts a specific event instance in a user's calendar (including recurring event instances) by sending a POST request with optional comment and response settings.
 
         Args:
             user_id (string): user-id
@@ -14680,7 +14680,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action cancel
+        Cancels a specific instance of an event in a calendar using the Microsoft Graph API by sending a cancellation message to attendees and moving the event to the Deleted Items folder.
 
         Args:
             user_id (string): user-id
@@ -14733,7 +14733,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action decline
+        Declines an event invitation for a specific instance of a recurring event in a user's calendar, allowing the sender to propose an alternative time if supported.
 
         Args:
             user_id (string): user-id
@@ -14785,7 +14785,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action dismissReminder
+        Dismisses a reminder that has been triggered for a specific event instance in a user's calendar using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -14832,7 +14832,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action forward
+        Forwards a specific instance of a recurring event in a user's calendar to new recipients using the Microsoft Graph API, allowing organizers or attendees to send meeting requests to additional participants.
 
         Args:
             user_id (string): user-id
@@ -14879,7 +14879,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action permanentDelete
+        Permanently deletes an event instance from a calendar view and places it in the Purges folder, using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -14925,7 +14925,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action snoozeReminder
+        Postpones a calendar event reminder to a new time using the Microsoft Graph API by specifying the new reminder time in the request body.
 
         Args:
             user_id (string): user-id
@@ -14978,7 +14978,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action tentativelyAccept
+        Tentatively accepts a specified event instance in a user's calendar, allowing for optional proposals of new times, using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -15035,7 +15035,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of instances for a specific event in a calendar view, allowing for filtering and search parameters.
 
         Args:
             user_id (string): user-id
@@ -15084,7 +15084,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke function delta
+        Retrieves incremental changes to instances of a specific recurring event in a user's calendar view, allowing for synchronization of local event stores by fetching new, updated, or deleted instances within a specified time range.
 
         Args:
             user_id (string): user-id
@@ -15146,7 +15146,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action accept
+        Accepts a specified event in a user's calendar using the Microsoft Graph API by sending a POST request with the user ID, calendar ID, and event ID.
 
         Args:
             user_id (string): user-id
@@ -15194,7 +15194,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action cancel
+        Cancels a specified event and sends a cancellation message to attendees using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -15243,7 +15243,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action decline
+        Declines an invitation to a specified event in a user's calendar, allowing the option to propose a new time if supported by the event.
 
         Args:
             user_id (string): user-id
@@ -15292,7 +15292,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action dismissReminder
+        Dismisses a reminder for a specified event in a user's calendar using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -15335,7 +15335,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action forward
+        Forwards a calendar event to new recipients using the Microsoft Graph API, specifying a comment and recipients in the request body.
 
         Args:
             user_id (string): user-id
@@ -15379,7 +15379,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action permanentDelete
+        Permanently deletes an event specified by its ID in a user's calendar, moving it to the Purges folder in their mailbox, where it is inaccessible to email clients and will be deleted after a set period unless a hold is applied.
 
         Args:
             user_id (string): user-id
@@ -15421,7 +15421,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action snoozeReminder
+        Postpones a calendar event reminder to a new time by specifying the new reminder date and time in the request body.
 
         Args:
             user_id (string): user-id
@@ -15470,7 +15470,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action tentativelyAccept
+        Tentatively accepts an event in a specified user's calendar, allowing for the inclusion of an alternative meeting time if the event permits new time proposals.
 
         Args:
             user_id (string): user-id
@@ -15523,7 +15523,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of calendar view entries for a specified user and calendar.
 
         Args:
             user_id (string): user-id
@@ -15568,7 +15568,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke function delta
+        Retrieves incremental changes to events in a specified calendar view for a user, allowing synchronization of a local event store by fetching new, updated, or deleted events within a defined date range.
 
         Args:
             user_id (string): user-id
@@ -15632,7 +15632,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get events from users
+        Retrieves a list of events for a specified user and calendar, allowing optional filtering, sorting, and expansion of event details.
 
         Args:
             user_id (string): user-id
@@ -15731,7 +15731,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to events for users
+        Creates a new event in a specified calendar belonging to a particular user and returns information about the result.
 
         Args:
             user_id (string): user-id
@@ -15870,7 +15870,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get events from users
+        Retrieves details of a specific event identified by its ID within a calendar belonging to a user, allowing optional selection and expansion of specific fields.
 
         Args:
             user_id (string): user-id
@@ -15956,7 +15956,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property events in users
+        Updates a specific event in a user's calendar using a partial modification with JSON data.
 
         Args:
             user_id (string): user-id
@@ -16088,7 +16088,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property events for users
+        Deletes a specific event identified by the event ID from a user's calendar using the DELETE method.
 
         Args:
             user_id (string): user-id
@@ -16131,7 +16131,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get attachments from users
+        Retrieves a list of attachments for a specific event in a calendar associated with a user, allowing for filtering, sorting, and selecting specific data.
 
         Args:
             user_id (string): user-id
@@ -16193,7 +16193,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to attachments for users
+        Uploads an attachment to a specific event in a user’s calendar as specified by the user ID, calendar ID, and event ID, and expects the attachment data in JSON format in the request body.
 
         Args:
             user_id (string): user-id
@@ -16254,7 +16254,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get attachments from users
+        Retrieves a specific attachment for an event in a calendar belonging to a user, allowing optional selection and expansion of properties using query parameters.
 
         Args:
             user_id (string): user-id
@@ -16293,7 +16293,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property attachments for users
+        Deletes an attachment from a specific event in a user's calendar using the "DELETE" method.
 
         Args:
             user_id (string): user-id
@@ -16333,7 +16333,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of attachments for a specific event in a calendar belonging to a user using the GET method.
 
         Args:
             user_id (string): user-id
@@ -16373,7 +16373,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke action createUploadSession
+        Creates an upload session to attach a file to a specific event in a user's calendar, allowing iterative uploads of the file.
 
         Args:
             user_id (string): user-id
@@ -16421,7 +16421,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get calendar from users
+        Retrieves details about a specific calendar associated with an event in a user's calendar using the "GET" method, allowing optional filtering and expansion of returned data.
 
         Args:
             user_id (string): user-id
@@ -16468,7 +16468,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get extensions from users
+        Retrieves extensions for a specific event in a calendar belonging to a user, allowing for optional filtering and sorting of the response.
 
         Args:
             user_id (string): user-id
@@ -16521,7 +16521,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to extensions for users
+        Adds a custom extension to a specific event in a calendar associated with a user using the JSON data provided in the request body.
 
         Args:
             user_id (string): user-id
@@ -16570,7 +16570,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get extensions from users
+        Retrieves details of a specific event extension by its ID within a calendar event, allowing optional selection and expansion of properties using query parameters.
 
         Args:
             user_id (string): user-id
@@ -16614,7 +16614,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property extensions in users
+        Updates a specific extension of an event in a calendar for a user using the PATCH method, applying partial modifications defined in the JSON request body.
 
         Args:
             user_id (string): user-id
@@ -16655,7 +16655,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property extensions for users
+        Deletes an extension associated with a specific event in a user's calendar using the provided user ID, calendar ID, event ID, and extension ID.
 
         Args:
             user_id (string): user-id
@@ -16695,7 +16695,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of event extensions for a specific event in a calendar associated with a user using the "GET" method.
 
         Args:
             user_id (string): user-id
@@ -16744,7 +16744,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get instances from users
+        Retrieves instances of a specific event from a calendar belonging to a user, using query parameters to filter by date range and other criteria.
 
         Args:
             user_id (string): user-id
@@ -16809,7 +16809,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get instances from users
+        Retrieves specific instances of a recurring event within a specified time range using the Microsoft Graph API, allowing for the selection and expansion of event properties.
 
         Args:
             user_id (string): user-id
@@ -16869,7 +16869,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get attachments from users
+        Retrieves a list of attachments for a specific event instance in a calendar belonging to a user, allowing for filtering, sorting, and selecting specific fields.
 
         Args:
             user_id (string): user-id
@@ -16935,7 +16935,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to attachments for users
+        Adds an attachment to a specific instance of an event in a user's calendar, using the provided event and attachment details.
 
         Args:
             user_id (string): user-id
@@ -17000,7 +17000,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get attachments from users
+        Retrieves an attachment from a specific event instance in a user's calendar using the "GET" method, with optional filtering and expansion of returned data.
 
         Args:
             user_id (string): user-id
@@ -17047,7 +17047,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property attachments for users
+        Deletes an attachment from a specific event instance in a user's calendar using the provided attachment ID.
 
         Args:
             user_id (string): user-id
@@ -17091,7 +17091,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of attachments for a specific event instance in a calendar event using the provided user ID, calendar ID, event ID, and event instance ID.
 
         Args:
             user_id (string): user-id
@@ -17135,7 +17135,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke action createUploadSession
+        Creates an upload session enabling iterative upload of a file as an attachment to a specific event instance within a user’s calendar.
 
         Args:
             user_id (string): user-id
@@ -17187,7 +17187,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get calendar from users
+        Retrieves detailed information about a specific calendar for an event instance, allowing optional selection and expansion of fields via query parameters.
 
         Args:
             user_id (string): user-id
@@ -17238,7 +17238,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get extensions from users
+        Retrieves extension details for a specific event instance within a calendar belonging to a user, allowing for filtering, sorting, and selecting specific fields.
 
         Args:
             user_id (string): user-id
@@ -17299,7 +17299,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to extensions for users
+        Adds extensions to a specific event instance in a calendar using the provided JSON data.
 
         Args:
             user_id (string): user-id
@@ -17352,7 +17352,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get extensions from users
+        Retrieves specific extension details for an event instance in a calendar belonging to a user, allowing optional selection and expansion of data fields.
 
         Args:
             user_id (string): user-id
@@ -17400,7 +17400,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property extensions in users
+        Updates a specific event instance extension within a calendar event by applying partial modifications using a JSON patch document.
 
         Args:
             user_id (string): user-id
@@ -17449,7 +17449,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property extensions for users
+        Deletes an extension associated with a specific event instance in a calendar belonging to a user.
 
         Args:
             user_id (string): user-id
@@ -17493,7 +17493,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of extensions associated with a specific event instance within a user’s calendar.
 
         Args:
             user_id (string): user-id
@@ -17538,7 +17538,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action accept
+        Accepts a specific instance of an event in a user's calendar using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -17590,7 +17590,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action cancel
+        Cancels a specific instance of a recurring event in a user's calendar and sends a cancellation message to attendees using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -17643,7 +17643,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action decline
+        Declines an event instance in a user's calendar using the Microsoft Graph API, allowing the user to optionally propose a new time for the event.
 
         Args:
             user_id (string): user-id
@@ -17695,7 +17695,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action dismissReminder
+        Dismisses a triggered reminder for a specific event instance in a user's calendar using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -17742,7 +17742,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action forward
+        Forwards a specific instance of a recurring event in a user's calendar to new recipients using the Microsoft Graph API, allowing the organizer or attendees to share the event with additional participants.
 
         Args:
             user_id (string): user-id
@@ -17789,7 +17789,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action permanentDelete
+        Permanently deletes a specific instance of a recurring event and places it in the Purges folder in the user's mailbox.
 
         Args:
             user_id (string): user-id
@@ -17835,7 +17835,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action snoozeReminder
+        Postpones a reminder for a specific event instance in a user's calendar to a new time using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -17888,7 +17888,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action tentativelyAccept
+        Tentatively accepts a specific event instance in a user's calendar, allowing the option to propose a new time if supported by the event, and returns a successful response upon acceptance.
 
         Args:
             user_id (string): user-id
@@ -17945,7 +17945,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of instances for a specific event in a calendar belonging to a user using the "GET" method.
 
         Args:
             user_id (string): user-id
@@ -17994,7 +17994,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke function delta
+        Retrieves incremental changes to event instances in a specified calendar using the delta query method, allowing for synchronization of new, updated, or deleted events between the specified start and end dates.
 
         Args:
             user_id (string): user-id
@@ -18056,7 +18056,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action accept
+        Accepts a specified event in a user's calendar using the Microsoft Graph API by sending a POST request to the "/users/{user-id}/calendars/{calendar-id}/events/{event-id}/microsoft.graph.accept" endpoint.
 
         Args:
             user_id (string): user-id
@@ -18104,7 +18104,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action cancel
+        Sends a cancellation message from the event organizer to all attendees and cancels the specified event by moving it to the Deleted Items folder.
 
         Args:
             user_id (string): user-id
@@ -18153,7 +18153,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action decline
+        Declines an invitation to the specified event in a user’s calendar and optionally allows proposing a new meeting time[1][4][3].
 
         Args:
             user_id (string): user-id
@@ -18202,7 +18202,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action dismissReminder
+        Dismisses a triggered reminder for a specified event in a user's calendar using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -18245,7 +18245,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action forward
+        Forwards a meeting event from a specific user's calendar to new recipients using the Microsoft Graph API, allowing the organizer or attendee to send the event as an email with an .ics attachment.
 
         Args:
             user_id (string): user-id
@@ -18289,7 +18289,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action permanentDelete
+        Permanently deletes an event and places it in the Purges folder in the user's mailbox using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -18331,7 +18331,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action snoozeReminder
+        Snoozes a reminder for a specified event in a user's calendar by setting a new reminder time using the "POST" method, requiring a JSON body with the new reminder details.
 
         Args:
             user_id (string): user-id
@@ -18380,7 +18380,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action tentativelyAccept
+        Tentatively accepts an event in a specified user's calendar, allowing for optional new time proposals and sending a response, using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -18433,7 +18433,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of events for a specific calendar associated with a user, allowing for optional search and filter parameters.
 
         Args:
             user_id (string): user-id
@@ -18478,7 +18478,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke function delta
+        Tracks changes to events in a specific calendar of a user within a given time range using the Microsoft Graph delta query, returning incremental changes such as newly created, updated, or deleted events.
 
         Args:
             user_id (string): user-id
@@ -18540,7 +18540,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke function allowedCalendarSharingRoles
+        Retrieves the allowed calendar sharing roles for a specified user in a specific calendar using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -18593,7 +18593,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke action getSchedule
+        Retrieves the schedule availability for a specified calendar of a user, allowing for the identification of free or busy times within a given time frame, using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -18639,7 +18639,7 @@ class UsersApiCalender(APISegmentBase):
     def user_calendar_permanent_delete(self, user_id: str, calendar_id: str) -> Any:
         """
 
-        Invoke action permanentDelete
+        Permanently deletes a user's calendar and all its events, removing them from the mailbox.
 
         Args:
             user_id (string): user-id
@@ -18674,7 +18674,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of calendars for a specified user using the "GET" method.
 
         Args:
             user_id (string): user-id
@@ -18715,7 +18715,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get calendarView from users
+        Retrieves a calendar view for a specific user, allowing filtering and sorting of events between specified start and end dates.
 
         Args:
             user_id (string): user-id
@@ -18772,7 +18772,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get calendarView from users
+        Retrieves a detailed calendar view for a specific event of a user, allowing optional selection and expansion of fields, within a specified date range.
 
         Args:
             user_id (string): user-id
@@ -18824,7 +18824,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get attachments from users
+        Retrieves a list of attachments for a specific event in a user's calendar view, allowing optional filtering, sorting, and selection of specific fields.
 
         Args:
             user_id (string): user-id
@@ -18882,7 +18882,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to attachments for users
+        Adds an attachment to a specific event in a user's calendar view using the provided JSON data.
 
         Args:
             user_id (string): user-id
@@ -18939,7 +18939,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get attachments from users
+        Retrieves details of a specific attachment for an event in a user's calendar view, optionally selecting and expanding specified fields.
 
         Args:
             user_id (string): user-id
@@ -18975,7 +18975,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property attachments for users
+        Deletes an attachment from a specific event in a user's calendar view using the provided user ID, event ID, and attachment ID.
 
         Args:
             user_id (string): user-id
@@ -19011,7 +19011,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of attachments for a specific event in a user's calendar view.
 
         Args:
             user_id (string): user-id
@@ -19047,7 +19047,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke action createUploadSession
+        Creates an upload session to attach a file to a specified calendar event for a user, allowing iterative uploads of file ranges.
 
         Args:
             user_id (string): user-id
@@ -19091,7 +19091,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get calendar from users
+        Retrieves and displays a specific calendar event for a user, allowing for selective data retrieval and expansion of related resources.
 
         Args:
             user_id (string): user-id
@@ -19134,7 +19134,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get extensions from users
+        Retrieves extensions for a specific calendar event associated with a user, allowing for filtering and sorting of results.
 
         Args:
             user_id (string): user-id
@@ -19184,7 +19184,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to extensions for users
+        Adds an extension to a specific event in a user's calendar view using the provided JSON payload.
 
         Args:
             user_id (string): user-id
@@ -19229,7 +19229,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get extensions from users
+        Retrieves a specific extension of a calendar event for a specified user using its unique identifier.
 
         Args:
             user_id (string): user-id
@@ -19265,7 +19265,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property extensions in users
+        Updates an extension for a specific event in a user's calendar view using a JSON patch document.
 
         Args:
             user_id (string): user-id
@@ -19303,7 +19303,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property extensions for users
+        Deletes an extension associated with a specific event in a user's calendar view using the DELETE method.
 
         Args:
             user_id (string): user-id
@@ -19339,7 +19339,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of extensions for a specific event in a user's calendar view.
 
         Args:
             user_id (string): user-id
@@ -19384,7 +19384,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get instances from users
+        Retrieves instances of a specific event for a user's calendar view within a specified date range.
 
         Args:
             user_id (string): user-id
@@ -19445,7 +19445,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get instances from users
+        Retrieves specific instances of a calendar event for a given user by event and sub-event IDs, allowing optional selection and expansion of returned data within a specified time range.
 
         Args:
             user_id (string): user-id
@@ -19501,7 +19501,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get attachments from users
+        Retrieves attachments for a specific event instance in a user's calendar view using the provided user ID, event ID, and event instance ID, allowing for optional filtering and sorting of results.
 
         Args:
             user_id (string): user-id
@@ -19563,7 +19563,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to attachments for users
+        Adds an attachment to a specific instance of an event in a user's calendar view using the provided JSON data.
 
         Args:
             user_id (string): user-id
@@ -19624,7 +19624,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get attachments from users
+        Retrieves details about a specific attachment of an event instance within a user's calendar view, allowing optional selection and expansion of specific fields.
 
         Args:
             user_id (string): user-id
@@ -19663,7 +19663,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property attachments for users
+        Deletes a specific attachment from an event instance in a user's calendar view using the provided user ID, event ID, event instance ID, and attachment ID.
 
         Args:
             user_id (string): user-id
@@ -19703,7 +19703,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the total count of attachments for a specified instance of a recurring event from a user's calendar, identified by the event and user IDs.
 
         Args:
             user_id (string): user-id
@@ -19743,7 +19743,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke action createUploadSession
+        Creates an upload session to iteratively upload a file as an attachment to a specific calendar event instance for a user.
 
         Args:
             user_id (string): user-id
@@ -19791,7 +19791,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get calendar from users
+        Retrieves detailed calendar information for a specific event instance associated with a user, allowing optional selection and expansion of specific fields.
 
         Args:
             user_id (string): user-id
@@ -19838,7 +19838,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get extensions from users
+        Retrieves instances of a specific event from a user's calendar view using the GET method, allowing for optional filtering and ordering of results.
 
         Args:
             user_id (string): user-id
@@ -19891,7 +19891,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to extensions for users
+        Adds an extension to a specific event instance in a user's calendar view using the provided JSON data.
 
         Args:
             user_id (string): user-id
@@ -19940,7 +19940,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get extensions from users
+        Retrieves an instance of a calendar event extension for a specified user, event, and extension, allowing optional selection and expansion of specific data fields.
 
         Args:
             user_id (string): user-id
@@ -19984,7 +19984,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property extensions in users
+        Updates specific details of an event instance's extension using the provided JSON data for the user with the specified ID.
 
         Args:
             user_id (string): user-id
@@ -20025,7 +20025,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property extensions for users
+        Deletes a specific extension from an event instance in a user's calendar view using the provided user ID, event ID, event instance ID, and extension ID.
 
         Args:
             user_id (string): user-id
@@ -20065,7 +20065,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of extended instances for a specific event in a user's calendar view using the "GET" method.
 
         Args:
             user_id (string): user-id
@@ -20106,7 +20106,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action accept
+        Accepts a specific instance of a recurring event in a user’s calendar by sending a POST request to the specified path[1][2][3].
 
         Args:
             user_id (string): user-id
@@ -20150,7 +20150,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action cancel
+        Cancels a specific instance of a recurring event for a user using the Microsoft Graph API, allowing the organizer to send a cancellation message to attendees.
 
         Args:
             user_id (string): user-id
@@ -20199,7 +20199,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action decline
+        Declines an event instance in a user's calendar view using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -20248,7 +20248,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action dismissReminder
+        Dismisses a reminder for a specific event instance in a user's calendar view using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -20291,7 +20291,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action forward
+        Forwards a specific instance of a recurring event in a user's calendar to new recipients using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -20335,7 +20335,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action permanentDelete
+        Permanently deletes a specific instance of an event from a user's calendar view and places it in the Purges folder, using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -20377,7 +20377,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action snoozeReminder
+        Snoozes a reminder for a specific event instance in a user's calendar by sending a POST request with a new reminder time.
 
         Args:
             user_id (string): user-id
@@ -20426,7 +20426,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action tentativelyAccept
+        Tentatively accepts a specific event instance in a user's calendar using the Microsoft Graph API, allowing for optional proposals of new meeting times.
 
         Args:
             user_id (string): user-id
@@ -20479,7 +20479,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of instances for a specific calendar event identified by the event ID under a user's calendar view using the user ID.
 
         Args:
             user_id (string): user-id
@@ -20524,7 +20524,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke function delta
+        Retrieves incremental changes (additions, deletions, and updates) to specified instances of an event in a user’s calendar view within the given date range[1][2][3].
 
         Args:
             user_id (string): user-id
@@ -20582,7 +20582,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action accept
+        Accepts a specific calendar event for the specified user and updates the event response status accordingly.
 
         Args:
             user_id (string): user-id
@@ -20623,7 +20623,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action cancel
+        Cancels a specified event using the Microsoft Graph API, allowing the organizer to send a cancellation message to attendees and move the event to the Deleted Items folder.
 
         Args:
             user_id (string): user-id
@@ -20668,7 +20668,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action decline
+        Declines an event invitation in a user's calendar using the Microsoft Graph API, allowing for optional proposals of new meeting times.
 
         Args:
             user_id (string): user-id
@@ -20712,7 +20712,7 @@ class UsersApiCalender(APISegmentBase):
     def user_calendar_view_dismiss_reminder(self, user_id: str, event_id: str) -> Any:
         """
 
-        Invoke action dismissReminder
+        Dismisses a reminder for the specified event in a user's calendar using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -20751,7 +20751,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action forward
+        Forwards a calendar event to new recipients using the Microsoft Graph API by sending the event as an email with an .ics attachment, allowing the recipient to add it to their calendar.
 
         Args:
             user_id (string): user-id
@@ -20790,7 +20790,7 @@ class UsersApiCalender(APISegmentBase):
     def user_calendar_view_permanent_delete(self, user_id: str, event_id: str) -> Any:
         """
 
-        Invoke action permanentDelete
+        Permanently deletes an event by moving it to the Purges folder in the user's mailbox, making it inaccessible to email clients like Outlook, unless a hold is set on the mailbox.
 
         Args:
             user_id (string): user-id
@@ -20828,7 +20828,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action snoozeReminder
+        Snoozes a calendar event reminder for a specified user by setting a new reminder time using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -20873,7 +20873,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action tentativelyAccept
+        Tentatively accepts an event in a user's calendar view using the Microsoft Graph API, allowing the user to propose an alternate time if supported by the event settings.
 
         Args:
             user_id (string): user-id
@@ -20919,7 +20919,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves a count of calendar view items for a specified user using the "GET" method, allowing for optional search and filter parameters.
 
         Args:
             user_id (string): user-id
@@ -20960,7 +20960,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke function delta
+        Retrieves incremental changes (additions, deletions, or updates) to events within a specified time range from a user’s calendar view, supporting synchronization with a local store[1][2][3].
 
         Args:
             user_id (string): user-id
@@ -21020,7 +21020,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get events from users
+        Retrieves a list of events for a specific user, allowing for filtering, sorting, and pagination of the results.
 
         Args:
             user_id (string): user-id
@@ -21115,7 +21115,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to events for users
+        Creates an event for a specified user using the provided JSON data.
 
         Args:
             user_id (string): user-id
@@ -21250,7 +21250,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get events from users
+        Retrieves details of a specific event associated with a user, allowing optional selection and expansion of event fields using query parameters.
 
         Args:
             user_id (string): user-id
@@ -21332,7 +21332,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property events in users
+        Partially updates a specific event for a given user using the PATCH method, requiring a JSON body with the modifications to apply.
 
         Args:
             user_id (string): user-id
@@ -21459,7 +21459,7 @@ class UsersApiCalender(APISegmentBase):
     def user_delete_event(self, user_id: str, event_id: str) -> Any:
         """
 
-        Delete navigation property events for users
+        Deletes a specific event associated with a user, identified by the user ID and event ID, using the DELETE method.
 
         Args:
             user_id (string): user-id
@@ -21498,7 +21498,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get attachments from users
+        Retrieves a list of attachment objects attached to a specific event identified by the user ID and event ID using the GET method.
 
         Args:
             user_id (string): user-id
@@ -21556,7 +21556,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to attachments for users
+        Adds an attachment to an existing event for a specified user using the POST method and returns a status message.
 
         Args:
             user_id (string): user-id
@@ -21613,7 +21613,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get attachments from users
+        Retrieves a specific attachment from an event associated with a user, allowing optional query parameters to customize the response.
 
         Args:
             user_id (string): user-id
@@ -21649,7 +21649,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property attachments for users
+        Deletes an attachment associated with a specific event for a user using the "DELETE" method.
 
         Args:
             user_id (string): user-id
@@ -21685,7 +21685,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of attachments for a specific event associated with a user, using the provided user ID and event ID.
 
         Args:
             user_id (string): user-id
@@ -21721,7 +21721,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke action createUploadSession
+        Creates an upload session for attaching files to a specified event in a user's calendar, allowing iterative uploads of file ranges.
 
         Args:
             user_id (string): user-id
@@ -21765,7 +21765,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get calendar from users
+        Retrieves details about a specific calendar event for a user, allowing optional selection and expansion of properties via query parameters.
 
         Args:
             user_id (string): user-id
@@ -21808,7 +21808,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get extensions from users
+        Retrieves extensions for a specific event associated with a user, allowing for optional filtering, sorting, and selection of data.
 
         Args:
             user_id (string): user-id
@@ -21858,7 +21858,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to extensions for users
+        Creates an extension for a specific event associated with a user by sending a POST request to the "/users/{user-id}/events/{event-id}/extensions" path with the extension details in the request body.
 
         Args:
             user_id (string): user-id
@@ -21903,7 +21903,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get extensions from users
+        Retrieves details about a specific extension for an event associated with a user, allowing optional selection and expansion of specific fields.
 
         Args:
             user_id (string): user-id
@@ -21939,7 +21939,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property extensions in users
+        Updates an extension for a specific event associated with a user using the PATCH method, requiring a JSON body to specify the changes.
 
         Args:
             user_id (string): user-id
@@ -21977,7 +21977,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property extensions for users
+        Deletes the specified extension from a user's event using the DELETE method, requiring user-id, event-id, and extension-id as path parameters[2][3][5].
 
         Args:
             user_id (string): user-id
@@ -22013,7 +22013,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of extensions for a specific event associated with a user using the GET method.
 
         Args:
             user_id (string): user-id
@@ -22058,7 +22058,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get instances from users
+        Retrieves a list of event instances for a specified user and event, filtered by start and end dates, with optional parameters for sorting, selecting, and expanding related data.
 
         Args:
             user_id (string): user-id
@@ -22119,7 +22119,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get instances from users
+        Retrieves a specific event instance (event-id1) for a user (user-id) and event (event-id), optionally filtering and expanding results by date range and specified fields.
 
         Args:
             user_id (string): user-id
@@ -22175,7 +22175,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get attachments from users
+        Retrieves a list of attachments for a specific event instance associated with a user, allowing for filtering, sorting, and selection of specific data.
 
         Args:
             user_id (string): user-id
@@ -22237,7 +22237,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to attachments for users
+        Creates an attachment for a specific instance of an event associated with a user, using the provided JSON data in the request body.
 
         Args:
             user_id (string): user-id
@@ -22298,7 +22298,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get attachments from users
+        Retrieves details about a specific attachment associated with an event instance for a user, allowing optional selection and expansion of related data.
 
         Args:
             user_id (string): user-id
@@ -22337,7 +22337,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property attachments for users
+        Deletes a specific attachment from an event instance associated with a user, using the provided user ID, event ID, event instance ID, and attachment ID.
 
         Args:
             user_id (string): user-id
@@ -22377,7 +22377,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of attachments for a specific instance of an event within a user's events using the "GET" method.
 
         Args:
             user_id (string): user-id
@@ -22417,7 +22417,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke action createUploadSession
+        Creates an upload session to iteratively upload ranges of a file as an attachment to a specific event instance for a user, returning an upload URL and session details.
 
         Args:
             user_id (string): user-id
@@ -22465,7 +22465,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get calendar from users
+        Retrieves details about a specific event instance for a user, allowing optional selection and expansion of fields via query parameters.
 
         Args:
             user_id (string): user-id
@@ -22512,7 +22512,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Get extensions from users
+        Retrieves event extension instances for a specific user's event using the GET method, allowing for filtering, sorting, and selecting specific data.
 
         Args:
             user_id (string): user-id
@@ -22565,7 +22565,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Create new navigation property to extensions for users
+        Creates or updates an extension for a specific event instance associated with a user's event using the provided JSON payload.
 
         Args:
             user_id (string): user-id
@@ -22614,7 +22614,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get extensions from users
+        Retrieves detailed information about a specific extension instance associated with an event instance for a user, allowing selective retrieval and expansion of related data.
 
         Args:
             user_id (string): user-id
@@ -22658,7 +22658,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Update the navigation property extensions in users
+        Updates the specified extension of an event instance for a user using a JSON patch document.
 
         Args:
             user_id (string): user-id
@@ -22699,7 +22699,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Delete navigation property extensions for users
+        Deletes an extension identified by the specified extension ID from an event instance associated with a user, using the "DELETE" method.
 
         Args:
             user_id (string): user-id
@@ -22739,7 +22739,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of instances for a specific event extension using the GET method, allowing optional search and filter parameters.
 
         Args:
             user_id (string): user-id
@@ -22780,7 +22780,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action accept
+        Accepts a specified event instance in a user's calendar using the Microsoft Graph API, requiring a POST request with a JSON body to the path "/users/{user-id}/events/{event-id}/instances/{event-id1}/microsoft.graph.accept".
 
         Args:
             user_id (string): user-id
@@ -22824,7 +22824,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action cancel
+        Cancels a specific instance of a recurring meeting event for a user, allowing the organizer to send a cancellation message to attendees.
 
         Args:
             user_id (string): user-id
@@ -22873,7 +22873,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action decline
+        Declines an instance of a recurring event for a specified user, allowing the option to propose a new time if the event supports it.
 
         Args:
             user_id (string): user-id
@@ -22922,7 +22922,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action dismissReminder
+        Dismisses the reminder that has been triggered for a specific event instance in a user's calendar[1][2][4].
 
         Args:
             user_id (string): user-id
@@ -22965,7 +22965,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action forward
+        Forwards a specific instance of a recurring event to a new recipient using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -23009,7 +23009,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action permanentDelete
+        Permanently deletes an event instance using the Microsoft Graph API, moving it to the purges folder and making it inaccessible to email clients.
 
         Args:
             user_id (string): user-id
@@ -23051,7 +23051,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action snoozeReminder
+        Snoozes a reminder for a specific event instance in a user's calendar by setting a new reminder time using the POST method.
 
         Args:
             user_id (string): user-id
@@ -23100,7 +23100,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action tentativelyAccept
+        Tentatively accepts a specified event instance in a user's calendar, allowing the option to propose a new time if supported by the event.
 
         Args:
             user_id (string): user-id
@@ -23153,7 +23153,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of instances for a specific event associated with a user using the "GET" method.
 
         Args:
             user_id (string): user-id
@@ -23198,7 +23198,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke function delta
+        Tracks changes to instances of a specific event for a user using the delta query, allowing retrieval of newly created, updated, or deleted instances within a specified time frame.
 
         Args:
             user_id (string): user-id
@@ -23256,7 +23256,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action accept
+        Accepts the specified event on behalf of the specified user and sends an acceptance response to the organizer.
 
         Args:
             user_id (string): user-id
@@ -23297,7 +23297,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action cancel
+        Cancels a specified event and sends a cancellation message to attendees from the organizer using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -23342,7 +23342,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action decline
+        Declines an event invitation for a specified user and event, allowing the option to propose a new time and send a response comment.
 
         Args:
             user_id (string): user-id
@@ -23386,7 +23386,7 @@ class UsersApiCalender(APISegmentBase):
     def user_event_dismiss_reminder(self, user_id: str, event_id: str) -> Any:
         """
 
-        Invoke action dismissReminder
+        Dismisses a reminder that has been triggered for a specific event in a user's calendar using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -23425,7 +23425,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action forward
+        Forwards a meeting event to new recipients using the specified user ID and event ID, allowing organizers or attendees to send the meeting request to additional people.
 
         Args:
             user_id (string): user-id
@@ -23464,7 +23464,7 @@ class UsersApiCalender(APISegmentBase):
     def user_event_permanent_delete(self, user_id: str, event_id: str) -> Any:
         """
 
-        Invoke action permanentDelete
+        Permanently deletes an event in a user's calendar using the Microsoft Graph API and returns a status message indicating successful deletion.
 
         Args:
             user_id (string): user-id
@@ -23502,7 +23502,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action snoozeReminder
+        Snoozes a reminder for a specified event in a user's calendar by setting a new reminder time using the Microsoft Graph API.
 
         Args:
             user_id (string): user-id
@@ -23547,7 +23547,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Invoke action tentativelyAccept
+        Tentatively accepts an event in a user's calendar using the Microsoft Graph API, allowing the option to propose an alternative meeting time if supported by the event settings.
 
         Args:
             user_id (string): user-id
@@ -23593,7 +23593,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> Any:
         """
 
-        Get the number of the resource
+        Retrieves the count of events associated with a specific user identified by the provided {user-id}, supporting additional filtering and search capabilities.
 
         Args:
             user_id (string): user-id
@@ -23634,7 +23634,7 @@ class UsersApiCalender(APISegmentBase):
     ) -> dict[str, Any]:
         """
 
-        Invoke function delta
+        Retrieves incremental changes to a user’s calendar events within a specified date range, supporting optional filtering, sorting, and property selection.
 
         Args:
             user_id (string): user-id
