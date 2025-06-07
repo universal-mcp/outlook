@@ -1,23 +1,15 @@
 from universal_mcp.applications import APIApplication
 from universal_mcp.integrations import Integration
+from universal_mcp_outlook.api_segments.users_api import UsersApi
 
 class OutlookApp(APIApplication):
-    """
-    Base class for Universal MCP Applications.
-    """
-    def __init__(self, integration: Integration = None, **kwargs) -> None:
-        super().__init__(name="outlook", integration=integration, **kwargs)
 
-    def run(self):
-        """
-        Example tool implementation.
-        """
-        print(f"Running the main task for {self.name}...")
-        print("Hello from OutlookApp!")
-        return "Task completed successfully."
+    def __init__(self, integration: Integration=None, **kwargs) -> None:
+        super().__init__(name='outlookapp', integration=integration, **kwargs)
+        self.base_url = 'https://graph.microsoft.com/v1.0'
+        self.users = UsersApi(self)
 
     def list_tools(self):
-        """
-        Lists the available tools (methods) for this application.
-        """
-        return [self.run]
+        all_tools = []
+        all_tools.extend(self.users.list_tools())
+        return all_tools
