@@ -2,7 +2,7 @@ from typing import Any, List, Optional
 from .api_segment_base import APISegmentBase
 
 
-class UsersApi(APISegmentBase):
+class UsersApiMail(APISegmentBase):
 
     def __init__(self, main_app_client: Any):
         super().__init__(main_app_client)
