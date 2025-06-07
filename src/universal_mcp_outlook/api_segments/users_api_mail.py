@@ -297,7 +297,7 @@ class UsersApiMail(APISegmentBase):
         response = self._delete(url, params=query_params)
         return self._handle_response(response)
 
-    def user_inference_classification_override_get_count(
+    def usr_inf_class_override_count(
         self, user_id: str, search: Optional[str] = None, filter: Optional[str] = None
     ) -> Any:
         """
@@ -904,7 +904,7 @@ class UsersApiMail(APISegmentBase):
         response = self._delete(url, params=query_params)
         return self._handle_response(response)
 
-    def user_mail_folder_child_folder_list_message_rule(
+    def usr_mail_fldr_child_fldr_list_msg_rule(
         self,
         user_id: str,
         mailFolder_id: str,
@@ -968,7 +968,7 @@ class UsersApiMail(APISegmentBase):
         response = self._get(url, params=query_params)
         return self._handle_response(response)
 
-    def user_mail_folder_child_folder_create_message_rule(
+    def usr_mail_fldr_child_fldr_create_msg_rule(
         self,
         user_id: str,
         mailFolder_id: str,
@@ -1041,7 +1041,7 @@ class UsersApiMail(APISegmentBase):
         )
         return self._handle_response(response)
 
-    def user_mail_folder_child_folder_get_message_rule(
+    def usr_mail_fldr_child_fldr_get_msg_rule(
         self,
         user_id: str,
         mailFolder_id: str,
@@ -1086,7 +1086,7 @@ class UsersApiMail(APISegmentBase):
         response = self._get(url, params=query_params)
         return self._handle_response(response)
 
-    def user_mail_folder_child_folder_update_message_rule(
+    def usr_mail_fldr_child_fldr_update_msg_rule(
         self,
         user_id: str,
         mailFolder_id: str,
@@ -1158,7 +1158,7 @@ class UsersApiMail(APISegmentBase):
         response = self._patch(url, data=request_body_data, params=query_params)
         return self._handle_response(response)
 
-    def user_mail_folder_child_folder_delete_message_rule(
+    def usr_mail_fldr_child_fldr_delete_msg_rule(
         self, user_id: str, mailFolder_id: str, mailFolder_id1: str, messageRule_id: str
     ) -> Any:
         """
@@ -1193,7 +1193,7 @@ class UsersApiMail(APISegmentBase):
         response = self._delete(url, params=query_params)
         return self._handle_response(response)
 
-    def user_mail_folder_child_folder_message_rule_get_count(
+    def usr_mail_fldr_child_fldr_msg_rule_count(
         self,
         user_id: str,
         mailFolder_id: str,
@@ -1679,7 +1679,7 @@ class UsersApiMail(APISegmentBase):
         response = self._delete(url, params=query_params)
         return self._handle_response(response)
 
-    def user_mail_folder_child_folder_get_messages_content(
+    def usr_mail_fldr_child_fldr_get_msgs_content(
         self, user_id: str, mailFolder_id: str, mailFolder_id1: str, message_id: str
     ) -> Any:
         """
@@ -1714,7 +1714,7 @@ class UsersApiMail(APISegmentBase):
         response = self._get(url, params=query_params)
         return self._handle_response(response)
 
-    def user_mail_folder_child_folder_set_messages_content(
+    def usr_mail_fldr_child_fldr_set_msgs_content(
         self,
         user_id: str,
         mailFolder_id: str,
@@ -1762,7 +1762,7 @@ class UsersApiMail(APISegmentBase):
         )
         return self._handle_response(response)
 
-    def user_mail_folder_child_folder_delete_messages_content(
+    def usr_mail_fldr_child_fldr_delete_msgs_content(
         self, user_id: str, mailFolder_id: str, mailFolder_id1: str, message_id: str
     ) -> Any:
         """
@@ -1797,7 +1797,7 @@ class UsersApiMail(APISegmentBase):
         response = self._delete(url, params=query_params)
         return self._handle_response(response)
 
-    def user_mail_folder_child_folder_message_list_attachment(
+    def usr_mail_fldr_child_fldr_msg_list_attach(
         self,
         user_id: str,
         mailFolder_id: str,
@@ -1865,7 +1865,7 @@ class UsersApiMail(APISegmentBase):
         response = self._get(url, params=query_params)
         return self._handle_response(response)
 
-    def user_mail_folder_child_folder_message_create_attachment(
+    def usr_mail_fldr_child_fldr_msg_create_attach(
         self,
         user_id: str,
         mailFolder_id: str,
@@ -1933,7 +1933,7 @@ class UsersApiMail(APISegmentBase):
         )
         return self._handle_response(response)
 
-    def user_mail_folder_child_folder_message_get_attachment(
+    def usr_mail_fldr_child_fldr_msg_get_attach(
         self,
         user_id: str,
         mailFolder_id: str,
@@ -1982,7 +1982,7 @@ class UsersApiMail(APISegmentBase):
         response = self._get(url, params=query_params)
         return self._handle_response(response)
 
-    def user_mail_folder_child_folder_message_delete_attachment(
+    def usr_mail_fldr_child_fldr_msg_delete_attach(
         self,
         user_id: str,
         mailFolder_id: str,
@@ -2025,7 +2025,7 @@ class UsersApiMail(APISegmentBase):
         response = self._delete(url, params=query_params)
         return self._handle_response(response)
 
-    def user_mail_folder_child_folder_message_attachment_get_count(
+    def usr_mail_fldr_child_fldr_msg_attach_count(
         self,
         user_id: str,
         mailFolder_id: str,
@@ -2070,7 +2070,7 @@ class UsersApiMail(APISegmentBase):
         response = self._get(url, params=query_params)
         return self._handle_response(response)
 
-    def user_mail_folder_child_folder_message_attachment_create_upload_session(
+    def usr_mail_fldr_child_fldr_msg_attach_upload(
         self,
         user_id: str,
         mailFolder_id: str,
@@ -2121,7 +2121,7 @@ class UsersApiMail(APISegmentBase):
         )
         return self._handle_response(response)
 
-    def user_mail_folder_child_folder_message_list_extension(
+    def usr_mail_fldr_child_fldr_msg_list_ext(
         self,
         user_id: str,
         mailFolder_id: str,
@@ -2189,7 +2189,7 @@ class UsersApiMail(APISegmentBase):
         response = self._get(url, params=query_params)
         return self._handle_response(response)
 
-    def user_mail_folder_child_folder_message_create_extension(
+    def usr_mail_fldr_child_fldr_msg_create_ext(
         self,
         user_id: str,
         mailFolder_id: str,
@@ -2240,7 +2240,7 @@ class UsersApiMail(APISegmentBase):
         )
         return self._handle_response(response)
 
-    def user_mail_folder_child_folder_message_get_extension(
+    def usr_mail_fldr_child_fldr_msg_get_ext(
         self,
         user_id: str,
         mailFolder_id: str,
@@ -2289,7 +2289,7 @@ class UsersApiMail(APISegmentBase):
         response = self._get(url, params=query_params)
         return self._handle_response(response)
 
-    def user_mail_folder_child_folder_message_update_extension(
+    def usr_mail_fldr_child_fldr_msg_update_ext(
         self,
         user_id: str,
         mailFolder_id: str,
@@ -2339,7 +2339,7 @@ class UsersApiMail(APISegmentBase):
         response = self._patch(url, data=request_body_data, params=query_params)
         return self._handle_response(response)
 
-    def user_mail_folder_child_folder_message_delete_extension(
+    def usr_mail_fldr_child_fldr_msg_delete_ext(
         self,
         user_id: str,
         mailFolder_id: str,
@@ -2382,7 +2382,7 @@ class UsersApiMail(APISegmentBase):
         response = self._delete(url, params=query_params)
         return self._handle_response(response)
 
-    def user_mail_folder_child_folder_message_extension_get_count(
+    def usr_mail_fldr_child_fldr_msg_ext_count(
         self,
         user_id: str,
         mailFolder_id: str,
@@ -2478,7 +2478,7 @@ class UsersApiMail(APISegmentBase):
         )
         return self._handle_response(response)
 
-    def user_mail_folder_child_folder_message_create_forward(
+    def usr_mail_fldr_child_fldr_msg_create_forward(
         self,
         user_id: str,
         mailFolder_id: str,
@@ -2537,7 +2537,7 @@ class UsersApiMail(APISegmentBase):
         )
         return self._handle_response(response)
 
-    def user_mail_folder_child_folder_message_create_reply(
+    def usr_mail_fldr_child_fldr_msg_create_reply(
         self,
         user_id: str,
         mailFolder_id: str,
@@ -2590,7 +2590,7 @@ class UsersApiMail(APISegmentBase):
         )
         return self._handle_response(response)
 
-    def user_mail_folder_child_folder_message_create_reply_all(
+    def usr_mail_fldr_child_fldr_msg_create_reply_all(
         self,
         user_id: str,
         mailFolder_id: str,
@@ -2753,7 +2753,7 @@ class UsersApiMail(APISegmentBase):
         )
         return self._handle_response(response)
 
-    def user_mail_folder_child_folder_message_permanent_delete(
+    def usr_mail_fldr_child_fldr_msg_perm_delete(
         self, user_id: str, mailFolder_id: str, mailFolder_id1: str, message_id: str
     ) -> Any:
         """
@@ -2847,7 +2847,7 @@ class UsersApiMail(APISegmentBase):
         )
         return self._handle_response(response)
 
-    def user_mail_folder_child_folder_message_reply_all(
+    def usr_mail_fldr_child_fldr_msg_reply_all(
         self,
         user_id: str,
         mailFolder_id: str,
@@ -2941,7 +2941,7 @@ class UsersApiMail(APISegmentBase):
         )
         return self._handle_response(response)
 
-    def user_mail_folder_child_folder_message_get_count(
+    def usr_mail_fldr_child_fldr_msg_count(
         self,
         user_id: str,
         mailFolder_id: str,
@@ -3143,7 +3143,7 @@ class UsersApiMail(APISegmentBase):
         )
         return self._handle_response(response)
 
-    def user_mail_folder_child_folder_permanent_delete(
+    def usr_mail_fldr_child_fldr_perm_delete(
         self, user_id: str, mailFolder_id: str, mailFolder_id1: str
     ) -> Any:
         """
@@ -4364,7 +4364,7 @@ class UsersApiMail(APISegmentBase):
         response = self._get(url, params=query_params)
         return self._handle_response(response)
 
-    def user_mail_folder_message_attachment_create_upload_session(
+    def usr_mail_fldr_msg_attach_upload(
         self,
         user_id: str,
         mailFolder_id: str,
@@ -7020,7 +7020,7 @@ class UsersApiMail(APISegmentBase):
             self.user_inference_classification_get_override,
             self.user_inference_classification_update_override,
             self.user_inference_classification_delete_override,
-            self.user_inference_classification_override_get_count,
+            self.usr_inf_class_override_count,
             self.user_list_mail_folder,
             self.user_create_mail_folder,
             self.user_get_mail_folder,
@@ -7031,47 +7031,47 @@ class UsersApiMail(APISegmentBase):
             self.user_mail_folder_get_child_folder,
             self.user_mail_folder_update_child_folder,
             self.user_mail_folder_delete_child_folder,
-            self.user_mail_folder_child_folder_list_message_rule,
-            self.user_mail_folder_child_folder_create_message_rule,
-            self.user_mail_folder_child_folder_get_message_rule,
-            self.user_mail_folder_child_folder_update_message_rule,
-            self.user_mail_folder_child_folder_delete_message_rule,
-            self.user_mail_folder_child_folder_message_rule_get_count,
+            self.usr_mail_fldr_child_fldr_list_msg_rule,
+            self.usr_mail_fldr_child_fldr_create_msg_rule,
+            self.usr_mail_fldr_child_fldr_get_msg_rule,
+            self.usr_mail_fldr_child_fldr_update_msg_rule,
+            self.usr_mail_fldr_child_fldr_delete_msg_rule,
+            self.usr_mail_fldr_child_fldr_msg_rule_count,
             self.user_mail_folder_child_folder_list_message,
             self.user_mail_folder_child_folder_create_message,
             self.user_mail_folder_child_folder_get_message,
             self.user_mail_folder_child_folder_update_message,
             self.user_mail_folder_child_folder_delete_message,
-            self.user_mail_folder_child_folder_get_messages_content,
-            self.user_mail_folder_child_folder_set_messages_content,
-            self.user_mail_folder_child_folder_delete_messages_content,
-            self.user_mail_folder_child_folder_message_list_attachment,
-            self.user_mail_folder_child_folder_message_create_attachment,
-            self.user_mail_folder_child_folder_message_get_attachment,
-            self.user_mail_folder_child_folder_message_delete_attachment,
-            self.user_mail_folder_child_folder_message_attachment_get_count,
-            self.user_mail_folder_child_folder_message_attachment_create_upload_session,
-            self.user_mail_folder_child_folder_message_list_extension,
-            self.user_mail_folder_child_folder_message_create_extension,
-            self.user_mail_folder_child_folder_message_get_extension,
-            self.user_mail_folder_child_folder_message_update_extension,
-            self.user_mail_folder_child_folder_message_delete_extension,
-            self.user_mail_folder_child_folder_message_extension_get_count,
+            self.usr_mail_fldr_child_fldr_get_msgs_content,
+            self.usr_mail_fldr_child_fldr_set_msgs_content,
+            self.usr_mail_fldr_child_fldr_delete_msgs_content,
+            self.usr_mail_fldr_child_fldr_msg_list_attach,
+            self.usr_mail_fldr_child_fldr_msg_create_attach,
+            self.usr_mail_fldr_child_fldr_msg_get_attach,
+            self.usr_mail_fldr_child_fldr_msg_delete_attach,
+            self.usr_mail_fldr_child_fldr_msg_attach_count,
+            self.usr_mail_fldr_child_fldr_msg_attach_upload,
+            self.usr_mail_fldr_child_fldr_msg_list_ext,
+            self.usr_mail_fldr_child_fldr_msg_create_ext,
+            self.usr_mail_fldr_child_fldr_msg_get_ext,
+            self.usr_mail_fldr_child_fldr_msg_update_ext,
+            self.usr_mail_fldr_child_fldr_msg_delete_ext,
+            self.usr_mail_fldr_child_fldr_msg_ext_count,
             self.user_mail_folder_child_folder_message_copy,
-            self.user_mail_folder_child_folder_message_create_forward,
-            self.user_mail_folder_child_folder_message_create_reply,
-            self.user_mail_folder_child_folder_message_create_reply_all,
+            self.usr_mail_fldr_child_fldr_msg_create_forward,
+            self.usr_mail_fldr_child_fldr_msg_create_reply,
+            self.usr_mail_fldr_child_fldr_msg_create_reply_all,
             self.user_mail_folder_child_folder_message_forward,
             self.user_mail_folder_child_folder_message_move,
-            self.user_mail_folder_child_folder_message_permanent_delete,
+            self.usr_mail_fldr_child_fldr_msg_perm_delete,
             self.user_mail_folder_child_folder_message_reply,
-            self.user_mail_folder_child_folder_message_reply_all,
+            self.usr_mail_fldr_child_fldr_msg_reply_all,
             self.user_mail_folder_child_folder_message_send,
-            self.user_mail_folder_child_folder_message_get_count,
+            self.usr_mail_fldr_child_fldr_msg_count,
             self.user_mail_folder_child_folder_message_delta,
             self.user_mail_folder_child_folder_copy,
             self.user_mail_folder_child_folder_move,
-            self.user_mail_folder_child_folder_permanent_delete,
+            self.usr_mail_fldr_child_fldr_perm_delete,
             self.user_mail_folder_child_folder_get_count,
             self.user_mail_folder_child_folder_delta,
             self.user_mail_folder_list_message_rule,
@@ -7093,7 +7093,7 @@ class UsersApiMail(APISegmentBase):
             self.user_mail_folder_message_get_attachment,
             self.user_mail_folder_message_delete_attachment,
             self.user_mail_folder_message_attachment_get_count,
-            self.user_mail_folder_message_attachment_create_upload_session,
+            self.usr_mail_fldr_msg_attach_upload,
             self.user_mail_folder_message_list_extension,
             self.user_mail_folder_message_create_extension,
             self.user_mail_folder_message_get_extension,

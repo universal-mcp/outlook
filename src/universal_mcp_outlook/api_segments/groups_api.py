@@ -473,7 +473,7 @@ class GroupsApi(APISegmentBase):
         response = self._get(url, params=query_params)
         return self._handle_response(response)
 
-    def group_calendar_calendar_view_create_attachment(
+    def grp_cal_cal_view_create_attach(
         self,
         group_id: str,
         event_id: str,
@@ -574,7 +574,7 @@ class GroupsApi(APISegmentBase):
         response = self._get(url, params=query_params)
         return self._handle_response(response)
 
-    def group_calendar_calendar_view_delete_attachment(
+    def grp_cal_cal_view_delete_attach(
         self, group_id: str, event_id: str, attachment_id: str
     ) -> Any:
         """
@@ -606,7 +606,7 @@ class GroupsApi(APISegmentBase):
         response = self._delete(url, params=query_params)
         return self._handle_response(response)
 
-    def group_calendar_calendar_view_attachment_get_count(
+    def grp_cal_cal_view_attach_count(
         self,
         group_id: str,
         event_id: str,
@@ -643,7 +643,7 @@ class GroupsApi(APISegmentBase):
         response = self._get(url, params=query_params)
         return self._handle_response(response)
 
-    def group_calendar_calendar_view_attachment_create_upload_session(
+    def grp_cal_cal_view_attach_upload(
         self,
         group_id: str,
         event_id: str,
@@ -934,7 +934,7 @@ class GroupsApi(APISegmentBase):
         response = self._delete(url, params=query_params)
         return self._handle_response(response)
 
-    def group_calendar_calendar_view_extension_get_count(
+    def grp_cal_cal_view_ext_count(
         self,
         group_id: str,
         event_id: str,
@@ -1089,7 +1089,7 @@ class GroupsApi(APISegmentBase):
         response = self._get(url, params=query_params)
         return self._handle_response(response)
 
-    def group_calendar_calendar_view_instance_list_attachment(
+    def grp_cal_cal_view_inst_list_attach(
         self,
         group_id: str,
         event_id: str,
@@ -1153,7 +1153,7 @@ class GroupsApi(APISegmentBase):
         response = self._get(url, params=query_params)
         return self._handle_response(response)
 
-    def group_calendar_calendar_view_instance_create_attachment(
+    def grp_cal_cal_view_inst_create_attach(
         self,
         group_id: str,
         event_id: str,
@@ -1217,7 +1217,7 @@ class GroupsApi(APISegmentBase):
         )
         return self._handle_response(response)
 
-    def group_calendar_calendar_view_instance_get_attachment(
+    def grp_cal_cal_view_inst_get_attach(
         self,
         group_id: str,
         event_id: str,
@@ -1262,7 +1262,7 @@ class GroupsApi(APISegmentBase):
         response = self._get(url, params=query_params)
         return self._handle_response(response)
 
-    def group_calendar_calendar_view_instance_delete_attachment(
+    def grp_cal_cal_view_inst_delete_attach(
         self, group_id: str, event_id: str, event_id1: str, attachment_id: str
     ) -> Any:
         """
@@ -1297,7 +1297,7 @@ class GroupsApi(APISegmentBase):
         response = self._delete(url, params=query_params)
         return self._handle_response(response)
 
-    def group_calendar_calendar_view_instance_attachment_get_count(
+    def grp_cal_cal_view_inst_attach_count(
         self,
         group_id: str,
         event_id: str,
@@ -1338,7 +1338,7 @@ class GroupsApi(APISegmentBase):
         response = self._get(url, params=query_params)
         return self._handle_response(response)
 
-    def group_calendar_calendar_view_instance_attachment_create_upload_session(
+    def grp_cal_cal_view_inst_attach_upload(
         self,
         group_id: str,
         event_id: str,
@@ -1385,7 +1385,7 @@ class GroupsApi(APISegmentBase):
         )
         return self._handle_response(response)
 
-    def group_calendar_calendar_view_instance_get_calendar(
+    def grp_cal_cal_view_inst_get_cal(
         self,
         group_id: str,
         event_id: str,
@@ -1426,7 +1426,7 @@ class GroupsApi(APISegmentBase):
         response = self._get(url, params=query_params)
         return self._handle_response(response)
 
-    def group_calendar_calendar_view_instance_list_extension(
+    def grp_cal_cal_view_inst_list_ext(
         self,
         group_id: str,
         event_id: str,
@@ -1490,7 +1490,7 @@ class GroupsApi(APISegmentBase):
         response = self._get(url, params=query_params)
         return self._handle_response(response)
 
-    def group_calendar_calendar_view_instance_create_extension(
+    def grp_cal_cal_view_inst_create_ext(
         self, group_id: str, event_id: str, event_id1: str, id: Optional[str] = None
     ) -> Any:
         """
@@ -1533,7 +1533,7 @@ class GroupsApi(APISegmentBase):
         )
         return self._handle_response(response)
 
-    def group_calendar_calendar_view_instance_get_extension(
+    def grp_cal_cal_view_inst_get_ext(
         self,
         group_id: str,
         event_id: str,
@@ -1578,7 +1578,7 @@ class GroupsApi(APISegmentBase):
         response = self._get(url, params=query_params)
         return self._handle_response(response)
 
-    def group_calendar_calendar_view_instance_update_extension(
+    def grp_cal_cal_view_inst_update_ext(
         self,
         group_id: str,
         event_id: str,
@@ -1624,7 +1624,7 @@ class GroupsApi(APISegmentBase):
         response = self._patch(url, data=request_body_data, params=query_params)
         return self._handle_response(response)
 
-    def group_calendar_calendar_view_instance_delete_extension(
+    def grp_cal_cal_view_inst_delete_ext(
         self, group_id: str, event_id: str, event_id1: str, extension_id: str
     ) -> Any:
         """
@@ -1659,7 +1659,7 @@ class GroupsApi(APISegmentBase):
         response = self._delete(url, params=query_params)
         return self._handle_response(response)
 
-    def group_calendar_calendar_view_instance_extension_get_count(
+    def grp_cal_cal_view_inst_ext_count(
         self,
         group_id: str,
         event_id: str,
@@ -1851,7 +1851,7 @@ class GroupsApi(APISegmentBase):
         )
         return self._handle_response(response)
 
-    def group_calendar_calendar_view_instance_dismiss_reminder(
+    def grp_cal_cal_view_inst_dismiss(
         self, group_id: str, event_id: str, event_id1: str
     ) -> Any:
         """
@@ -1938,7 +1938,7 @@ class GroupsApi(APISegmentBase):
         )
         return self._handle_response(response)
 
-    def group_calendar_calendar_view_instance_permanent_delete(
+    def grp_cal_cal_view_inst_perm_delete(
         self, group_id: str, event_id: str, event_id1: str
     ) -> Any:
         """
@@ -1976,7 +1976,7 @@ class GroupsApi(APISegmentBase):
         )
         return self._handle_response(response)
 
-    def group_calendar_calendar_view_instance_snooze_reminder(
+    def grp_cal_cal_view_inst_snooze(
         self,
         group_id: str,
         event_id: str,
@@ -2023,7 +2023,7 @@ class GroupsApi(APISegmentBase):
         )
         return self._handle_response(response)
 
-    def group_calendar_calendar_view_instance_tentatively_accept(
+    def grp_cal_cal_view_inst_tentative_accept(
         self,
         group_id: str,
         event_id: str,
@@ -2078,7 +2078,7 @@ class GroupsApi(APISegmentBase):
         )
         return self._handle_response(response)
 
-    def group_calendar_calendar_view_instance_get_count(
+    def grp_cal_cal_view_inst_count(
         self,
         group_id: str,
         event_id: str,
@@ -2475,7 +2475,7 @@ class GroupsApi(APISegmentBase):
         )
         return self._handle_response(response)
 
-    def group_calendar_calendar_view_tentatively_accept(
+    def grp_cal_cal_view_tentative_accept(
         self,
         group_id: str,
         event_id: str,
@@ -3325,7 +3325,7 @@ class GroupsApi(APISegmentBase):
         response = self._get(url, params=query_params)
         return self._handle_response(response)
 
-    def group_calendar_event_attachment_create_upload_session(
+    def grp_cal_event_attach_upload(
         self,
         group_id: str,
         event_id: str,
@@ -3835,7 +3835,7 @@ class GroupsApi(APISegmentBase):
         response = self._get(url, params=query_params)
         return self._handle_response(response)
 
-    def group_calendar_event_instance_create_attachment(
+    def grp_cal_event_inst_create_attach(
         self,
         group_id: str,
         event_id: str,
@@ -3944,7 +3944,7 @@ class GroupsApi(APISegmentBase):
         response = self._get(url, params=query_params)
         return self._handle_response(response)
 
-    def group_calendar_event_instance_delete_attachment(
+    def grp_cal_event_inst_delete_attach(
         self, group_id: str, event_id: str, event_id1: str, attachment_id: str
     ) -> Any:
         """
@@ -3979,7 +3979,7 @@ class GroupsApi(APISegmentBase):
         response = self._delete(url, params=query_params)
         return self._handle_response(response)
 
-    def group_calendar_event_instance_attachment_get_count(
+    def grp_cal_event_inst_attach_count(
         self,
         group_id: str,
         event_id: str,
@@ -4020,7 +4020,7 @@ class GroupsApi(APISegmentBase):
         response = self._get(url, params=query_params)
         return self._handle_response(response)
 
-    def group_calendar_event_instance_attachment_create_upload_session(
+    def grp_cal_event_inst_attach_upload(
         self,
         group_id: str,
         event_id: str,
@@ -4172,7 +4172,7 @@ class GroupsApi(APISegmentBase):
         response = self._get(url, params=query_params)
         return self._handle_response(response)
 
-    def group_calendar_event_instance_create_extension(
+    def grp_cal_event_inst_create_ext(
         self, group_id: str, event_id: str, event_id1: str, id: Optional[str] = None
     ) -> Any:
         """
@@ -4260,7 +4260,7 @@ class GroupsApi(APISegmentBase):
         response = self._get(url, params=query_params)
         return self._handle_response(response)
 
-    def group_calendar_event_instance_update_extension(
+    def grp_cal_event_inst_update_ext(
         self,
         group_id: str,
         event_id: str,
@@ -4306,7 +4306,7 @@ class GroupsApi(APISegmentBase):
         response = self._patch(url, data=request_body_data, params=query_params)
         return self._handle_response(response)
 
-    def group_calendar_event_instance_delete_extension(
+    def grp_cal_event_inst_delete_ext(
         self, group_id: str, event_id: str, event_id1: str, extension_id: str
     ) -> Any:
         """
@@ -4341,7 +4341,7 @@ class GroupsApi(APISegmentBase):
         response = self._delete(url, params=query_params)
         return self._handle_response(response)
 
-    def group_calendar_event_instance_extension_get_count(
+    def grp_cal_event_inst_ext_count(
         self,
         group_id: str,
         event_id: str,
@@ -4533,7 +4533,7 @@ class GroupsApi(APISegmentBase):
         )
         return self._handle_response(response)
 
-    def group_calendar_event_instance_dismiss_reminder(
+    def grp_cal_event_inst_dismiss(
         self, group_id: str, event_id: str, event_id1: str
     ) -> Any:
         """
@@ -4620,7 +4620,7 @@ class GroupsApi(APISegmentBase):
         )
         return self._handle_response(response)
 
-    def group_calendar_event_instance_permanent_delete(
+    def grp_cal_event_inst_perm_delete(
         self, group_id: str, event_id: str, event_id1: str
     ) -> Any:
         """
@@ -4705,7 +4705,7 @@ class GroupsApi(APISegmentBase):
         )
         return self._handle_response(response)
 
-    def group_calendar_event_instance_tentatively_accept(
+    def grp_cal_event_inst_tentative_accept(
         self,
         group_id: str,
         event_id: str,
@@ -5775,7 +5775,7 @@ class GroupsApi(APISegmentBase):
         response = self._get(url, params=query_params)
         return self._handle_response(response)
 
-    def group_calendar_view_attachment_create_upload_session(
+    def grp_cal_view_attach_upload(
         self,
         group_id: str,
         event_id: str,
@@ -6285,7 +6285,7 @@ class GroupsApi(APISegmentBase):
         response = self._get(url, params=query_params)
         return self._handle_response(response)
 
-    def group_calendar_view_instance_create_attachment(
+    def grp_cal_view_inst_create_attach(
         self,
         group_id: str,
         event_id: str,
@@ -6394,7 +6394,7 @@ class GroupsApi(APISegmentBase):
         response = self._get(url, params=query_params)
         return self._handle_response(response)
 
-    def group_calendar_view_instance_delete_attachment(
+    def grp_cal_view_inst_delete_attach(
         self, group_id: str, event_id: str, event_id1: str, attachment_id: str
     ) -> Any:
         """
@@ -6429,7 +6429,7 @@ class GroupsApi(APISegmentBase):
         response = self._delete(url, params=query_params)
         return self._handle_response(response)
 
-    def group_calendar_view_instance_attachment_get_count(
+    def grp_cal_view_inst_attach_count(
         self,
         group_id: str,
         event_id: str,
@@ -6470,7 +6470,7 @@ class GroupsApi(APISegmentBase):
         response = self._get(url, params=query_params)
         return self._handle_response(response)
 
-    def group_calendar_view_instance_attachment_create_upload_session(
+    def grp_cal_view_inst_attach_upload(
         self,
         group_id: str,
         event_id: str,
@@ -6791,7 +6791,7 @@ class GroupsApi(APISegmentBase):
         response = self._delete(url, params=query_params)
         return self._handle_response(response)
 
-    def group_calendar_view_instance_extension_get_count(
+    def grp_cal_view_inst_ext_count(
         self,
         group_id: str,
         event_id: str,
@@ -7155,7 +7155,7 @@ class GroupsApi(APISegmentBase):
         )
         return self._handle_response(response)
 
-    def group_calendar_view_instance_tentatively_accept(
+    def grp_cal_view_inst_tentative_accept(
         self,
         group_id: str,
         event_id: str,
@@ -9162,7 +9162,7 @@ class GroupsApi(APISegmentBase):
         response = self._get(url, params=query_params)
         return self._handle_response(response)
 
-    def group_event_instance_attachment_create_upload_session(
+    def grp_event_inst_attach_upload(
         self,
         group_id: str,
         event_id: str,
@@ -10450,42 +10450,42 @@ class GroupsApi(APISegmentBase):
             self.group_calendar_list_calendar_view,
             self.group_calendar_get_calendar_view,
             self.group_calendar_calendar_view_list_attachment,
-            self.group_calendar_calendar_view_create_attachment,
+            self.grp_cal_cal_view_create_attach,
             self.group_calendar_calendar_view_get_attachment,
-            self.group_calendar_calendar_view_delete_attachment,
-            self.group_calendar_calendar_view_attachment_get_count,
-            self.group_calendar_calendar_view_attachment_create_upload_session,
+            self.grp_cal_cal_view_delete_attach,
+            self.grp_cal_cal_view_attach_count,
+            self.grp_cal_cal_view_attach_upload,
             self.group_calendar_calendar_view_get_calendar,
             self.group_calendar_calendar_view_list_extension,
             self.group_calendar_calendar_view_create_extension,
             self.group_calendar_calendar_view_get_extension,
             self.group_calendar_calendar_view_update_extension,
             self.group_calendar_calendar_view_delete_extension,
-            self.group_calendar_calendar_view_extension_get_count,
+            self.grp_cal_cal_view_ext_count,
             self.group_calendar_calendar_view_list_instance,
             self.group_calendar_calendar_view_get_instance,
-            self.group_calendar_calendar_view_instance_list_attachment,
-            self.group_calendar_calendar_view_instance_create_attachment,
-            self.group_calendar_calendar_view_instance_get_attachment,
-            self.group_calendar_calendar_view_instance_delete_attachment,
-            self.group_calendar_calendar_view_instance_attachment_get_count,
-            self.group_calendar_calendar_view_instance_attachment_create_upload_session,
-            self.group_calendar_calendar_view_instance_get_calendar,
-            self.group_calendar_calendar_view_instance_list_extension,
-            self.group_calendar_calendar_view_instance_create_extension,
-            self.group_calendar_calendar_view_instance_get_extension,
-            self.group_calendar_calendar_view_instance_update_extension,
-            self.group_calendar_calendar_view_instance_delete_extension,
-            self.group_calendar_calendar_view_instance_extension_get_count,
+            self.grp_cal_cal_view_inst_list_attach,
+            self.grp_cal_cal_view_inst_create_attach,
+            self.grp_cal_cal_view_inst_get_attach,
+            self.grp_cal_cal_view_inst_delete_attach,
+            self.grp_cal_cal_view_inst_attach_count,
+            self.grp_cal_cal_view_inst_attach_upload,
+            self.grp_cal_cal_view_inst_get_cal,
+            self.grp_cal_cal_view_inst_list_ext,
+            self.grp_cal_cal_view_inst_create_ext,
+            self.grp_cal_cal_view_inst_get_ext,
+            self.grp_cal_cal_view_inst_update_ext,
+            self.grp_cal_cal_view_inst_delete_ext,
+            self.grp_cal_cal_view_inst_ext_count,
             self.group_calendar_calendar_view_instance_accept,
             self.group_calendar_calendar_view_instance_cancel,
             self.group_calendar_calendar_view_instance_decline,
-            self.group_calendar_calendar_view_instance_dismiss_reminder,
+            self.grp_cal_cal_view_inst_dismiss,
             self.group_calendar_calendar_view_instance_forward,
-            self.group_calendar_calendar_view_instance_permanent_delete,
-            self.group_calendar_calendar_view_instance_snooze_reminder,
-            self.group_calendar_calendar_view_instance_tentatively_accept,
-            self.group_calendar_calendar_view_instance_get_count,
+            self.grp_cal_cal_view_inst_perm_delete,
+            self.grp_cal_cal_view_inst_snooze,
+            self.grp_cal_cal_view_inst_tentative_accept,
+            self.grp_cal_cal_view_inst_count,
             self.group_calendar_calendar_view_instance_delta,
             self.group_calendar_calendar_view_accept,
             self.group_calendar_calendar_view_cancel,
@@ -10494,7 +10494,7 @@ class GroupsApi(APISegmentBase):
             self.group_calendar_calendar_view_forward,
             self.group_calendar_calendar_view_permanent_delete,
             self.group_calendar_calendar_view_snooze_reminder,
-            self.group_calendar_calendar_view_tentatively_accept,
+            self.grp_cal_cal_view_tentative_accept,
             self.group_calendar_calendar_view_get_count,
             self.group_calendar_calendar_view_delta,
             self.group_calendar_list_event,
@@ -10507,7 +10507,7 @@ class GroupsApi(APISegmentBase):
             self.group_calendar_event_get_attachment,
             self.group_calendar_event_delete_attachment,
             self.group_calendar_event_attachment_get_count,
-            self.group_calendar_event_attachment_create_upload_session,
+            self.grp_cal_event_attach_upload,
             self.group_calendar_event_get_calendar,
             self.group_calendar_event_list_extension,
             self.group_calendar_event_create_extension,
@@ -10518,26 +10518,26 @@ class GroupsApi(APISegmentBase):
             self.group_calendar_event_list_instance,
             self.group_calendar_event_get_instance,
             self.group_calendar_event_instance_list_attachment,
-            self.group_calendar_event_instance_create_attachment,
+            self.grp_cal_event_inst_create_attach,
             self.group_calendar_event_instance_get_attachment,
-            self.group_calendar_event_instance_delete_attachment,
-            self.group_calendar_event_instance_attachment_get_count,
-            self.group_calendar_event_instance_attachment_create_upload_session,
+            self.grp_cal_event_inst_delete_attach,
+            self.grp_cal_event_inst_attach_count,
+            self.grp_cal_event_inst_attach_upload,
             self.group_calendar_event_instance_get_calendar,
             self.group_calendar_event_instance_list_extension,
-            self.group_calendar_event_instance_create_extension,
+            self.grp_cal_event_inst_create_ext,
             self.group_calendar_event_instance_get_extension,
-            self.group_calendar_event_instance_update_extension,
-            self.group_calendar_event_instance_delete_extension,
-            self.group_calendar_event_instance_extension_get_count,
+            self.grp_cal_event_inst_update_ext,
+            self.grp_cal_event_inst_delete_ext,
+            self.grp_cal_event_inst_ext_count,
             self.group_calendar_event_instance_accept,
             self.group_calendar_event_instance_cancel,
             self.group_calendar_event_instance_decline,
-            self.group_calendar_event_instance_dismiss_reminder,
+            self.grp_cal_event_inst_dismiss,
             self.group_calendar_event_instance_forward,
-            self.group_calendar_event_instance_permanent_delete,
+            self.grp_cal_event_inst_perm_delete,
             self.group_calendar_event_instance_snooze_reminder,
-            self.group_calendar_event_instance_tentatively_accept,
+            self.grp_cal_event_inst_tentative_accept,
             self.group_calendar_event_instance_get_count,
             self.group_calendar_event_instance_delta,
             self.group_calendar_event_accept,
@@ -10560,7 +10560,7 @@ class GroupsApi(APISegmentBase):
             self.group_calendar_view_get_attachment,
             self.group_calendar_view_delete_attachment,
             self.group_calendar_view_attachment_get_count,
-            self.group_calendar_view_attachment_create_upload_session,
+            self.grp_cal_view_attach_upload,
             self.group_calendar_view_get_calendar,
             self.group_calendar_view_list_extension,
             self.group_calendar_view_create_extension,
@@ -10571,18 +10571,18 @@ class GroupsApi(APISegmentBase):
             self.group_calendar_view_list_instance,
             self.group_calendar_view_get_instance,
             self.group_calendar_view_instance_list_attachment,
-            self.group_calendar_view_instance_create_attachment,
+            self.grp_cal_view_inst_create_attach,
             self.group_calendar_view_instance_get_attachment,
-            self.group_calendar_view_instance_delete_attachment,
-            self.group_calendar_view_instance_attachment_get_count,
-            self.group_calendar_view_instance_attachment_create_upload_session,
+            self.grp_cal_view_inst_delete_attach,
+            self.grp_cal_view_inst_attach_count,
+            self.grp_cal_view_inst_attach_upload,
             self.group_calendar_view_instance_get_calendar,
             self.group_calendar_view_instance_list_extension,
             self.group_calendar_view_instance_create_extension,
             self.group_calendar_view_instance_get_extension,
             self.group_calendar_view_instance_update_extension,
             self.group_calendar_view_instance_delete_extension,
-            self.group_calendar_view_instance_extension_get_count,
+            self.grp_cal_view_inst_ext_count,
             self.group_calendar_view_instance_accept,
             self.group_calendar_view_instance_cancel,
             self.group_calendar_view_instance_decline,
@@ -10590,7 +10590,7 @@ class GroupsApi(APISegmentBase):
             self.group_calendar_view_instance_forward,
             self.group_calendar_view_instance_permanent_delete,
             self.group_calendar_view_instance_snooze_reminder,
-            self.group_calendar_view_instance_tentatively_accept,
+            self.grp_cal_view_inst_tentative_accept,
             self.group_calendar_view_instance_get_count,
             self.group_calendar_view_instance_delta,
             self.group_calendar_view_accept,
@@ -10628,7 +10628,7 @@ class GroupsApi(APISegmentBase):
             self.group_event_instance_get_attachment,
             self.group_event_instance_delete_attachment,
             self.group_event_instance_attachment_get_count,
-            self.group_event_instance_attachment_create_upload_session,
+            self.grp_event_inst_attach_upload,
             self.group_event_instance_get_calendar,
             self.group_event_instance_list_extension,
             self.group_event_instance_create_extension,
