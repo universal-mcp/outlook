@@ -1160,7 +1160,7 @@ class OutlookApp(APIApplication):
         response = self._patch(url, data=request_body_data, params=query_params)
         return self._handle_response(response)
 
-    def delete_message_by_id(self, user_id: str, mailFolder_id: str, mailFolder_id1: str, message_id: str) -> Any:
+    def delete_message_by_id_mail_folder(self, user_id: str, mailFolder_id: str, mailFolder_id1: str, message_id: str) -> Any:
         """
         Deletes a specific email message identified by the message ID from a child folder within a mail folder of a user's mailbox.
 
@@ -1563,43 +1563,6 @@ class OutlookApp(APIApplication):
         response = self._get(url, params=query_params)
         return self._handle_response(response)
 
-    def add_message_extension(self, user_id: str, mailFolder_id: str, mailFolder_id1: str, message_id: str, id: Optional[str] = None) -> Any:
-        """
-        Adds a new extension to a specific message in a child folder of a mail folder for a user using the POST method, requiring a JSON body with the extension details.
-
-        Args:
-            user_id (string): user-id
-            mailFolder_id (string): mailFolder-id
-            mailFolder_id1 (string): mailFolder-id1
-            message_id (string): message-id
-            id (string): The unique identifier for an entity. Read-only.
-
-        Returns:
-            Any: Created navigation property.
-
-        Raises:
-            HTTPStatusError: Raised when the API request fails with detailed error information including status code and response body.
-
-        Tags:
-            users.mailFolder
-        """
-        if user_id is None:
-            raise ValueError("Missing required parameter 'user-id'.")
-        if mailFolder_id is None:
-            raise ValueError("Missing required parameter 'mailFolder-id'.")
-        if mailFolder_id1 is None:
-            raise ValueError("Missing required parameter 'mailFolder-id1'.")
-        if message_id is None:
-            raise ValueError("Missing required parameter 'message-id'.")
-        request_body_data = None
-        request_body_data = {
-            'id': id,
-        }
-        request_body_data = {k: v for k, v in request_body_data.items() if v is not None}
-        url = f"{self.base_url}/users/{user_id}/mailFolders/{mailFolder_id}/childFolders/{mailFolder_id1}/messages/{message_id}/extensions"
-        query_params = {}
-        response = self._post(url, data=request_body_data, params=query_params, content_type='application/json')
-        return self._handle_response(response)
 
     def get_mail_message_extension(self, user_id: str, mailFolder_id: str, mailFolder_id1: str, message_id: str, extension_id: str, select: Optional[List[str]] = None, expand: Optional[List[str]] = None) -> Any:
         """
@@ -1638,115 +1601,8 @@ class OutlookApp(APIApplication):
         response = self._get(url, params=query_params)
         return self._handle_response(response)
 
-    def update_message_extension(self, user_id: str, mailFolder_id: str, mailFolder_id1: str, message_id: str, extension_id: str, id: Optional[str] = None) -> Any:
-        """
-        Updates an extension of a specific message in a child folder of a mail folder for a user using the PATCH method.
 
-        Args:
-            user_id (string): user-id
-            mailFolder_id (string): mailFolder-id
-            mailFolder_id1 (string): mailFolder-id1
-            message_id (string): message-id
-            extension_id (string): extension-id
-            id (string): The unique identifier for an entity. Read-only.
 
-        Returns:
-            Any: Success
-
-        Raises:
-            HTTPStatusError: Raised when the API request fails with detailed error information including status code and response body.
-
-        Tags:
-            users.mailFolder
-        """
-        if user_id is None:
-            raise ValueError("Missing required parameter 'user-id'.")
-        if mailFolder_id is None:
-            raise ValueError("Missing required parameter 'mailFolder-id'.")
-        if mailFolder_id1 is None:
-            raise ValueError("Missing required parameter 'mailFolder-id1'.")
-        if message_id is None:
-            raise ValueError("Missing required parameter 'message-id'.")
-        if extension_id is None:
-            raise ValueError("Missing required parameter 'extension-id'.")
-        request_body_data = None
-        request_body_data = {
-            'id': id,
-        }
-        request_body_data = {k: v for k, v in request_body_data.items() if v is not None}
-        url = f"{self.base_url}/users/{user_id}/mailFolders/{mailFolder_id}/childFolders/{mailFolder_id1}/messages/{message_id}/extensions/{extension_id}"
-        query_params = {}
-        response = self._patch(url, data=request_body_data, params=query_params)
-        return self._handle_response(response)
-
-    def delete_message_extension(self, user_id: str, mailFolder_id: str, mailFolder_id1: str, message_id: str, extension_id: str) -> Any:
-        """
-        Deletes an extension with the specified ID from a message in a child folder of a mail folder associated with a user.
-
-        Args:
-            user_id (string): user-id
-            mailFolder_id (string): mailFolder-id
-            mailFolder_id1 (string): mailFolder-id1
-            message_id (string): message-id
-            extension_id (string): extension-id
-
-        Returns:
-            Any: Success
-
-        Raises:
-            HTTPStatusError: Raised when the API request fails with detailed error information including status code and response body.
-
-        Tags:
-            users.mailFolder
-        """
-        if user_id is None:
-            raise ValueError("Missing required parameter 'user-id'.")
-        if mailFolder_id is None:
-            raise ValueError("Missing required parameter 'mailFolder-id'.")
-        if mailFolder_id1 is None:
-            raise ValueError("Missing required parameter 'mailFolder-id1'.")
-        if message_id is None:
-            raise ValueError("Missing required parameter 'message-id'.")
-        if extension_id is None:
-            raise ValueError("Missing required parameter 'extension-id'.")
-        url = f"{self.base_url}/users/{user_id}/mailFolders/{mailFolder_id}/childFolders/{mailFolder_id1}/messages/{message_id}/extensions/{extension_id}"
-        query_params = {}
-        response = self._delete(url, params=query_params)
-        return self._handle_response(response)
-
-    def get_extensions_count(self, user_id: str, mailFolder_id: str, mailFolder_id1: str, message_id: str, search: Optional[str] = None, filter: Optional[str] = None) -> Any:
-        """
-        Retrieves the count of extensions for a specific message in a nested mail folder using the "GET" method.
-
-        Args:
-            user_id (string): user-id
-            mailFolder_id (string): mailFolder-id
-            mailFolder_id1 (string): mailFolder-id1
-            message_id (string): message-id
-            search (string): Search items by search phrases
-            filter (string): Filter items by property values
-
-        Returns:
-            Any: The count of the resource
-
-        Raises:
-            HTTPStatusError: Raised when the API request fails with detailed error information including status code and response body.
-
-        Tags:
-            users.mailFolder
-        """
-        if user_id is None:
-            raise ValueError("Missing required parameter 'user-id'.")
-        if mailFolder_id is None:
-            raise ValueError("Missing required parameter 'mailFolder-id'.")
-        if mailFolder_id1 is None:
-            raise ValueError("Missing required parameter 'mailFolder-id1'.")
-        if message_id is None:
-            raise ValueError("Missing required parameter 'message-id'.")
-        url = f"{self.base_url}/users/{user_id}/mailFolders/{mailFolder_id}/childFolders/{mailFolder_id1}/messages/{message_id}/extensions/$count"
-        query_params = {k: v for k, v in [('$search', search), ('$filter', filter)] if v is not None}
-        response = self._get(url, params=query_params)
-        return self._handle_response(response)
 
     def copy_message(self, user_id: str, mailFolder_id: str, mailFolder_id1: str, message_id: str, DestinationId: Optional[str] = None) -> Any:
         """
@@ -1868,45 +1724,6 @@ class OutlookApp(APIApplication):
         response = self._post(url, data=request_body_data, params=query_params, content_type='application/json')
         return self._handle_response(response)
 
-    def create_reply_all_message(self, user_id: str, mailFolder_id: str, mailFolder_id1: str, message_id: str, Message: Optional[Any] = None, Comment: Optional[str] = None) -> Any:
-        """
-        Creates a draft message to reply to the sender and all recipients of a specified message using the Microsoft Graph API.
-
-        Args:
-            user_id (string): user-id
-            mailFolder_id (string): mailFolder-id
-            mailFolder_id1 (string): mailFolder-id1
-            message_id (string): message-id
-            Message (string): Message
-            Comment (string): Comment
-
-        Returns:
-            Any: Success
-
-        Raises:
-            HTTPStatusError: Raised when the API request fails with detailed error information including status code and response body.
-
-        Tags:
-            users.mailFolder
-        """
-        if user_id is None:
-            raise ValueError("Missing required parameter 'user-id'.")
-        if mailFolder_id is None:
-            raise ValueError("Missing required parameter 'mailFolder-id'.")
-        if mailFolder_id1 is None:
-            raise ValueError("Missing required parameter 'mailFolder-id1'.")
-        if message_id is None:
-            raise ValueError("Missing required parameter 'message-id'.")
-        request_body_data = None
-        request_body_data = {
-            'Message': Message,
-            'Comment': Comment,
-        }
-        request_body_data = {k: v for k, v in request_body_data.items() if v is not None}
-        url = f"{self.base_url}/users/{user_id}/mailFolders/{mailFolder_id}/childFolders/{mailFolder_id1}/messages/{message_id}/microsoft.graph.createReplyAll"
-        query_params = {}
-        response = self._post(url, data=request_body_data, params=query_params, content_type='application/json')
-        return self._handle_response(response)
 
     def forward_message(self, user_id: str, mailFolder_id: str, mailFolder_id1: str, message_id: str, ToRecipients: Optional[List[dict[str, dict[str, Any]]]] = None, Message: Optional[Any] = None, Comment: Optional[str] = None) -> Any:
         """
@@ -1988,38 +1805,6 @@ class OutlookApp(APIApplication):
         response = self._post(url, data=request_body_data, params=query_params, content_type='application/json')
         return self._handle_response(response)
 
-    def delete_message_permanently(self, user_id: str, mailFolder_id: str, mailFolder_id1: str, message_id: str) -> Any:
-        """
-        Permanently deletes a specified message in a nested mail folder of a user's mailbox using the Microsoft Graph API.
-
-        Args:
-            user_id (string): user-id
-            mailFolder_id (string): mailFolder-id
-            mailFolder_id1 (string): mailFolder-id1
-            message_id (string): message-id
-
-        Returns:
-            Any: Success
-
-        Raises:
-            HTTPStatusError: Raised when the API request fails with detailed error information including status code and response body.
-
-        Tags:
-            users.mailFolder
-        """
-        if user_id is None:
-            raise ValueError("Missing required parameter 'user-id'.")
-        if mailFolder_id is None:
-            raise ValueError("Missing required parameter 'mailFolder-id'.")
-        if mailFolder_id1 is None:
-            raise ValueError("Missing required parameter 'mailFolder-id1'.")
-        if message_id is None:
-            raise ValueError("Missing required parameter 'message-id'.")
-        request_body_data = None
-        url = f"{self.base_url}/users/{user_id}/mailFolders/{mailFolder_id}/childFolders/{mailFolder_id1}/messages/{message_id}/microsoft.graph.permanentDelete"
-        query_params = {}
-        response = self._post(url, data=request_body_data, params=query_params, content_type='application/json')
-        return self._handle_response(response)
 
     def reply_to_message_by_user(self, user_id: str, mailFolder_id: str, mailFolder_id1: str, message_id: str, Message: Optional[Any] = None, Comment: Optional[str] = None) -> Any:
         """
@@ -2101,39 +1886,7 @@ class OutlookApp(APIApplication):
         response = self._post(url, data=request_body_data, params=query_params, content_type='application/json')
         return self._handle_response(response)
 
-    def send_user_message(self, user_id: str, mailFolder_id: str, mailFolder_id1: str, message_id: str) -> Any:
-        """
-        Sends the specified email message from a deeply nested mail folder of the user using Microsoft Graph API.
-
-        Args:
-            user_id (string): user-id
-            mailFolder_id (string): mailFolder-id
-            mailFolder_id1 (string): mailFolder-id1
-            message_id (string): message-id
-
-        Returns:
-            Any: Success
-
-        Raises:
-            HTTPStatusError: Raised when the API request fails with detailed error information including status code and response body.
-
-        Tags:
-            users.mailFolder
-        """
-        if user_id is None:
-            raise ValueError("Missing required parameter 'user-id'.")
-        if mailFolder_id is None:
-            raise ValueError("Missing required parameter 'mailFolder-id'.")
-        if mailFolder_id1 is None:
-            raise ValueError("Missing required parameter 'mailFolder-id1'.")
-        if message_id is None:
-            raise ValueError("Missing required parameter 'message-id'.")
-        request_body_data = None
-        url = f"{self.base_url}/users/{user_id}/mailFolders/{mailFolder_id}/childFolders/{mailFolder_id1}/messages/{message_id}/microsoft.graph.send"
-        query_params = {}
-        response = self._post(url, data=request_body_data, params=query_params, content_type='application/json')
-        return self._handle_response(response)
-
+ 
     def count_user_mail_messages(self, user_id: str, mailFolder_id: str, mailFolder_id1: str, search: Optional[str] = None, filter: Optional[str] = None) -> Any:
         """
         Retrieves the count of messages within a specific child folder of a user's mail folder using the "GET" method.
@@ -2165,43 +1918,6 @@ class OutlookApp(APIApplication):
         response = self._get(url, params=query_params)
         return self._handle_response(response)
 
-    def get_delta_messages(self, user_id: str, mailFolder_id: str, mailFolder_id1: str, changeType: Optional[str] = None, top: Optional[int] = None, skip: Optional[int] = None, search: Optional[str] = None, filter: Optional[str] = None, count: Optional[bool] = None, select: Optional[List[str]] = None, orderby: Optional[List[str]] = None, expand: Optional[List[str]] = None) -> dict[str, Any]:
-        """
-        Retrieves incremental changes—such as additions, updates, or deletions—to messages in a specified nested mail folder for a given user, supporting optional filtering and pagination parameters[3][1][2].
-
-        Args:
-            user_id (string): user-id
-            mailFolder_id (string): mailFolder-id
-            mailFolder_id1 (string): mailFolder-id1
-            changeType (string): A custom query option to filter the delta response based on the type of change. Supported values are created, updated or deleted.
-            top (integer): Show only the first n items Example: '50'.
-            skip (integer): Skip the first n items
-            search (string): Search items by search phrases
-            filter (string): Filter items by property values
-            count (boolean): Include count of items
-            select (array): Select properties to be returned
-            orderby (array): Order items by property values
-            expand (array): Expand related entities
-
-        Returns:
-            dict[str, Any]: Success
-
-        Raises:
-            HTTPStatusError: Raised when the API request fails with detailed error information including status code and response body.
-
-        Tags:
-            users.mailFolder
-        """
-        if user_id is None:
-            raise ValueError("Missing required parameter 'user-id'.")
-        if mailFolder_id is None:
-            raise ValueError("Missing required parameter 'mailFolder-id'.")
-        if mailFolder_id1 is None:
-            raise ValueError("Missing required parameter 'mailFolder-id1'.")
-        url = f"{self.base_url}/users/{user_id}/mailFolders/{mailFolder_id}/childFolders/{mailFolder_id1}/messages/microsoft.graph.delta()"
-        query_params = {k: v for k, v in [('changeType', changeType), ('$top', top), ('$skip', skip), ('$search', search), ('$filter', filter), ('$count', count), ('$select', select), ('$orderby', orderby), ('$expand', expand)] if v is not None}
-        response = self._get(url, params=query_params)
-        return self._handle_response(response)
 
     def copy_child_folders(self, user_id: str, mailFolder_id: str, mailFolder_id1: str, DestinationId: Optional[str] = None) -> Any:
         """
@@ -2478,7 +2194,7 @@ class OutlookApp(APIApplication):
         response = self._get(url, params=query_params)
         return self._handle_response(response)
 
-    def update_message_rule(self, user_id: str, mailFolder_id: str, messageRule_id: str, id: Optional[str] = None, actions: Optional[dict[str, dict[str, Any]]] = None, conditions: Optional[dict[str, dict[str, Any]]] = None, displayName: Optional[str] = None, exceptions: Optional[dict[str, dict[str, Any]]] = None, hasError: Optional[bool] = None, isEnabled: Optional[bool] = None, isReadOnly: Optional[bool] = None, sequence: Optional[float] = None) -> Any:
+    def update_message_rule_mail_folder(self, user_id: str, mailFolder_id: str, messageRule_id: str, id: Optional[str] = None, actions: Optional[dict[str, dict[str, Any]]] = None, conditions: Optional[dict[str, dict[str, Any]]] = None, displayName: Optional[str] = None, exceptions: Optional[dict[str, dict[str, Any]]] = None, hasError: Optional[bool] = None, isEnabled: Optional[bool] = None, isReadOnly: Optional[bool] = None, sequence: Optional[float] = None) -> Any:
         """
         Updates a specific message rule for a given mail folder of a user using a JSON body with operations to modify its properties.
 
@@ -2529,7 +2245,7 @@ class OutlookApp(APIApplication):
         response = self._patch(url, data=request_body_data, params=query_params)
         return self._handle_response(response)
 
-    def delete_message_rule(self, user_id: str, mailFolder_id: str, messageRule_id: str) -> Any:
+    def delete_message_rule_mail_folder(self, user_id: str, mailFolder_id: str, messageRule_id: str) -> Any:
         """
         Deletes a specific message rule for a user's mail folder using the DELETE method.
 
@@ -2558,7 +2274,7 @@ class OutlookApp(APIApplication):
         response = self._delete(url, params=query_params)
         return self._handle_response(response)
 
-    def count_message_rules(self, user_id: str, mailFolder_id: str, search: Optional[str] = None, filter: Optional[str] = None) -> Any:
+    def count_message_rules_mail_folder(self, user_id: str, mailFolder_id: str, search: Optional[str] = None, filter: Optional[str] = None) -> Any:
         """
         Returns the total count of message rules for a specified mail folder belonging to a given user.
 
@@ -2586,7 +2302,7 @@ class OutlookApp(APIApplication):
         response = self._get(url, params=query_params)
         return self._handle_response(response)
 
-    def list_user_mail_folder_messages(self, user_id: str, mailFolder_id: str, top: Optional[int] = None, skip: Optional[int] = None, search: Optional[str] = None, filter: Optional[str] = None, count: Optional[bool] = None, orderby: Optional[List[str]] = None, select: Optional[List[str]] = None, expand: Optional[List[str]] = None) -> dict[str, Any]:
+    def list_user_mail_folder_messages_mail_folder(self, user_id: str, mailFolder_id: str, top: Optional[int] = None, skip: Optional[int] = None, search: Optional[str] = None, filter: Optional[str] = None, count: Optional[bool] = None, orderby: Optional[List[str]] = None, select: Optional[List[str]] = None, expand: Optional[List[str]] = None) -> dict[str, Any]:
         """
         Retrieves a list of messages from a specific mail folder belonging to a user, allowing for filtering, sorting, and selecting specific fields.
 
@@ -2854,36 +2570,8 @@ class OutlookApp(APIApplication):
         response = self._patch(url, data=request_body_data, params=query_params)
         return self._handle_response(response)
 
-    def delete_message_by_id(self, user_id: str, mailFolder_id: str, message_id: str) -> Any:
-        """
-        Deletes a specific email message from a user's mail folder using the provided user ID, mail folder ID, and message ID.
 
-        Args:
-            user_id (string): user-id
-            mailFolder_id (string): mailFolder-id
-            message_id (string): message-id
-
-        Returns:
-            Any: Success
-
-        Raises:
-            HTTPStatusError: Raised when the API request fails with detailed error information including status code and response body.
-
-        Tags:
-            users.mailFolder
-        """
-        if user_id is None:
-            raise ValueError("Missing required parameter 'user-id'.")
-        if mailFolder_id is None:
-            raise ValueError("Missing required parameter 'mailFolder-id'.")
-        if message_id is None:
-            raise ValueError("Missing required parameter 'message-id'.")
-        url = f"{self.base_url}/users/{user_id}/mailFolders/{mailFolder_id}/messages/{message_id}"
-        query_params = {}
-        response = self._delete(url, params=query_params)
-        return self._handle_response(response)
-
-    def get_message_value(self, user_id: str, mailFolder_id: str, message_id: str) -> Any:
+    def get_message_value_by_id(self, user_id: str, mailFolder_id: str, message_id: str) -> Any:
         """
         Retrieves the content of a specific email message from a designated mail folder for a user.
 
@@ -2973,7 +2661,7 @@ class OutlookApp(APIApplication):
         response = self._delete(url, params=query_params)
         return self._handle_response(response)
 
-    def get_attachment_by_id(self, user_id: str, mailFolder_id: str, message_id: str, top: Optional[int] = None, skip: Optional[int] = None, search: Optional[str] = None, filter: Optional[str] = None, count: Optional[bool] = None, orderby: Optional[List[str]] = None, select: Optional[List[str]] = None, expand: Optional[List[str]] = None) -> dict[str, Any]:
+    def get_attachment_by_id_mail_folder(self, user_id: str, mailFolder_id: str, message_id: str, top: Optional[int] = None, skip: Optional[int] = None, search: Optional[str] = None, filter: Optional[str] = None, count: Optional[bool] = None, orderby: Optional[List[str]] = None, select: Optional[List[str]] = None, expand: Optional[List[str]] = None) -> dict[str, Any]:
         """
         Retrieves an attachment from a specific message in a mail folder for a user, allowing optional filtering and sorting of the response.
 
@@ -3010,7 +2698,7 @@ class OutlookApp(APIApplication):
         response = self._get(url, params=query_params)
         return self._handle_response(response)
 
-    def add_attachment_to_message(self, user_id: str, mailFolder_id: str, message_id: str, id: Optional[str] = None, contentType: Optional[str] = None, isInline: Optional[bool] = None, lastModifiedDateTime: Optional[str] = None, name: Optional[str] = None, size: Optional[float] = None) -> Any:
+    def add_attachment_to_message_mail_folders(self, user_id: str, mailFolder_id: str, message_id: str, id: Optional[str] = None, contentType: Optional[str] = None, isInline: Optional[bool] = None, lastModifiedDateTime: Optional[str] = None, name: Optional[str] = None, size: Optional[float] = None) -> Any:
         """
         Adds an attachment to a specific message in a mail folder using the provided JSON payload.
 
@@ -3187,42 +2875,6 @@ class OutlookApp(APIApplication):
         response = self._post(url, data=request_body_data, params=query_params, content_type='application/json')
         return self._handle_response(response)
 
-    def get_extensions_by_message_id(self, user_id: str, mailFolder_id: str, message_id: str, top: Optional[int] = None, skip: Optional[int] = None, search: Optional[str] = None, filter: Optional[str] = None, count: Optional[bool] = None, orderby: Optional[List[str]] = None, select: Optional[List[str]] = None, expand: Optional[List[str]] = None) -> dict[str, Any]:
-        """
-        Retrieves and returns extensions for a specific message in a mail folder, allowing for optional filtering, sorting, and expansion of related data.
-
-        Args:
-            user_id (string): user-id
-            mailFolder_id (string): mailFolder-id
-            message_id (string): message-id
-            top (integer): Show only the first n items Example: '50'.
-            skip (integer): Skip the first n items
-            search (string): Search items by search phrases
-            filter (string): Filter items by property values
-            count (boolean): Include count of items
-            orderby (array): Order items by property values
-            select (array): Select properties to be returned
-            expand (array): Expand related entities
-
-        Returns:
-            dict[str, Any]: Retrieved collection
-
-        Raises:
-            HTTPStatusError: Raised when the API request fails with detailed error information including status code and response body.
-
-        Tags:
-            users.mailFolder
-        """
-        if user_id is None:
-            raise ValueError("Missing required parameter 'user-id'.")
-        if mailFolder_id is None:
-            raise ValueError("Missing required parameter 'mailFolder-id'.")
-        if message_id is None:
-            raise ValueError("Missing required parameter 'message-id'.")
-        url = f"{self.base_url}/users/{user_id}/mailFolders/{mailFolder_id}/messages/{message_id}/extensions"
-        query_params = {k: v for k, v in [('$top', top), ('$skip', skip), ('$search', search), ('$filter', filter), ('$count', count), ('$orderby', orderby), ('$select', select), ('$expand', expand)] if v is not None}
-        response = self._get(url, params=query_params)
-        return self._handle_response(response)
 
     def add_message_extension(self, user_id: str, mailFolder_id: str, message_id: str, id: Optional[str] = None) -> Any:
         """
@@ -3429,45 +3081,7 @@ class OutlookApp(APIApplication):
         response = self._post(url, data=request_body_data, params=query_params, content_type='application/json')
         return self._handle_response(response)
 
-    def forward_message(self, user_id: str, mailFolder_id: str, message_id: str, ToRecipients: Optional[List[dict[str, dict[str, Any]]]] = None, Message: Optional[Any] = None, Comment: Optional[str] = None) -> Any:
-        """
-        Creates a draft to forward an existing email message by specifying recipients and optional comments or message body content using the Microsoft Graph API.
-
-        Args:
-            user_id (string): user-id
-            mailFolder_id (string): mailFolder-id
-            message_id (string): message-id
-            ToRecipients (array): ToRecipients
-            Message (string): Message
-            Comment (string): Comment
-
-        Returns:
-            Any: Success
-
-        Raises:
-            HTTPStatusError: Raised when the API request fails with detailed error information including status code and response body.
-
-        Tags:
-            users.mailFolder
-        """
-        if user_id is None:
-            raise ValueError("Missing required parameter 'user-id'.")
-        if mailFolder_id is None:
-            raise ValueError("Missing required parameter 'mailFolder-id'.")
-        if message_id is None:
-            raise ValueError("Missing required parameter 'message-id'.")
-        request_body_data = None
-        request_body_data = {
-            'ToRecipients': ToRecipients,
-            'Message': Message,
-            'Comment': Comment,
-        }
-        request_body_data = {k: v for k, v in request_body_data.items() if v is not None}
-        url = f"{self.base_url}/users/{user_id}/mailFolders/{mailFolder_id}/messages/{message_id}/microsoft.graph.createForward"
-        query_params = {}
-        response = self._post(url, data=request_body_data, params=query_params, content_type='application/json')
-        return self._handle_response(response)
-
+ 
     def create_reply_to_message(self, user_id: str, mailFolder_id: str, message_id: str, Message: Optional[Any] = None, Comment: Optional[str] = None) -> Any:
         """
         Creates a draft reply message to the specified email using the Microsoft Graph API.
@@ -3542,46 +3156,8 @@ class OutlookApp(APIApplication):
         response = self._post(url, data=request_body_data, params=query_params, content_type='application/json')
         return self._handle_response(response)
 
-    def forward_message(self, user_id: str, mailFolder_id: str, message_id: str, ToRecipients: Optional[List[dict[str, dict[str, Any]]]] = None, Message: Optional[Any] = None, Comment: Optional[str] = None) -> Any:
-        """
-        Forwards an email message using the Microsoft Graph API by specifying the user ID, mail folder ID, and message ID in the path, and providing the recipient details in the request body.
 
-        Args:
-            user_id (string): user-id
-            mailFolder_id (string): mailFolder-id
-            message_id (string): message-id
-            ToRecipients (array): ToRecipients
-            Message (string): Message
-            Comment (string): Comment
-
-        Returns:
-            Any: Success
-
-        Raises:
-            HTTPStatusError: Raised when the API request fails with detailed error information including status code and response body.
-
-        Tags:
-            users.mailFolder
-        """
-        if user_id is None:
-            raise ValueError("Missing required parameter 'user-id'.")
-        if mailFolder_id is None:
-            raise ValueError("Missing required parameter 'mailFolder-id'.")
-        if message_id is None:
-            raise ValueError("Missing required parameter 'message-id'.")
-        request_body_data = None
-        request_body_data = {
-            'ToRecipients': ToRecipients,
-            'Message': Message,
-            'Comment': Comment,
-        }
-        request_body_data = {k: v for k, v in request_body_data.items() if v is not None}
-        url = f"{self.base_url}/users/{user_id}/mailFolders/{mailFolder_id}/messages/{message_id}/microsoft.graph.forward"
-        query_params = {}
-        response = self._post(url, data=request_body_data, params=query_params, content_type='application/json')
-        return self._handle_response(response)
-
-    def move_message_to_folder(self, user_id: str, mailFolder_id: str, message_id: str, DestinationId: Optional[str] = None) -> Any:
+    def move_message_to_folder_copy(self, user_id: str, mailFolder_id: str, message_id: str, DestinationId: Optional[str] = None) -> Any:
         """
         Moves a message from a specified folder to another folder within the same user's mailbox by creating a new copy of the message in the destination folder and removing the original.
 
@@ -3616,35 +3192,6 @@ class OutlookApp(APIApplication):
         response = self._post(url, data=request_body_data, params=query_params, content_type='application/json')
         return self._handle_response(response)
 
-    def delete_message_permanently(self, user_id: str, mailFolder_id: str, message_id: str) -> Any:
-        """
-        Permanently deletes a message from a specified mail folder in a user's mailbox using the Microsoft Graph API, moving it to the Purges folder where it cannot be recovered.
-
-        Args:
-            user_id (string): user-id
-            mailFolder_id (string): mailFolder-id
-            message_id (string): message-id
-
-        Returns:
-            Any: Success
-
-        Raises:
-            HTTPStatusError: Raised when the API request fails with detailed error information including status code and response body.
-
-        Tags:
-            users.mailFolder
-        """
-        if user_id is None:
-            raise ValueError("Missing required parameter 'user-id'.")
-        if mailFolder_id is None:
-            raise ValueError("Missing required parameter 'mailFolder-id'.")
-        if message_id is None:
-            raise ValueError("Missing required parameter 'message-id'.")
-        request_body_data = None
-        url = f"{self.base_url}/users/{user_id}/mailFolders/{mailFolder_id}/messages/{message_id}/microsoft.graph.permanentDelete"
-        query_params = {}
-        response = self._post(url, data=request_body_data, params=query_params, content_type='application/json')
-        return self._handle_response(response)
 
     def reply_message_by_id(self, user_id: str, mailFolder_id: str, message_id: str, Message: Optional[Any] = None, Comment: Optional[str] = None) -> Any:
         """
@@ -3720,7 +3267,7 @@ class OutlookApp(APIApplication):
         response = self._post(url, data=request_body_data, params=query_params, content_type='application/json')
         return self._handle_response(response)
 
-    def send_user_message(self, user_id: str, mailFolder_id: str, message_id: str) -> Any:
+    def send_user_message_folder(self, user_id: str, mailFolder_id: str, message_id: str) -> Any:
         """
         Sends a specified email message from a user’s mail folder using its message ID via the Microsoft Graph API.
 
@@ -4118,106 +3665,7 @@ class OutlookApp(APIApplication):
         response = self._get(url, params=query_params)
         return self._handle_response(response)
 
-    def update_user_message(self, user_id: str, message_id: str, id: Optional[str] = None, categories: Optional[List[str]] = None, changeKey: Optional[str] = None, createdDateTime: Optional[str] = None, lastModifiedDateTime: Optional[str] = None, bccRecipients: Optional[List[dict[str, dict[str, Any]]]] = None, body: Optional[dict[str, dict[str, Any]]] = None, bodyPreview: Optional[str] = None, ccRecipients: Optional[List[dict[str, dict[str, Any]]]] = None, conversationId: Optional[str] = None, conversationIndex: Optional[str] = None, flag: Optional[dict[str, dict[str, Any]]] = None, from_: Optional[dict[str, dict[str, Any]]] = None, hasAttachments: Optional[bool] = None, importance: Optional[str] = None, inferenceClassification: Optional[str] = None, internetMessageHeaders: Optional[List[dict[str, dict[str, Any]]]] = None, internetMessageId: Optional[str] = None, isDeliveryReceiptRequested: Optional[bool] = None, isDraft: Optional[bool] = None, isRead: Optional[bool] = None, isReadReceiptRequested: Optional[bool] = None, parentFolderId: Optional[str] = None, receivedDateTime: Optional[str] = None, replyTo: Optional[List[dict[str, dict[str, Any]]]] = None, sender: Optional[dict[str, dict[str, Any]]] = None, sentDateTime: Optional[str] = None, subject: Optional[str] = None, toRecipients: Optional[List[dict[str, dict[str, Any]]]] = None, uniqueBody: Optional[dict[str, dict[str, Any]]] = None, webLink: Optional[str] = None, attachments: Optional[List[Any]] = None, extensions: Optional[List[Any]] = None, multiValueExtendedProperties: Optional[List[Any]] = None, singleValueExtendedProperties: Optional[List[Any]] = None) -> Any:
-        """
-        Updates a specific message for a user using the provided JSON Patch operations and returns a status message based on the outcome.
-
-        Args:
-            user_id (string): user-id
-            message_id (string): message-id
-            id (string): The unique identifier for an entity. Read-only.
-            categories (array): The categories associated with the item
-            changeKey (string): Identifies the version of the item. Every time the item is changed, changeKey changes as well. This allows Exchange to apply changes to the correct version of the object. Read-only.
-            createdDateTime (string): The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-            lastModifiedDateTime (string): The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-            bccRecipients (array): The Bcc: recipients for the message.
-            body (object): body
-            bodyPreview (string): The first 255 characters of the message body. It is in text format.
-            ccRecipients (array): The Cc: recipients for the message.
-            conversationId (string): The ID of the conversation the email belongs to.
-            conversationIndex (string): Indicates the position of the message within the conversation.
-            flag (object): flag
-            from_ (object): from
-            hasAttachments (boolean): Indicates whether the message has attachments. This property doesn't include inline attachments, so if a message contains only inline attachments, this property is false. To verify the existence of inline attachments, parse the body property to look for a src attribute, such as <IMG src='cid:image001.jpg@01D26CD8.6C05F070'>.
-            importance (string): importance
-            inferenceClassification (string): inferenceClassification
-            internetMessageHeaders (array): A collection of message headers defined by RFC5322. The set includes message headers indicating the network path taken by a message from the sender to the recipient. It can also contain custom message headers that hold app data for the message.  Returned only on applying a $select query option. Read-only.
-            internetMessageId (string): The message ID in the format specified by RFC2822.
-            isDeliveryReceiptRequested (boolean): Indicates whether a read receipt is requested for the message.
-            isDraft (boolean): Indicates whether the message is a draft. A message is a draft if it hasn't been sent yet.
-            isRead (boolean): Indicates whether the message has been read.
-            isReadReceiptRequested (boolean): Indicates whether a read receipt is requested for the message.
-            parentFolderId (string): The unique identifier for the message's parent mailFolder.
-            receivedDateTime (string): The date and time the message was received.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-            replyTo (array): The email addresses to use when replying.
-            sender (object): sender
-            sentDateTime (string): The date and time the message was sent.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-            subject (string): The subject of the message.
-            toRecipients (array): The To: recipients for the message.
-            uniqueBody (object): uniqueBody
-            webLink (string): The URL to open the message in Outlook on the web.You can append an ispopout argument to the end of the URL to change how the message is displayed. If ispopout is not present or if it is set to 1, then the message is shown in a popout window. If ispopout is set to 0, the browser shows the message in the Outlook on the web review pane.The message opens in the browser if you are signed in to your mailbox via Outlook on the web. You are prompted to sign in if you are not already signed in with the browser.This URL cannot be accessed from within an iFrame.
-            attachments (array): The fileAttachment and itemAttachment attachments for the message.
-            extensions (array): The collection of open extensions defined for the message. Nullable.
-            multiValueExtendedProperties (array): The collection of multi-value extended properties defined for the message. Nullable.
-            singleValueExtendedProperties (array): The collection of single-value extended properties defined for the message. Nullable.
-
-        Returns:
-            Any: Success
-
-        Raises:
-            HTTPStatusError: Raised when the API request fails with detailed error information including status code and response body.
-
-        Tags:
-            users.message
-        """
-        if user_id is None:
-            raise ValueError("Missing required parameter 'user-id'.")
-        if message_id is None:
-            raise ValueError("Missing required parameter 'message-id'.")
-        request_body_data = None
-        request_body_data = {
-            'id': id,
-            'categories': categories,
-            'changeKey': changeKey,
-            'createdDateTime': createdDateTime,
-            'lastModifiedDateTime': lastModifiedDateTime,
-            'bccRecipients': bccRecipients,
-            'body': body,
-            'bodyPreview': bodyPreview,
-            'ccRecipients': ccRecipients,
-            'conversationId': conversationId,
-            'conversationIndex': conversationIndex,
-            'flag': flag,
-            'from': from_,
-            'hasAttachments': hasAttachments,
-            'importance': importance,
-            'inferenceClassification': inferenceClassification,
-            'internetMessageHeaders': internetMessageHeaders,
-            'internetMessageId': internetMessageId,
-            'isDeliveryReceiptRequested': isDeliveryReceiptRequested,
-            'isDraft': isDraft,
-            'isRead': isRead,
-            'isReadReceiptRequested': isReadReceiptRequested,
-            'parentFolderId': parentFolderId,
-            'receivedDateTime': receivedDateTime,
-            'replyTo': replyTo,
-            'sender': sender,
-            'sentDateTime': sentDateTime,
-            'subject': subject,
-            'toRecipients': toRecipients,
-            'uniqueBody': uniqueBody,
-            'webLink': webLink,
-            'attachments': attachments,
-            'extensions': extensions,
-            'multiValueExtendedProperties': multiValueExtendedProperties,
-            'singleValueExtendedProperties': singleValueExtendedProperties,
-        }
-        request_body_data = {k: v for k, v in request_body_data.items() if v is not None}
-        url = f"{self.base_url}/users/{user_id}/messages/{message_id}"
-        query_params = {}
-        response = self._patch(url, data=request_body_data, params=query_params)
-        return self._handle_response(response)
-
+  
     def delete_user_message_by_id(self, user_id: str, message_id: str) -> Any:
         """
         Deletes a specific message identified by `message-id` for a user with the specified `user-id`, returning a successful status if the operation is completed.
@@ -4401,7 +3849,7 @@ class OutlookApp(APIApplication):
         response = self._post(url, data=request_body_data, params=query_params, content_type='application/json')
         return self._handle_response(response)
 
-    def get_attachment_by_id(self, user_id: str, message_id: str, attachment_id: str, select: Optional[List[str]] = None, expand: Optional[List[str]] = None) -> Any:
+    def get_attachment_by_id_user(self, user_id: str, message_id: str, attachment_id: str, select: Optional[List[str]] = None, expand: Optional[List[str]] = None) -> Any:
         """
         Retrieves a specific attachment from a message associated with a user, allowing optional selection and expansion of fields through query parameters.
 
@@ -4710,37 +4158,6 @@ class OutlookApp(APIApplication):
         response = self._get(url, params=query_params)
         return self._handle_response(response)
 
-    def copy_message(self, user_id: str, message_id: str, DestinationId: Optional[str] = None) -> Any:
-        """
-        Copies a message to a folder within the specified user's mailbox using the Microsoft Graph API.
-
-        Args:
-            user_id (string): user-id
-            message_id (string): message-id
-            DestinationId (string): DestinationId
-
-        Returns:
-            Any: Success
-
-        Raises:
-            HTTPStatusError: Raised when the API request fails with detailed error information including status code and response body.
-
-        Tags:
-            users.message
-        """
-        if user_id is None:
-            raise ValueError("Missing required parameter 'user-id'.")
-        if message_id is None:
-            raise ValueError("Missing required parameter 'message-id'.")
-        request_body_data = None
-        request_body_data = {
-            'DestinationId': DestinationId,
-        }
-        request_body_data = {k: v for k, v in request_body_data.items() if v is not None}
-        url = f"{self.base_url}/users/{user_id}/messages/{message_id}/microsoft.graph.copy"
-        query_params = {}
-        response = self._post(url, data=request_body_data, params=query_params, content_type='application/json')
-        return self._handle_response(response)
 
     def forward_message_by_user(self, user_id: str, message_id: str, ToRecipients: Optional[List[dict[str, dict[str, Any]]]] = None, Message: Optional[Any] = None, Comment: Optional[str] = None) -> Any:
         """
@@ -4778,73 +4195,7 @@ class OutlookApp(APIApplication):
         response = self._post(url, data=request_body_data, params=query_params, content_type='application/json')
         return self._handle_response(response)
 
-    def create_reply_to_message(self, user_id: str, message_id: str, Message: Optional[Any] = None, Comment: Optional[str] = None) -> Any:
-        """
-        Creates a draft message in JSON format to reply to an existing message using the Microsoft Graph API, allowing the specification of the reply content in the request body.
 
-        Args:
-            user_id (string): user-id
-            message_id (string): message-id
-            Message (string): Message
-            Comment (string): Comment
-
-        Returns:
-            Any: Success
-
-        Raises:
-            HTTPStatusError: Raised when the API request fails with detailed error information including status code and response body.
-
-        Tags:
-            users.message
-        """
-        if user_id is None:
-            raise ValueError("Missing required parameter 'user-id'.")
-        if message_id is None:
-            raise ValueError("Missing required parameter 'message-id'.")
-        request_body_data = None
-        request_body_data = {
-            'Message': Message,
-            'Comment': Comment,
-        }
-        request_body_data = {k: v for k, v in request_body_data.items() if v is not None}
-        url = f"{self.base_url}/users/{user_id}/messages/{message_id}/microsoft.graph.createReply"
-        query_params = {}
-        response = self._post(url, data=request_body_data, params=query_params, content_type='application/json')
-        return self._handle_response(response)
-
-    def create_reply_all_message(self, user_id: str, message_id: str, Message: Optional[Any] = None, Comment: Optional[str] = None) -> Any:
-        """
-        Creates a draft reply message addressed to the sender and all recipients of the specified message, supporting JSON or MIME format in the request body[1][4].
-
-        Args:
-            user_id (string): user-id
-            message_id (string): message-id
-            Message (string): Message
-            Comment (string): Comment
-
-        Returns:
-            Any: Success
-
-        Raises:
-            HTTPStatusError: Raised when the API request fails with detailed error information including status code and response body.
-
-        Tags:
-            users.message
-        """
-        if user_id is None:
-            raise ValueError("Missing required parameter 'user-id'.")
-        if message_id is None:
-            raise ValueError("Missing required parameter 'message-id'.")
-        request_body_data = None
-        request_body_data = {
-            'Message': Message,
-            'Comment': Comment,
-        }
-        request_body_data = {k: v for k, v in request_body_data.items() if v is not None}
-        url = f"{self.base_url}/users/{user_id}/messages/{message_id}/microsoft.graph.createReplyAll"
-        query_params = {}
-        response = self._post(url, data=request_body_data, params=query_params, content_type='application/json')
-        return self._handle_response(response)
 
     def forward_message_by_id(self, user_id: str, message_id: str, ToRecipients: Optional[List[dict[str, dict[str, Any]]]] = None, Message: Optional[Any] = None, Comment: Optional[str] = None) -> Any:
         """
@@ -5123,34 +4474,24 @@ class OutlookApp(APIApplication):
             self.create_child_folder_messages,
             self.get_nested_message,
             self.update_message_in_folder,
-            self.delete_message_by_id,
-            self.get_message_value,
             self.update_user_message,
             self.delete_message_by_user_and_folder_id,
             self.get_mail_attachment,
-            self.add_attachment_to_message,
             self.get_attachment_details,
             self.delete_attachment,
             self.count_attachments,
             self.create_upload_session,
-            self.get_extensions_by_message_id,
-            self.add_message_extension,
             self.get_mail_message_extension,
-            self.update_message_extension,
             self.delete_message_extension,
-            self.get_extensions_count,
             self.copy_message,
             self.create_message_forward,
             self.create_reply_to_child_message,
-            self.create_reply_all_message,
             self.forward_message,
-            self.move_message_to_folder,
-            self.delete_message_permanently,
+            self.move_message_to_folder_copy,
             self.reply_to_message_by_user,
             self.reply_all_to_message,
-            self.send_user_message,
+            self.send_user_message_folder,
             self.count_user_mail_messages,
-            self.get_delta_messages,
             self.copy_child_folders,
             self.move_child_folder,
             self.permanent_delete_child_folder,
@@ -5159,20 +4500,20 @@ class OutlookApp(APIApplication):
             self.list_user_mail_folder_message_rules,
             self.create_message_rule,
             self.get_message_rule_details,
-            self.update_message_rule,
-            self.delete_message_rule,
-            self.count_message_rules,
-            self.list_user_mail_folder_messages,
+            self.update_message_rule_mail_folder,
+            self.delete_message_rule_mail_folder,
+            self.count_message_rules_mail_folder,
+            self.list_user_mail_folder_messages_mail_folder,
             self.create_message_in_folder,
             self.get_user_mail_folder_message_by_id,
             self.update_message_by_id,
-            self.delete_message_by_id,
-            self.get_message_value,
+            self.delete_message_by_id_mail_folder,
+            self.get_message_value_by_id,
             self.update_message_value,
             self.delete_message_content_by_id,
-            self.get_attachment_by_id,
-            self.add_attachment_to_message,
-            self.get_attachment_by_id,
+            self.get_attachment_by_id_mail_folder,
+            self.add_attachment_to_message_mail_folders,
+            self.get_attachment_by_id_user,
             self.delete_user_message_attachment,
             self.count_attachment_by_message_id,
             self.create_message_attachment_upload_session,
@@ -5180,15 +4521,10 @@ class OutlookApp(APIApplication):
             self.add_message_extension,
             self.get_mail_extension,
             self.update_message_extension,
-            self.delete_message_extension,
             self.get_extensions_count,
             self.copy_message_to_folder,
-            self.forward_message,
-            self.create_reply_to_message,
             self.create_reply_all_message,
-            self.forward_message,
             self.move_message_to_folder,
-            self.delete_message_permanently,
             self.reply_message_by_id,
             self.reply_all_message,
             self.send_user_message,
@@ -5202,7 +4538,6 @@ class OutlookApp(APIApplication):
             self.list_user_messages,
             self.create_user_message,
             self.get_message_details,
-            self.update_user_message,
             self.delete_user_message_by_id,
             self.get_user_message_value_raw,
             self.update_user_message_value,
@@ -5219,16 +4554,13 @@ class OutlookApp(APIApplication):
             self.patch_user_message_extension_by_id,
             self.delete_extension_by_user_message_id,
             self.count_message_extension,
-            self.copy_message,
             self.forward_message_by_user,
             self.create_reply_to_message,
-            self.create_reply_all_message,
             self.forward_message_by_id,
             self.move_user_message,
             self.delete_message_permanently,
             self.reply_message,
             self.reply_all_user_message_by_id,
-            self.send_user_message,
             self.count_user_messages,
             self.get_microsoft_graph_delta_messages_by_user_id
         ]
