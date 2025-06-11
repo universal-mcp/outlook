@@ -31,7 +31,7 @@ class OutlookApp(APIApplication):
             HTTPStatusError: Raised when the API request fails with detailed error information including status code and response body.
 
         Tags:
-            users.message
+            users.message, important
         """
         if user_id is None:
             raise ValueError("Missing required parameter 'user-id'.")
@@ -76,7 +76,7 @@ class OutlookApp(APIApplication):
             HTTPStatusError: Raised when the API request fails with detailed error information including status code and response body.
 
         Tags:
-            users.user.Actions
+            users.user.Actions, important
         """
         if user_id is None:
             raise ValueError("Missing required parameter 'user-id'.")
@@ -123,7 +123,7 @@ class OutlookApp(APIApplication):
             HTTPStatusError: Raised when the API request fails with detailed error information including status code and response body.
 
         Tags:
-            users.mailFolder
+            users.mailFolder, important
         """
         if user_id is None:
             raise ValueError("Missing required parameter 'user-id'.")
@@ -177,7 +177,7 @@ class OutlookApp(APIApplication):
             HTTPStatusError: Raised when the API request fails with detailed error information including status code and response body.
 
         Tags:
-            users.message
+            users.message, important
         """
         if user_id is None:
             raise ValueError("Missing required parameter 'user-id'.")
@@ -225,7 +225,7 @@ class OutlookApp(APIApplication):
             HTTPStatusError: Raised when the API request fails with detailed error information including status code and response body.
 
         Tags:
-            users.message
+            users.message, important
         """
         if user_id is None:
             raise ValueError("Missing required parameter 'user-id'.")
@@ -259,7 +259,7 @@ class OutlookApp(APIApplication):
             HTTPStatusError: Raised when the API request fails with detailed error information including status code and response body.
 
         Tags:
-            users.message
+            users.message, important
         """
         if user_id is None:
             raise ValueError("Missing required parameter 'user-id'.")
@@ -305,7 +305,7 @@ class OutlookApp(APIApplication):
             HTTPStatusError: Raised when the API request fails with detailed error information including status code and response body.
 
         Tags:
-            users.message
+            users.message, important
         """
         if user_id is None:
             raise ValueError("Missing required parameter 'user-id'.")
