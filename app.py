@@ -5,7 +5,7 @@ from universal_mcp.integrations import Integration
 
 class OutlookApp(APIApplication):
     def __init__(self, integration: Integration = None, **kwargs) -> None:
-        super().__init__(name="outlookapp", integration=integration, **kwargs)
+        super().__init__(name="outlook", integration=integration, **kwargs)
         self.base_url = "https://graph.microsoft.com/v1.0"
 
     def users_message_reply(
