@@ -145,6 +145,7 @@ class OutlookApp(APIApplication):
     def user_list_message(
         self,
         user_id: str,
+        select: list[str] = ["bodyPreview"],
         includeHiddenMessages: Optional[str] = None,
         top: Optional[int] = None,
         skip: Optional[int] = None,
@@ -152,7 +153,6 @@ class OutlookApp(APIApplication):
         filter: Optional[str] = None,
         count: Optional[bool] = None,
         orderby: Optional[List[str]] = None,
-        select: Optional[List[str]] = None,
         expand: Optional[List[str]] = None,
     ) -> dict[str, Any]:
         """
@@ -160,6 +160,7 @@ class OutlookApp(APIApplication):
 
         Args:
             user_id (string): user-id
+            select (list): Select properties to be returned. Defaults to ['bodyPreview'].
             includeHiddenMessages (string): Include Hidden Messages
             top (integer): Show only the first n items Example: '50'.
             skip (integer): Skip the first n items
@@ -167,7 +168,6 @@ class OutlookApp(APIApplication):
             filter (string): Filter items by property values
             count (boolean): Include count of items
             orderby (array): Order items by property values
-            select (array): Select properties to be returned
             expand (array): Expand related entities
 
         Returns:
