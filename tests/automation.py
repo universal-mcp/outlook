@@ -14,10 +14,13 @@ import uuid
 
 load_dotenv()
 
-# Configure LangSmith for tracing and visualization
-os.environ["LANGCHAIN_TRACING_V2"] = "true"
-os.environ["LANGCHAIN_PROJECT"] = "app-agent-automation"
-os.environ["LANGCHAIN_API_KEY"] = "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"  # Replace with your actual key from https://smith.langchain.com/settings
+langsmith_api_key = os.getenv("LANGCHAIN_API_KEY")
+if langsmith_api_key:
+    os.environ["LANGCHAIN_TRACING_V2"] = "true"
+    os.environ["LANGCHAIN_PROJECT"] = os.getenv("LANGCHAIN_PROJECT", "app-agent-automation")
+    print("🔍 LangSmith tracing enabled")
+else:
+    print("⚠️  LangSmith tracing disabled - set LANGCHAIN_API_KEY to enable")
 
 
 class AgentState(TypedDict):
@@ -296,9 +299,12 @@ async def test_app_agent():
         
         if result["success"]:
             print("✅ Success!")
-            print(f"🔍 Trace ID: {result.get('trace_id', 'N/A')}")
-            print(f"📊 View trace at: https://smith.langchain.com/traces/{result.get('trace_id', 'N/A')}")
-            print(f"🌐 Project: https://smith.langchain.com/o/default/p/app-agent-automation")
+            
+            if os.getenv("LANGCHAIN_API_KEY"):
+                print(f"🔍 Trace ID: {result.get('trace_id', 'N/A')}")
+                project_name = os.getenv("LANGCHAIN_PROJECT", "app-agent-automation")
+                print(f"📊 View trace at: https://smith.langchain.com/traces/{result.get('trace_id', 'N/A')}")
+                print(f"🌐 Project: https://smith.langchain.com/o/default/p/{project_name}")
             
             if result["llm_messages"]:
                 llm_response = result["llm_messages"][-1]["content"]
@@ -314,7 +320,8 @@ async def test_app_agent():
                     print(f"Tool Error: {tool_result.get('error', 'Unknown error')}")
         else:
             print(f"❌ Failed: {result['error']}")
-            print(f"🔍 Trace ID: {result.get('trace_id', 'N/A')}")
+            if os.getenv("LANGCHAIN_API_KEY"):
+                print(f"🔍 Trace ID: {result.get('trace_id', 'N/A')}")
             
     except Exception as e:
         print(f"❌ Setup failed: {e}")
