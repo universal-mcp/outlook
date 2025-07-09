@@ -74,31 +74,44 @@ class OutlookAgent:
             print(f"🔗 AgentR Base URL: {agentr_base_url}")
         
     def _setup_tools(self):
-        """Setup tools in tool manager"""
+        """Setup tools in tool manager using SDK"""
         available_tools = self.outlook_app.list_tools()
         for tool_func in available_tools:
             self.tool_manager.add_tool(tool_func)
     
     def _get_tool_descriptions(self) -> str:
-        """Get formatted tool descriptions for LLM"""
+        """Get formatted tool descriptions for LLM using SDK"""
         tools_info = []
-        available_tools = self.outlook_app.list_tools()
+        all_tools = self.tool_manager.get_tools_by_app()
         
-        for tool_func in available_tools:
-            import inspect
-            sig = inspect.signature(tool_func)
-            doc = inspect.getdoc(tool_func) or "No description available"
-            
+        for tool in all_tools:
+            # Format parameters for display
             params = []
-            for param_name, param in sig.parameters.items():
-                if param_name != 'self':
-                    param_type = param.annotation.__name__ if param.annotation != inspect.Parameter.empty else "str"
-                    params.append(f"{param_name}: {param_type}")
+            if tool.parameters:
+                # Handle both dict and list formats for parameters
+                if isinstance(tool.parameters, dict):
+                    for param_name, param_info in tool.parameters.items():
+                        if isinstance(param_info, dict):
+                            param_type = param_info.get('type', 'str')
+                        else:
+                            param_type = str(param_info)
+                        params.append(f"{param_name}: {param_type}")
+                elif isinstance(tool.parameters, list) and tool.parameters:
+                    for param in tool.parameters:  # type: ignore
+                        if isinstance(param, dict):
+                            param_name = param.get('name', 'unknown')
+                            param_type = param.get('type', 'str')
+                            params.append(f"{param_name}: {param_type}")
+                        else:
+                            params.append(str(param))
             
             tool_info = f"""
-Tool: {tool_func.__name__}
-Description: {doc}
-Parameters: {', '.join(params)}
+Tool: {tool.name}
+Description: {tool.description or 'No description available'}
+Arguments: {tool.args_description or 'No arguments description'}
+Returns: {tool.returns_description or 'No returns description'}
+Parameters: {', '.join(params) if params else 'No parameters'}
+Full Parameters Schema: {tool.parameters}
 """
             tools_info.append(tool_info)
         
@@ -249,14 +262,21 @@ User request: {user_prompt}"""
 
 # Simple test function
 async def test_outlook_agent():
-    """Test the Outlook agent with a sample request"""
+    """Test the Outlook agent with full automation workflow"""
     
-    print("🚀 Testing Outlook Agent")
+    print("🚀 Testing Outlook Agent - Tool Descriptions")
     print("=" * 50)
     
     try:
         # Initialize agent (all setup handled internally)
         agent = OutlookAgent()
+        
+        # Print tool descriptions to verify they're working correctly
+        print("📋 Tool Descriptions:")
+        print("=" * 50)
+        tool_descriptions = agent._get_tool_descriptions()
+        print(tool_descriptions)
+        print("=" * 50)
         
         # Test with sample prompt
         test_prompt = "list my latest 3 emails"
