@@ -83,9 +83,14 @@ class AppAgent:
         
     def _setup_tools(self):
         """Setup tools in tool manager using SDK"""
-        available_tools = self.app.list_tools()
-        for tool_func in available_tools:
-            self.tool_manager.add_tool(tool_func)
+        # Define selected tools directly 
+        selected_tools = ["user_list_message", "user_send_mail"]  # Modify this array as needed
+        
+        # Add only the selected tools directly
+        for tool_name in selected_tools:
+            if hasattr(self.app, tool_name):
+                tool_func = getattr(self.app, tool_name)
+                self.tool_manager.add_tool(tool_func)
     
     def _get_tool_descriptions(self) -> str:
         """Get formatted tool descriptions for LLM using SDK"""
@@ -93,10 +98,8 @@ class AppAgent:
         all_tools = self.tool_manager.get_tools_by_app()
         
         for tool in all_tools:
-            # Format parameters for display
             params = []
             if tool.parameters:
-                # Handle both dict and list formats for parameters
                 if isinstance(tool.parameters, dict):
                     for param_name, param_info in tool.parameters.items():
                         if isinstance(param_info, dict):
