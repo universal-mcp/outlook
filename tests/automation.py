@@ -44,32 +44,23 @@ class AppAgent:
         
         # Setup AgentR integration 
         agentr_api_key = os.getenv("AGENTR_API_KEY")
-        agentr_base_url = os.getenv("AGENTR_BASE_URL")
-        app_name = os.getenv("APP_NAME", "outlook")  # Default to outlook, can be overridden
         if not agentr_api_key:
             raise ValueError("AGENTR_API_KEY environment variable is required")
         
-        integration_kwargs = {"name": app_name, "api_key": agentr_api_key}
-        if agentr_base_url:
-            integration_kwargs["base_url"] = agentr_base_url
-        
-        self.integration = AgentRIntegration(**integration_kwargs)
-        self.app = OutlookApp(integration=self.integration)  # This can be changed for different apps
+        self.integration = AgentRIntegration(name="outlook", api_key=agentr_api_key, base_url="https://api.agentr.dev")
+        self.app = OutlookApp(integration=self.integration)
         
         # Setup Azure OpenAI client
         azure_api_key = os.getenv("AZURE_OPENAI_API_KEY")
         azure_endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
-        azure_deployment = os.getenv("OPEN_AI_MODEL", "o4-mini")
-        api_version = os.getenv("AZURE_OPENAI_API_VERSION", "2025-03-01-preview")
-        
         if not azure_api_key or not azure_endpoint:
             raise ValueError("Azure OpenAI credentials required: AZURE_OPENAI_API_KEY and AZURE_OPENAI_ENDPOINT")
         
-        self.model = azure_deployment
+        self.model = os.getenv("OPEN_AI_MODEL", "o4-mini")
         self.client = AzureOpenAI(
             api_key=azure_api_key,
             azure_endpoint=azure_endpoint,
-            api_version=api_version
+            api_version="2025-03-01-preview"
         )
         
         # Setup tool manager and workflow
@@ -78,13 +69,12 @@ class AppAgent:
         self.workflow = self._build_workflow()
         
         print(f"🎭 App Agent initialized successfully")
-        if agentr_base_url:
-            print(f"🔗 AgentR Base URL: {agentr_base_url}")
+        print(f"🔗 AgentR Base URL: https://api.agentr.dev")
         
     def _setup_tools(self):
         """Setup tools in tool manager using SDK"""
         # Define selected tools directly 
-        selected_tools = ["user_list_message", "user_send_mail"]  # Modify this array as needed
+        selected_tools = ["user_list_message", "user_send_mail"]  # Modify this array to add/remove tools
         
         # Add only the selected tools directly
         for tool_name in selected_tools:
@@ -333,8 +323,6 @@ async def test_app_agent():
         print("  - AZURE_OPENAI_ENDPOINT") 
         print("  - OPEN_AI_MODEL (optional, defaults to 'o4-mini')")
         print("  - AGENTR_API_KEY")
-        print("  - AGENTR_BASE_URL (optional)")
-        print("  - APP_NAME (optional, defaults to 'outlook')")
         print("  - LANGCHAIN_API_KEY (optional, for LangSmith visualization)")
 
 
