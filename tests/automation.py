@@ -10,8 +10,14 @@ from universal_mcp.tools import ToolManager
 
 from langgraph.graph import StateGraph, END, START
 from typing_extensions import TypedDict
+import uuid
 
 load_dotenv()
+
+# Configure LangSmith for tracing and visualization
+os.environ["LANGCHAIN_TRACING_V2"] = "true"
+os.environ["LANGCHAIN_PROJECT"] = "app-agent-automation"
+os.environ["LANGCHAIN_API_KEY"] = "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"  # Replace with your actual key from https://smith.langchain.com/settings
 
 
 class AgentState(TypedDict):
@@ -69,8 +75,6 @@ class AppAgent:
         self.workflow = self._build_workflow()
         
         print(f"🎭 App Agent initialized successfully")
-        print(f"🤖 Azure OpenAI Model: {azure_deployment}")
-        print(f"🌐 Azure Endpoint: {azure_endpoint}")
         if agentr_base_url:
             print(f"🔗 AgentR Base URL: {agentr_base_url}")
         
@@ -118,7 +122,7 @@ Full Parameters Schema: {tool.parameters}
         
         return '\n'.join(tools_info)
     
-    def _build_workflow(self) -> StateGraph:
+    def _build_workflow(self):
         """Build simplified workflow"""
         workflow = StateGraph(AgentState)
         
@@ -235,6 +239,9 @@ User request: {user_prompt}"""
     
     async def process_request(self, user_prompt: str) -> Dict[str, Any]:
         """Process user request through the LangGraph workflow"""
+        # Generate a unique trace ID for this request
+        trace_id = str(uuid.uuid4())
+        
         initial_state = AgentState(
             messages=[],
             user_prompt=user_prompt,
@@ -244,18 +251,22 @@ User request: {user_prompt}"""
         )
         
         try:
+            # Add metadata for LangSmith tracing
             final_state = await self.workflow.ainvoke(initial_state)
+            
             return {
                 "success": True,
                 "user_prompt": user_prompt,
                 "tool_results": final_state["tool_results"],
-                "llm_messages": final_state["messages"]
+                "llm_messages": final_state["messages"],
+                "trace_id": trace_id
             }
         except Exception as e:
             return {
                 "success": False,
                 "error": str(e),
-                "user_prompt": user_prompt
+                "user_prompt": user_prompt,
+                "trace_id": trace_id
             }
 
 
@@ -277,7 +288,6 @@ async def test_app_agent():
         print(tool_descriptions)
         print("=" * 50)
         
-        # Test with sample prompt
         test_prompt = "list my 3 emails, For user_id parameter, always use rishabh@agentr.dev unless specified otherwise"
         print(f"Testing: {test_prompt}")
         print("-" * 50)
@@ -286,13 +296,14 @@ async def test_app_agent():
         
         if result["success"]:
             print("✅ Success!")
+            print(f"🔍 Trace ID: {result.get('trace_id', 'N/A')}")
+            print(f"📊 View trace at: https://smith.langchain.com/traces/{result.get('trace_id', 'N/A')}")
+            print(f"🌐 Project: https://smith.langchain.com/o/default/p/app-agent-automation")
             
-            # Show what LLM decided
             if result["llm_messages"]:
                 llm_response = result["llm_messages"][-1]["content"]
                 print(f"LLM Response:\n{llm_response}")
             
-            # Show tool execution results
             if result["tool_results"]:
                 tool_result = result["tool_results"][0]
                 if tool_result["status"] == "success":
@@ -303,6 +314,7 @@ async def test_app_agent():
                     print(f"Tool Error: {tool_result.get('error', 'Unknown error')}")
         else:
             print(f"❌ Failed: {result['error']}")
+            print(f"🔍 Trace ID: {result.get('trace_id', 'N/A')}")
             
     except Exception as e:
         print(f"❌ Setup failed: {e}")
@@ -313,6 +325,7 @@ async def test_app_agent():
         print("  - AGENTR_API_KEY")
         print("  - AGENTR_BASE_URL (optional)")
         print("  - APP_NAME (optional, defaults to 'outlook')")
+        print("  - LANGCHAIN_API_KEY (optional, for LangSmith visualization)")
 
 
 async def main():
