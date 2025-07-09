@@ -27,7 +27,7 @@ class AgentState(TypedDict):
     is_complete: bool
 
 
-class OutlookAgent:
+class AppAgent:
     """Self-contained Outlook agent with LLM tool calling and LangGraph workflow"""
     
     def __init__(self):
@@ -36,15 +36,16 @@ class OutlookAgent:
         # Setup AgentR integration 
         agentr_api_key = os.getenv("AGENTR_API_KEY")
         agentr_base_url = os.getenv("AGENTR_BASE_URL")
+        app_name = os.getenv("APP_NAME", "outlook")  # Default to outlook, can be overridden
         if not agentr_api_key:
             raise ValueError("AGENTR_API_KEY environment variable is required")
         
-        integration_kwargs = {"name": "outlook", "api_key": agentr_api_key}
+        integration_kwargs = {"name": app_name, "api_key": agentr_api_key}
         if agentr_base_url:
             integration_kwargs["base_url"] = agentr_base_url
         
         self.integration = AgentRIntegration(**integration_kwargs)
-        self.outlook_app = OutlookApp(integration=self.integration)
+        self.app = OutlookApp(integration=self.integration)  # This can be changed for different apps
         
         # Setup Azure OpenAI client
         azure_api_key = os.getenv("AZURE_OPENAI_API_KEY")
@@ -67,7 +68,7 @@ class OutlookAgent:
         self._setup_tools()
         self.workflow = self._build_workflow()
         
-        print(f"🎭 Outlook Agent initialized successfully")
+        print(f"🎭 App Agent initialized successfully")
         print(f"🤖 Azure OpenAI Model: {azure_deployment}")
         print(f"🌐 Azure Endpoint: {azure_endpoint}")
         if agentr_base_url:
@@ -75,7 +76,7 @@ class OutlookAgent:
         
     def _setup_tools(self):
         """Setup tools in tool manager using SDK"""
-        available_tools = self.outlook_app.list_tools()
+        available_tools = self.app.list_tools()
         for tool_func in available_tools:
             self.tool_manager.add_tool(tool_func)
     
@@ -135,7 +136,7 @@ Full Parameters Schema: {tool.parameters}
         user_prompt = state["user_prompt"]
         tools_desc = self._get_tool_descriptions()
         
-        system_prompt = f"""You are an Outlook assistant. Based on the user's request, you need to:
+        system_prompt = f"""You are an app assistant. Based on the user's request, you need to:
 1. Choose the appropriate tool from the available tools
 2. Provide the correct arguments for that tool
 
@@ -147,9 +148,7 @@ TOOL: tool_name
 ARGUMENTS: {{"param1": "value1", "param2": "value2"}}
 
 RULES:
-- For user_id parameter, always use "rishabh@agentr.dev" unless specified otherwise
-- For user_list_message: Only provide user_id and top parameters, avoid select/orderby/filter as they have defaults
-- Keep arguments minimal and only include what's necessary for the user's request
+- Keep arguments minimal and only include what's necessary for the user's request so required parameters only unless a user specifies the other parameters
 
 User request: {user_prompt}"""
 
@@ -261,15 +260,15 @@ User request: {user_prompt}"""
 
 
 # Simple test function
-async def test_outlook_agent():
-    """Test the Outlook agent with full automation workflow"""
+async def test_app_agent():
+    """Test the app agent with full automation workflow"""
     
-    print("🚀 Testing Outlook Agent - Tool Descriptions")
+    print("🚀 Testing App Agent - Tool Descriptions")
     print("=" * 50)
     
     try:
         # Initialize agent (all setup handled internally)
-        agent = OutlookAgent()
+        agent = AppAgent()
         
         # Print tool descriptions to verify they're working correctly
         print("📋 Tool Descriptions:")
@@ -279,7 +278,7 @@ async def test_outlook_agent():
         print("=" * 50)
         
         # Test with sample prompt
-        test_prompt = "list my latest 3 emails"
+        test_prompt = "list my 3 emails, For user_id parameter, always use rishabh@agentr.dev unless specified otherwise"
         print(f"Testing: {test_prompt}")
         print("-" * 50)
         
@@ -313,11 +312,12 @@ async def test_outlook_agent():
         print("  - OPEN_AI_MODEL (optional, defaults to 'o4-mini')")
         print("  - AGENTR_API_KEY")
         print("  - AGENTR_BASE_URL (optional)")
+        print("  - APP_NAME (optional, defaults to 'outlook')")
 
 
 async def main():
     """Main function"""
-    await test_outlook_agent()
+    await test_app_agent()
 
 
 if __name__ == "__main__":
