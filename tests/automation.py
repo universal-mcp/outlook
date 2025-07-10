@@ -74,7 +74,7 @@ class AppAgent:
     def _setup_tools(self):
         """Setup tools in tool manager using SDK"""
         # Define selected tools directly 
-        selected_tools = ["user_list_message", "user_send_mail"]  # Modify this array to add/remove tools
+        selected_tools = ["user_list_message", "user_send_mail", "user_get_message", "user_delete_message", "users_message_reply"]  # Modify this array to add/remove tools
         
         # Add only the selected tools directly
         for tool_name in selected_tools:
@@ -483,7 +483,8 @@ async def test_app_agent():
         # Array of prompts to execute sequentially
         test_prompts = [
             "list my 3 emails, For user_id parameter, always use rishabh@agentr.dev unless specified otherwise",
-            "Send an email to rshvraj36@gmail.com with subject Agentr and body Agentr is a greatmcp tool.For user_id parameter, always use rishabh@agentr.dev"
+            "get message details of the email sent by rshvraj30@gmail.com",
+            "Send a reply to that message with message hey how are you"
         ]
         
         print(f"📝 Executing {len(test_prompts)} prompts sequentially in a single trace:")
