@@ -273,6 +273,8 @@ async def test_app_agent():
     print("🚀 Testing App Agent - Tool Descriptions")
     print("=" * 50)
     
+    test_passed = False
+    
     try:
         # Initialize agent (all setup handled internally)
         agent = AppAgent()
@@ -284,51 +286,100 @@ async def test_app_agent():
         print(tool_descriptions)
         print("=" * 50)
         
-        test_prompt = "list my 3 emails, For user_id parameter, always use rishabh@agentr.dev unless specified otherwise"
-        print(f"Testing: {test_prompt}")
+        # Array of prompts to execute sequentially
+        test_prompts = [
+            "list my 3 emails, For user_id parameter, always use rishabh@agentr.dev unless specified otherwise",
+            "Send an email to rshvraj36@gmail.com with subject test and body hi.For user_id parameter, always use rishabh@agentr.dev"
+        ]
+        
+        print(f"📝 Executing {len(test_prompts)} prompts sequentially:")
         print("-" * 50)
         
-        result = await agent.process_request(test_prompt)
+        all_results = []
         
-        if result["success"]:
-            print("✅ Success!")
+        for i, prompt in enumerate(test_prompts, 1):
+            print(f"\n🔄 Prompt {i}/{len(test_prompts)}: {prompt}")
+            print("-" * 30)
             
-            if os.getenv("LANGCHAIN_API_KEY"):
-                print(f"🔍 Trace ID: {result.get('trace_id', 'N/A')}")
-                project_name = os.getenv("LANGCHAIN_PROJECT", "app-agent-automation")
-                print(f"📊 View trace at: https://smith.langchain.com/traces/{result.get('trace_id', 'N/A')}")
-                print(f"🌐 Project: https://smith.langchain.com/o/default/p/{project_name}")
+            result = await agent.process_request(prompt)
+            all_results.append(result)
             
-            if result["llm_messages"]:
-                llm_response = result["llm_messages"][-1]["content"]
-                print(f"LLM Response:\n{llm_response}")
-            
-            if result["tool_results"]:
-                tool_result = result["tool_results"][0]
-                if tool_result["status"] == "success":
-                    print(f"Tool: {tool_result['tool']}")
-                    print(f"Arguments: {tool_result['arguments']}")
-                    print(f"Result: {tool_result['result']}")
-                else:
-                    print(f"Tool Error: {tool_result.get('error', 'Unknown error')}")
+            if result["success"]:
+                print("✅ Success!")
+                
+                if os.getenv("LANGCHAIN_API_KEY"):
+                    print(f"🔍 Trace ID: {result.get('trace_id', 'N/A')}")
+                    project_name = os.getenv("LANGCHAIN_PROJECT", "app-agent-automation")
+                    print(f"📊 View trace at: https://smith.langchain.com/traces/{result.get('trace_id', 'N/A')}")
+                
+                if result["llm_messages"]:
+                    llm_response = result["llm_messages"][-1]["content"]
+                    print(f"LLM Response:\n{llm_response}")
+                
+                if result["tool_results"]:
+                    tool_result = result["tool_results"][0]
+                    if tool_result["status"] == "success":
+                        print(f"Tool: {tool_result['tool']}")
+                        print(f"Arguments: {tool_result['arguments']}")
+                        print(f"Result: {tool_result['result']}")
+                    else:
+                        print(f"❌ Tool Error: {tool_result.get('error', 'Unknown error')}")
+                        print(f"❌ Prompt {i} failed but continuing with next prompts...")
+            else:
+                print(f"❌ Failed: {result['error']}")
+                if os.getenv("LANGCHAIN_API_KEY"):
+                    print(f"🔍 Trace ID: {result.get('trace_id', 'N/A')}")
+                print(f"❌ Prompt {i} failed but continuing with next prompts...")
+        
+        # Summary of all results
+        print("\n" + "=" * 50)
+        print("📊 EXECUTION SUMMARY")
+        print("=" * 50)
+        
+        successful_prompts = sum(1 for result in all_results if result["success"])
+        failed_prompts = len(all_results) - successful_prompts
+        
+        print(f"✅ Successful prompts: {successful_prompts}/{len(test_prompts)}")
+        print(f"❌ Failed prompts: {failed_prompts}/{len(test_prompts)}")
+        
+        if os.getenv("LANGCHAIN_API_KEY"):
+            project_name = os.getenv("LANGCHAIN_PROJECT", "app-agent-automation")
+            print(f"🌐 Project: https://smith.langchain.com/o/default/p/{project_name}")
+        
+        # Consider test passed if at least one prompt succeeded
+        test_passed = successful_prompts > 0
+        
+        if test_passed:
+            print("🎉 Test workflow completed!")
         else:
-            print(f"❌ Failed: {result['error']}")
-            if os.getenv("LANGCHAIN_API_KEY"):
-                print(f"🔍 Trace ID: {result.get('trace_id', 'N/A')}")
+            print("❌ All prompts failed!")
             
     except Exception as e:
-        print(f"❌ Setup failed: {e}")
+        print(f"❌ Test failed: {e}")
         print("\nMake sure you have these environment variables set:")
         print("  - AZURE_OPENAI_API_KEY")
         print("  - AZURE_OPENAI_ENDPOINT") 
         print("  - OPEN_AI_MODEL (optional, defaults to 'o4-mini')")
         print("  - AGENTR_API_KEY")
         print("  - LANGCHAIN_API_KEY (optional, for LangSmith visualization)")
+        raise  # Re-raise the exception to fail the test
+    
+    if not test_passed:
+        raise AssertionError("Test did not complete successfully")
+    
+    print("🎉 Sequential prompt execution completed successfully!")
+    return True
 
 
 async def main():
     """Main function"""
-    await test_app_agent()
+    try:
+        await test_app_agent()
+        print("✅ All tests passed!")
+        exit(0)  # Success exit code
+    except Exception as e:
+        print(f"❌ Tests failed: {e}")
+        exit(1)  # Failure exit code
 
 
 if __name__ == "__main__":
