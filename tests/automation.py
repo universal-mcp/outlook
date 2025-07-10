@@ -235,9 +235,6 @@ User request: {user_prompt}"""
     
     async def process_request(self, user_prompt: str) -> Dict[str, Any]:
         """Process user request through the LangGraph workflow"""
-        # Generate a unique trace ID for this request
-        trace_id = str(uuid.uuid4())
-        
         initial_state = AgentState(
             messages=[],
             user_prompt=user_prompt,
@@ -247,12 +244,49 @@ User request: {user_prompt}"""
         )
         
         try:
-            # Add metadata for LangSmith tracing
+            # Execute workflow without generating new trace ID here
             final_state = await self.workflow.ainvoke(initial_state)
             
             return {
                 "success": True,
                 "user_prompt": user_prompt,
+                "tool_results": final_state["tool_results"],
+                "llm_messages": final_state["messages"]
+            }
+        except Exception as e:
+            return {
+                "success": False,
+                "error": str(e),
+                "user_prompt": user_prompt
+            }
+
+    async def process_multiple_requests(self, prompts: List[str]) -> Dict[str, Any]:
+        """Process multiple user requests in a single trace"""
+        # Generate a single trace ID for all requests
+        trace_id = str(uuid.uuid4())
+        
+        print(f"🔍 Single trace ID for all prompts: {trace_id}")
+        
+        all_results = []
+        
+        # Create a single workflow that processes all prompts
+        combined_workflow = self._build_combined_workflow(prompts)
+        
+        initial_state = AgentState(
+            messages=[],
+            user_prompt="",  # Will be set per prompt
+            current_step=0,
+            tool_results=[],
+            is_complete=False
+        )
+        
+        try:
+            # Execute all prompts in a single workflow trace
+            final_state = await combined_workflow.ainvoke(initial_state)
+            
+            return {
+                "success": True,
+                "prompts": prompts,
                 "tool_results": final_state["tool_results"],
                 "llm_messages": final_state["messages"],
                 "trace_id": trace_id
@@ -261,9 +295,169 @@ User request: {user_prompt}"""
             return {
                 "success": False,
                 "error": str(e),
-                "user_prompt": user_prompt,
+                "prompts": prompts,
                 "trace_id": trace_id
             }
+    
+    def _build_combined_workflow(self, prompts: List[str]):
+        """Build workflow that processes multiple prompts sequentially in one trace with tool chaining"""
+        workflow = StateGraph(AgentState)
+        
+        # Add nodes for each prompt - reuse existing planner/executor logic
+        for i, prompt in enumerate(prompts):
+            planner_node_name = f"planner_{i}"
+            executor_node_name = f"executor_{i}"
+            
+            # Create closures to capture the prompt and enable tool chaining
+            def make_planner_node(prompt_text, prompt_index):
+                async def planner_node(state: AgentState) -> AgentState:
+                    print(f"\n🔄 Processing prompt {prompt_index + 1}/{len(prompts)}: {prompt_text}")
+                    # Update state with current prompt and use existing planner logic with tool chaining
+                    new_state = state.copy()
+                    new_state["user_prompt"] = prompt_text
+                    return await self._planner_node_with_context(new_state, prompt_index)
+                return planner_node
+            
+            def make_executor_node(prompt_index):
+                async def executor_node(state: AgentState) -> AgentState:
+                    return await self._executor_node_with_context(state, prompt_index)
+                return executor_node
+            
+            workflow.add_node(planner_node_name, make_planner_node(prompt, i))
+            workflow.add_node(executor_node_name, make_executor_node(i))
+        
+        # Connect the nodes sequentially
+        workflow.add_edge(START, "planner_0")
+        
+        for i in range(len(prompts)):
+            planner_node_name = f"planner_{i}"
+            executor_node_name = f"executor_{i}"
+            
+            workflow.add_edge(planner_node_name, executor_node_name)
+            
+            if i < len(prompts) - 1:
+                next_planner = f"planner_{i + 1}"
+                workflow.add_edge(executor_node_name, next_planner)
+            else:
+                workflow.add_edge(executor_node_name, END)
+        
+        return workflow.compile()
+    
+    async def _planner_node_with_context(self, state: AgentState, prompt_index: int) -> AgentState:
+        """Plan what tool to use with context from previous tool executions"""
+        user_prompt = state["user_prompt"]
+        tools_desc = self._get_tool_descriptions()
+        
+        # Build context from previous tool results
+        context_from_previous_tools = ""
+        if state["tool_results"]:
+            context_from_previous_tools = "\n\nPrevious tool executions in this session:\n"
+            for i, tool_result in enumerate(state["tool_results"]):
+                if tool_result["status"] == "success":
+                    context_from_previous_tools += f"- Step {i+1}: Used {tool_result['tool']} with args {tool_result['arguments']} → Result: {tool_result['result']}\n"
+                else:
+                    context_from_previous_tools += f"- Step {i+1}: Failed to use {tool_result['tool']} → Error: {tool_result.get('error', 'Unknown error')}\n"
+        
+        system_prompt = f"""You are an app assistant. Based on the user's request, you need to:
+1. Choose the appropriate tool from the available tools
+2. Provide the correct arguments for that tool
+
+Available tools:
+{tools_desc}
+
+{context_from_previous_tools}
+
+IMPORTANT: You must respond in this EXACT format:
+TOOL: tool_name
+ARGUMENTS: {{"param1": "value1", "param2": "value2"}}
+
+RULES:
+- Keep arguments minimal and only include what's necessary for the user's request so required parameters only unless a user specifies the other parameters
+- You can reference results from previous tool executions if relevant to the current request
+- Each request should be handled independently unless there's a clear relationship to previous results
+
+User request: {user_prompt}"""
+
+        response = self.client.chat.completions.create(
+            model=self.model,
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt}
+            ]
+        )
+        
+        llm_response = response.choices[0].message.content
+        
+        new_state = state.copy()
+        new_state["messages"].append({
+            "role": "assistant", 
+            "content": llm_response,
+            "prompt": user_prompt,
+            "prompt_index": prompt_index
+        })
+        
+        return new_state
+    
+    async def _executor_node_with_context(self, state: AgentState, prompt_index: int) -> AgentState:
+        """Execute the planned tool with context tracking"""
+        # Find the latest message for this prompt
+        relevant_messages = [msg for msg in state["messages"] if msg.get("prompt_index") == prompt_index]
+        if not relevant_messages:
+            new_state = state.copy()
+            new_state["tool_results"].append({
+                "error": "No LLM response found for execution",
+                "status": "error",
+                "prompt_index": prompt_index
+            })
+            return new_state
+            
+        llm_response = relevant_messages[-1]["content"]
+        user_prompt = relevant_messages[-1]["prompt"]
+        
+        tool_name, arguments = self._parse_llm_response(llm_response)
+        
+        if tool_name and arguments is not None:
+            try:
+                result = await self.tool_manager.call_tool(
+                    name=tool_name,
+                    arguments=arguments
+                )
+                
+                new_state = state.copy()
+                new_state["tool_results"].append({
+                    "tool": tool_name,
+                    "arguments": arguments,
+                    "result": result,
+                    "status": "success",
+                    "prompt": user_prompt,
+                    "prompt_index": prompt_index
+                })
+                
+                return new_state
+                
+            except Exception as e:
+                new_state = state.copy()
+                new_state["tool_results"].append({
+                    "tool": tool_name,
+                    "arguments": arguments,
+                    "error": str(e),
+                    "status": "error",
+                    "prompt": user_prompt,
+                    "prompt_index": prompt_index
+                })
+                
+                return new_state
+        else:
+            new_state = state.copy()
+            new_state["tool_results"].append({
+                "error": "Failed to parse LLM response",
+                "llm_response": llm_response,
+                "status": "error",
+                "prompt": user_prompt,
+                "prompt_index": prompt_index
+            })
+            
+            return new_state
 
 
 # Simple test function
@@ -289,70 +483,60 @@ async def test_app_agent():
         # Array of prompts to execute sequentially
         test_prompts = [
             "list my 3 emails, For user_id parameter, always use rishabh@agentr.dev unless specified otherwise",
-            "Send an email to rshvraj36@gmail.com with subject test and body hi.For user_id parameter, always use rishabh@agentr.dev"
+            "Send an email to rshvraj36@gmail.com with subject Agentr and body Agentr is a greatmcp tool.For user_id parameter, always use rishabh@agentr.dev"
         ]
         
-        print(f"📝 Executing {len(test_prompts)} prompts sequentially:")
+        print(f"📝 Executing {len(test_prompts)} prompts sequentially in a single trace:")
         print("-" * 50)
         
-        all_results = []
+        # Process all prompts in a single trace
+        result = await agent.process_multiple_requests(test_prompts)
         
-        for i, prompt in enumerate(test_prompts, 1):
-            print(f"\n🔄 Prompt {i}/{len(test_prompts)}: {prompt}")
-            print("-" * 30)
+        if result["success"]:
+            print("✅ All prompts processed successfully!")
             
-            result = await agent.process_request(prompt)
-            all_results.append(result)
+            if os.getenv("LANGCHAIN_API_KEY"):
+                print(f"🔍 Single Trace ID: {result.get('trace_id', 'N/A')}")
+                project_name = os.getenv("LANGCHAIN_PROJECT", "app-agent-automation")
+                print(f"📊 View complete trace at: https://smith.langchain.com/traces/{result.get('trace_id', 'N/A')}")
+                print(f"🌐 Project: https://smith.langchain.com/o/default/p/{project_name}")
             
-            if result["success"]:
-                print("✅ Success!")
+            # Display results for each prompt
+            if result["tool_results"]:
+                print("\n📋 TOOL EXECUTION RESULTS:")
+                print("=" * 50)
                 
-                if os.getenv("LANGCHAIN_API_KEY"):
-                    print(f"🔍 Trace ID: {result.get('trace_id', 'N/A')}")
-                    project_name = os.getenv("LANGCHAIN_PROJECT", "app-agent-automation")
-                    print(f"📊 View trace at: https://smith.langchain.com/traces/{result.get('trace_id', 'N/A')}")
-                
-                if result["llm_messages"]:
-                    llm_response = result["llm_messages"][-1]["content"]
-                    print(f"LLM Response:\n{llm_response}")
-                
-                if result["tool_results"]:
-                    tool_result = result["tool_results"][0]
+                for tool_result in result["tool_results"]:
+                    prompt_num = tool_result.get("prompt_index", 0) + 1
+                    prompt_text = tool_result.get("prompt", "Unknown prompt")
+                    
+                    print(f"\n🔄 Prompt {prompt_num}: {prompt_text}")
+                    print("-" * 30)
+                    
                     if tool_result["status"] == "success":
-                        print(f"Tool: {tool_result['tool']}")
-                        print(f"Arguments: {tool_result['arguments']}")
-                        print(f"Result: {tool_result['result']}")
+                        print(f"✅ Tool: {tool_result['tool']}")
+                        print(f"📝 Arguments: {tool_result['arguments']}")
+                        print(f"📊 Result: {tool_result['result']}")
                     else:
                         print(f"❌ Tool Error: {tool_result.get('error', 'Unknown error')}")
-                        print(f"❌ Prompt {i} failed but continuing with next prompts...")
-            else:
-                print(f"❌ Failed: {result['error']}")
-                if os.getenv("LANGCHAIN_API_KEY"):
-                    print(f"🔍 Trace ID: {result.get('trace_id', 'N/A')}")
-                print(f"❌ Prompt {i} failed but continuing with next prompts...")
-        
-        # Summary of all results
-        print("\n" + "=" * 50)
-        print("📊 EXECUTION SUMMARY")
-        print("=" * 50)
-        
-        successful_prompts = sum(1 for result in all_results if result["success"])
-        failed_prompts = len(all_results) - successful_prompts
-        
-        print(f"✅ Successful prompts: {successful_prompts}/{len(test_prompts)}")
-        print(f"❌ Failed prompts: {failed_prompts}/{len(test_prompts)}")
-        
-        if os.getenv("LANGCHAIN_API_KEY"):
-            project_name = os.getenv("LANGCHAIN_PROJECT", "app-agent-automation")
-            print(f"🌐 Project: https://smith.langchain.com/o/default/p/{project_name}")
-        
-        # Consider test passed if at least one prompt succeeded
-        test_passed = successful_prompts > 0
-        
-        if test_passed:
-            print("🎉 Test workflow completed!")
+            
+            # Summary
+            successful_tools = sum(1 for result in result["tool_results"] if result["status"] == "success")
+            failed_tools = len(result["tool_results"]) - successful_tools
+            
+            print(f"\n📊 EXECUTION SUMMARY:")
+            print("=" * 50)
+            print(f"✅ Successful tool calls: {successful_tools}/{len(result['tool_results'])}")
+            print(f"❌ Failed tool calls: {failed_tools}/{len(result['tool_results'])}")
+            
+            test_passed = successful_tools > 0
+            
         else:
-            print("❌ All prompts failed!")
+            print(f"❌ Workflow failed: {result['error']}")
+            if os.getenv("LANGCHAIN_API_KEY"):
+                print(f"🔍 Trace ID: {result.get('trace_id', 'N/A')}")
+                project_name = os.getenv("LANGCHAIN_PROJECT", "app-agent-automation")
+                print(f"📊 View trace at: https://smith.langchain.com/traces/{result.get('trace_id', 'N/A')}")
             
     except Exception as e:
         print(f"❌ Test failed: {e}")
@@ -367,7 +551,7 @@ async def test_app_agent():
     if not test_passed:
         raise AssertionError("Test did not complete successfully")
     
-    print("🎉 Sequential prompt execution completed successfully!")
+    print("🎉 Sequential prompt execution in single trace completed successfully!")
     return True
 
 
