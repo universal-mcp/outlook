@@ -530,7 +530,18 @@ async def test_app_agent():
             print(f"✅ Successful tool calls: {successful_tools}/{len(result['tool_results'])}")
             print(f"❌ Failed tool calls: {failed_tools}/{len(result['tool_results'])}")
             
-            test_passed = successful_tools > 0
+            if failed_tools > 0:
+                print(f"\n❌ TEST FAILED: {failed_tools} out of {len(result['tool_results'])} tool calls failed")
+                print("📋 Failed tool details:")
+                for i, tool_result in enumerate(result["tool_results"]):
+                    if tool_result["status"] == "error":
+                        prompt_num = tool_result.get("prompt_index", 0) + 1
+                        print(f"  - Prompt {prompt_num}: {tool_result.get('error', 'Unknown error')}")
+                
+                raise AssertionError(f"Tool execution failed: {failed_tools}/{len(result['tool_results'])} tool calls failed")
+            
+            test_passed = True
+            print(f"\n✅ All {successful_tools} tool calls completed successfully!")
             
         else:
             print(f"❌ Workflow failed: {result['error']}")
@@ -539,14 +550,10 @@ async def test_app_agent():
                 project_name = os.getenv("LANGCHAIN_PROJECT", "app-agent-automation")
                 print(f"📊 View trace at: https://smith.langchain.com/traces/{result.get('trace_id', 'N/A')}")
             
+            raise AssertionError(f"Workflow execution failed: {result['error']}")
+    
     except Exception as e:
         print(f"❌ Test failed: {e}")
-        print("\nMake sure you have these environment variables set:")
-        print("  - AZURE_OPENAI_API_KEY")
-        print("  - AZURE_OPENAI_ENDPOINT") 
-        print("  - OPEN_AI_MODEL (optional, defaults to 'o4-mini')")
-        print("  - AGENTR_API_KEY")
-        print("  - LANGCHAIN_API_KEY (optional, for LangSmith visualization)")
         raise  # Re-raise the exception to fail the test
     
     if not test_passed:
