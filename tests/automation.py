@@ -67,7 +67,7 @@ class AppAgent:
         # Setup tool manager and workflow
         self.tool_manager = ToolManager()
         self._setup_tools()
-        self.workflow = self._build_workflow()
+        # Don't initialize workflow here - it will be built per request
         
         print(f"🎭 App Agent initialized successfully")
         print(f"🔗 AgentR Base URL: https://api.agentr.dev")
@@ -119,232 +119,9 @@ Full Parameters Schema: {tool.parameters}
         
         return '\n'.join(tools_info)
     
-    def _build_workflow(self):
-        """Build simplified workflow"""
-        workflow = StateGraph(AgentState)
-        
-        workflow.add_node("planner", self._planner_node)
-        workflow.add_node("executor", self._executor_node)
-        
-        workflow.add_edge(START, "planner")
-        workflow.add_edge("planner", "executor")
-        workflow.add_edge("executor", END)
-        
-        return workflow.compile()
-    
-    async def _planner_node(self, state: AgentState) -> AgentState:
-        """Plan what tool to use and with what arguments"""
-        user_prompt = state["user_prompt"]
-        tools_desc = self._get_tool_descriptions()
-        
-        system_prompt = f"""You are an app assistant. Based on the user's request, you need to:
-1. Choose the appropriate tool from the available tools
-2. Provide the correct arguments for that tool
 
-Available tools:
-{tools_desc}
-
-IMPORTANT: You must respond in this EXACT format:
-TOOL: tool_name
-ARGUMENTS: {{"param1": "value1", "param2": "value2"}}
-
-RULES:
-- Keep arguments minimal and only include what's necessary for the user's request so required parameters only unless a user specifies the other parameters
-
-User request: {user_prompt}"""
-
-        response = self.client.chat.completions.create(
-            model=self.model,
-            messages=[
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": user_prompt}
-            ]
-        )
-        
-        llm_response = response.choices[0].message.content
-        
-        new_state = state.copy()
-        new_state["messages"].append({"role": "assistant", "content": llm_response})
-        
-        return new_state
     
-    async def _executor_node(self, state: AgentState) -> AgentState:
-        """Execute the planned tool"""
-        llm_response = state["messages"][-1]["content"]
-        tool_name, arguments = self._parse_llm_response(llm_response)
-        
-        if tool_name and arguments is not None:
-            try:
-                result = await self.tool_manager.call_tool(
-                    name=tool_name,
-                    arguments=arguments
-                )
-                
-                new_state = state.copy()
-                new_state["tool_results"].append({
-                    "tool": tool_name,
-                    "arguments": arguments,
-                    "result": result,
-                    "status": "success"
-                })
-                new_state["is_complete"] = True
-                
-                return new_state
-                
-            except Exception as e:
-                new_state = state.copy()
-                new_state["tool_results"].append({
-                    "tool": tool_name,
-                    "arguments": arguments,
-                    "error": str(e),
-                    "status": "error"
-                })
-                new_state["is_complete"] = True
-                
-                return new_state
-        else:
-            new_state = state.copy()
-            new_state["tool_results"].append({
-                "error": "Failed to parse LLM response",
-                "llm_response": llm_response,
-                "status": "error"
-            })
-            new_state["is_complete"] = True
-            
-            return new_state
-    
-    def _parse_llm_response(self, response: str) -> tuple[Optional[str], Optional[Dict]]:
-        """Parse LLM response to extract tool name and arguments"""
-        try:
-            lines = response.strip().split('\n')
-            tool_name = None
-            arguments = None
-            
-            for line in lines:
-                line = line.strip()
-                if line.startswith('TOOL:'):
-                    tool_name = line.replace('TOOL:', '').strip()
-                elif line.startswith('ARGUMENTS:'):
-                    args_str = line.replace('ARGUMENTS:', '').strip()
-                    arguments = json.loads(args_str)
-            
-            return tool_name, arguments
-            
-        except Exception as e:
-            print(f"Error parsing LLM response: {e}")
-            return None, None
-    
-    async def process_request(self, user_prompt: str) -> Dict[str, Any]:
-        """Process user request through the LangGraph workflow"""
-        initial_state = AgentState(
-            messages=[],
-            user_prompt=user_prompt,
-            current_step=0,
-            tool_results=[],
-            is_complete=False
-        )
-        
-        try:
-            # Execute workflow without generating new trace ID here
-            final_state = await self.workflow.ainvoke(initial_state)
-            
-            return {
-                "success": True,
-                "user_prompt": user_prompt,
-                "tool_results": final_state["tool_results"],
-                "llm_messages": final_state["messages"]
-            }
-        except Exception as e:
-            return {
-                "success": False,
-                "error": str(e),
-                "user_prompt": user_prompt
-            }
-
-    async def process_multiple_requests(self, prompts: List[str]) -> Dict[str, Any]:
-        """Process multiple user requests in a single trace"""
-        # Generate a single trace ID for all requests
-        trace_id = str(uuid.uuid4())
-        
-        print(f"🔍 Single trace ID for all prompts: {trace_id}")
-        
-        all_results = []
-        
-        # Create a single workflow that processes all prompts
-        combined_workflow = self._build_combined_workflow(prompts)
-        
-        initial_state = AgentState(
-            messages=[],
-            user_prompt="",  # Will be set per prompt
-            current_step=0,
-            tool_results=[],
-            is_complete=False
-        )
-        
-        try:
-            # Execute all prompts in a single workflow trace
-            final_state = await combined_workflow.ainvoke(initial_state)
-            
-            return {
-                "success": True,
-                "prompts": prompts,
-                "tool_results": final_state["tool_results"],
-                "llm_messages": final_state["messages"],
-                "trace_id": trace_id
-            }
-        except Exception as e:
-            return {
-                "success": False,
-                "error": str(e),
-                "prompts": prompts,
-                "trace_id": trace_id
-            }
-    
-    def _build_combined_workflow(self, prompts: List[str]):
-        """Build workflow that processes multiple prompts sequentially in one trace with tool chaining"""
-        workflow = StateGraph(AgentState)
-        
-        # Add nodes for each prompt - reuse existing planner/executor logic
-        for i, prompt in enumerate(prompts):
-            planner_node_name = f"planner_{i}"
-            executor_node_name = f"executor_{i}"
-            
-            # Create closures to capture the prompt and enable tool chaining
-            def make_planner_node(prompt_text, prompt_index):
-                async def planner_node(state: AgentState) -> AgentState:
-                    print(f"\n🔄 Processing prompt {prompt_index + 1}/{len(prompts)}: {prompt_text}")
-                    # Update state with current prompt and use existing planner logic with tool chaining
-                    new_state = state.copy()
-                    new_state["user_prompt"] = prompt_text
-                    return await self._planner_node_with_context(new_state, prompt_index)
-                return planner_node
-            
-            def make_executor_node(prompt_index):
-                async def executor_node(state: AgentState) -> AgentState:
-                    return await self._executor_node_with_context(state, prompt_index)
-                return executor_node
-            
-            workflow.add_node(planner_node_name, make_planner_node(prompt, i))
-            workflow.add_node(executor_node_name, make_executor_node(i))
-        
-        # Connect the nodes sequentially
-        workflow.add_edge(START, "planner_0")
-        
-        for i in range(len(prompts)):
-            planner_node_name = f"planner_{i}"
-            executor_node_name = f"executor_{i}"
-            
-            workflow.add_edge(planner_node_name, executor_node_name)
-            
-            if i < len(prompts) - 1:
-                next_planner = f"planner_{i + 1}"
-                workflow.add_edge(executor_node_name, next_planner)
-            else:
-                workflow.add_edge(executor_node_name, END)
-        
-        return workflow.compile()
-    
-    async def _planner_node_with_context(self, state: AgentState, prompt_index: int) -> AgentState:
+    async def _planner_node(self, state: AgentState, prompt_index: int) -> AgentState:
         """Plan what tool to use with context from previous tool executions"""
         user_prompt = state["user_prompt"]
         tools_desc = self._get_tool_descriptions()
@@ -399,7 +176,7 @@ User request: {user_prompt}"""
         
         return new_state
     
-    async def _executor_node_with_context(self, state: AgentState, prompt_index: int) -> AgentState:
+    async def _executor_node(self, state: AgentState, prompt_index: int) -> AgentState:
         """Execute the planned tool with context tracking"""
         # Find the latest message for this prompt
         relevant_messages = [msg for msg in state["messages"] if msg.get("prompt_index") == prompt_index]
@@ -459,6 +236,117 @@ User request: {user_prompt}"""
             })
             
             return new_state
+    
+    def _parse_llm_response(self, response: str) -> tuple[Optional[str], Optional[Dict]]:
+        """Parse LLM response to extract tool name and arguments"""
+        try:
+            lines = response.strip().split('\n')
+            tool_name = None
+            arguments = None
+            
+            for line in lines:
+                line = line.strip()
+                if line.startswith('TOOL:'):
+                    tool_name = line.replace('TOOL:', '').strip()
+                elif line.startswith('ARGUMENTS:'):
+                    args_str = line.replace('ARGUMENTS:', '').strip()
+                    arguments = json.loads(args_str)
+            
+            return tool_name, arguments
+            
+        except Exception as e:
+            print(f"Error parsing LLM response: {e}")
+            return None, None
+    
+    async def process_request(self, user_prompt: str) -> Dict[str, Any]:
+        """Process single user request through the LangGraph workflow"""
+        # Use the multiple request workflow with a single prompt
+        return await self.process_multiple_requests([user_prompt])
+
+    async def process_multiple_requests(self, prompts: List[str]) -> Dict[str, Any]:
+        """Process multiple user requests in a single trace"""
+        # Generate a single trace ID for all requests
+        trace_id = str(uuid.uuid4())
+        
+        print(f"🔍 Single trace ID for all prompts: {trace_id}")
+        
+        all_results = []
+        
+        # Create a single workflow that processes all prompts
+        combined_workflow = self._build_workflow(prompts)
+        
+        initial_state = AgentState(
+            messages=[],
+            user_prompt="",  # Will be set per prompt
+            current_step=0,
+            tool_results=[],
+            is_complete=False
+        )
+        
+        try:
+            # Execute all prompts in a single workflow trace
+            final_state = await combined_workflow.ainvoke(initial_state)
+            
+            return {
+                "success": True,
+                "prompts": prompts,
+                "tool_results": final_state["tool_results"],
+                "llm_messages": final_state["messages"],
+                "trace_id": trace_id
+            }
+        except Exception as e:
+            return {
+                "success": False,
+                "error": str(e),
+                "prompts": prompts,
+                "trace_id": trace_id
+            }
+    
+    def _build_workflow(self, prompts: List[str]):
+        """Build workflow that processes single or multiple prompts sequentially in one trace with tool chaining"""
+        workflow = StateGraph(AgentState)
+        
+        # Add nodes for each prompt - reuse existing planner/executor logic
+        for i, prompt in enumerate(prompts):
+            planner_node_name = f"planner_{i}"
+            executor_node_name = f"executor_{i}"
+            
+            # Create closures to capture the prompt and enable tool chaining
+            def make_planner_node(prompt_text, prompt_index):
+                async def planner_node(state: AgentState) -> AgentState:
+                    print(f"\n🔄 Processing prompt {prompt_index + 1}/{len(prompts)}: {prompt_text}")
+                    # Update state with current prompt and use existing planner logic with tool chaining
+                    new_state = state.copy()
+                    new_state["user_prompt"] = prompt_text
+                    return await self._planner_node(new_state, prompt_index)
+                return planner_node
+            
+            def make_executor_node(prompt_index):
+                async def executor_node(state: AgentState) -> AgentState:
+                    return await self._executor_node(state, prompt_index)
+                return executor_node
+            
+            workflow.add_node(planner_node_name, make_planner_node(prompt, i))
+            workflow.add_node(executor_node_name, make_executor_node(i))
+        
+        # Connect the nodes sequentially
+        workflow.add_edge(START, "planner_0")
+        
+        for i in range(len(prompts)):
+            planner_node_name = f"planner_{i}"
+            executor_node_name = f"executor_{i}"
+            
+            workflow.add_edge(planner_node_name, executor_node_name)
+            
+            if i < len(prompts) - 1:
+                next_planner = f"planner_{i + 1}"
+                workflow.add_edge(executor_node_name, next_planner)
+            else:
+                workflow.add_edge(executor_node_name, END)
+        
+        return workflow.compile()
+    
+
 
 
 # Simple test function
