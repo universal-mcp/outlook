@@ -484,8 +484,7 @@ async def test_app_agent():
         
         # Array of prompts to execute sequentially
         test_prompts = [
-            "list my 3 emails, For user_id parameter, always use rishabh@agentr.dev unless specified otherwise",
-            "get message details of the email sent by rshvraj30@gmail.com",
+            "list my 3 emails, and check if i have received any emails from rshvraj36@gmail.com, For user_id parameter, always use rishabh@agentr.dev unless specified otherwise",
             "Send a reply to that message with message hey how are you"
         ]
         
