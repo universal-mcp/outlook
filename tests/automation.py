@@ -11,6 +11,7 @@ from universal_mcp.tools import ToolManager
 from langgraph.graph import StateGraph, END, START
 from typing_extensions import TypedDict
 import uuid
+import pytest
 
 load_dotenv()
 
@@ -461,6 +462,7 @@ User request: {user_prompt}"""
 
 
 # Simple test function
+@pytest.mark.asyncio
 async def test_app_agent():
     """Test the app agent with full automation workflow"""
     
@@ -498,9 +500,7 @@ async def test_app_agent():
             
             if os.getenv("LANGCHAIN_API_KEY"):
                 print(f"🔍 Single Trace ID: {result.get('trace_id', 'N/A')}")
-                project_name = os.getenv("LANGCHAIN_PROJECT", "app-agent-automation")
-                print(f"📊 View complete trace at: https://smith.langchain.com/traces/{result.get('trace_id', 'N/A')}")
-                print(f"🌐 Project: https://smith.langchain.com/o/default/p/{project_name}")
+              
             
             # Display results for each prompt
             if result["tool_results"]:
@@ -547,14 +547,12 @@ async def test_app_agent():
             print(f"❌ Workflow failed: {result['error']}")
             if os.getenv("LANGCHAIN_API_KEY"):
                 print(f"🔍 Trace ID: {result.get('trace_id', 'N/A')}")
-                project_name = os.getenv("LANGCHAIN_PROJECT", "app-agent-automation")
-                print(f"📊 View trace at: https://smith.langchain.com/traces/{result.get('trace_id', 'N/A')}")
             
             raise AssertionError(f"Workflow execution failed: {result['error']}")
     
     except Exception as e:
         print(f"❌ Test failed: {e}")
-        raise  # Re-raise the exception to fail the test
+        raise  
     
     if not test_passed:
         raise AssertionError("Test did not complete successfully")
