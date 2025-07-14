@@ -125,7 +125,11 @@ outlook_test_case = TestCase(
         "Send an email to rshvraj36@gmail.com saying subject: hello and message: hey what are you upto. use user_id: rishabh@agentr.dev",
         "List last 3 email in my inbox. use user_id: rishabh@agentr.dev"
     ],
-    validate_query="Check the emails you just listed. Is there an email with message 'hey what are you upto' that was sent to rshvraj36@gmail.com? Also, was the email sent successfully in the first task?"
+    validate_query = (
+        "First, confirm if the email was sent successfully in the first task. "
+        "Then, check the emails you just listed and tell me if any of them have the message 'hey what are you upto'. "
+        "Answer with 'yes' or 'no' for both parts, and explain your reasoning."
+    )
 )
 
 
