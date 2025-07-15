@@ -22,14 +22,15 @@ def outlook_test_case(outlook_app):
         tools=["user_send_mail", "user_list_message", "get_user_id"],
         tasks=[
             "Get the user id.",
-            "Send an email to exampl@gmail.com saying subject: hello and message: no problem.",
+            "Send an email to example@gmail.com saying subject: Hello and message: Hey Agentr",
             "List last 3 email in my inbox."
         ],
         validate_query = (
-            "First, confirm if the user id is correct in the first task. "
-            "Then, confirm if the email was sent successfully in the second task. "
-            "Then, check the emails you just listed and tell me if any of them have the message 'no problem'. "
-            "Answer in JSON format with only a 'success' boolean field that is true only if all parts are confirmed."
+            "Based on the conversation history, verify: "
+            "1. Was a user Id retrieved? "
+            "2. Was the email sent successfully (check for success response)? "
+            "3. Were exactly 3 emails listed from the inbox (check if response shows 3 numbered items)? "
+            "4. Does the sent email content 'Hey Agentr' appear in any of the listed email previews?"
         )
     )
 
