@@ -328,6 +328,33 @@ class OutlookApp(APIApplication):
         }
         response = self._get(url, params=query_params)
         return self._handle_response(response)
+    
+    def get_user_id(
+        self,
+        select: list[str] = ["userPrincipalName"],
+    ) -> dict[str, Any]:
+        """
+        Retrieves the current user.
+
+        Args:
+            select (list): Properties to be returned. Defaults to ['userPrincipalName'].
+
+        Returns:
+            dict[str, Any]: Current user information
+
+        Raises:
+            HTTPStatusError: Raised when the API request fails with detailed error information including status code and response body.
+
+        Tags:
+            me, important
+        """
+        url = f"{self.base_url}/me"
+        query_params = {
+            "$select": select,
+        }
+        response = self._get(url, params=query_params)
+        return self._handle_response(response)
+        
 
     def list_tools(self):
         return [
@@ -338,4 +365,5 @@ class OutlookApp(APIApplication):
             self.user_get_message,
             self.user_delete_message,
             self.user_message_list_attachment,
+            self.get_user_id,
         ]
