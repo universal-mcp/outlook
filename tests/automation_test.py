@@ -22,7 +22,7 @@ def outlook_test_case(outlook_app):
         tools=["user_send_mail", "user_list_message", "get_user_id"],
         tasks=[
             "Get the user id.",
-            "Send an email to rshvraj36@gmail.com saying subject: hello and message: no problem.",
+            "Send an email to exampl@gmail.com saying subject: hello and message: no problem.",
             "List last 3 email in my inbox."
         ],
         validate_query = (
