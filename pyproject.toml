@@ -22,11 +22,7 @@ classifiers = [
 ]
 # Add runtime dependencies here if any are known upfront
 dependencies = [
-    "universal_mcp>=0.1.23",
-    "openai>=1.0.0",
-    "python-dotenv>=1.0.0",
-    "langgraph>=0.0.69",
-    "langsmith>=0.1.0",
+    "universal_mcp>=0.1.23"
 ]
 
 [project.optional-dependencies]
