@@ -72,16 +72,12 @@ EXAMPLE TEST CASE STRUCTURE:
         1. Get the user ID and verify login status
         2. Send an email to 'test@example.com' with subject 'Test Subject' and message 'Test Body'
         3. List the last 5 emails in inbox and display their subjects
-        4. Mark the first email as read (if update functionality available)
-        5. Delete a specific email (if delete functionality available)
     Validation Query:
         Based on the conversation history, verify:
         1. Was user ID retrieved successfully?
         2. Was the email sent successfully with correct recipient, subject, and body?
         3. Were exactly 5 emails listed with proper subject display?
-        4. Was the email marked as read correctly (if attempted)?
-        5. Was the email deleted successfully (if attempted)?
-        6. Are there any error messages or failed operations?
+        4. Are there any error messages or failed operations?
 """
 
     user_prompt = f"""Generate a comprehensive test case for Outlook application using the available tools.
@@ -99,7 +95,7 @@ Create a detailed test case that includes:
    - If certain CRUD operations are missing, focus on available operations only
 
 2. TASK DESIGN WITH CRUD DEPENDENCIES:
-   - Create 5-8 realistic tasks based on available tool capabilities
+   - Create realistic tasks based on available tool capabilities
    - Follow logical CRUD workflows where dependencies exist:
      * Example: CREATE email → READ to verify → UPDATE if possible → DELETE if needed
    - Include only operations supported by available tools
@@ -113,11 +109,7 @@ Create a detailed test case that includes:
    - Check for proper error messages and handling
    - Validate user experience and interface responses
 
-4. EDGE CASES:
-   - Include boundary condition testing
-   - Test with invalid inputs or parameters
-   - Verify permission and access control scenarios
-   - Test system behavior under different conditions
+
 
 Generate the test case now following these requirements."""
     
