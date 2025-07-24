@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "universal-mcp-outlook"
-version = "0.1.7"
+version = "0.1.9"
 description = "A Universal MCP Application: universal_mcp_outlook"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -22,7 +22,9 @@ classifiers = [
 ]
 # Add runtime dependencies here if any are known upfront
 dependencies = [
-    "universal_mcp>=0.1.23"
+    "langchain-openai>=0.3.28",
+    "langgraph>=0.5.4",
+    "universal-mcp==0.1.23",
 ]
 
 [project.optional-dependencies]
