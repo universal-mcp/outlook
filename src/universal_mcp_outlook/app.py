@@ -1,7 +1,7 @@
 from typing import Any, Optional, List
 from universal_mcp.applications import APIApplication
 from universal_mcp.integrations import Integration
-
+from urllib.parse import urlparse, parse_qs  # <-- THIS IS THE CRITICAL FIX
 
 class OutlookApp(APIApplication):
     def __init__(self, integration: Integration = None, **kwargs) -> None:
@@ -354,7 +354,23 @@ class OutlookApp(APIApplication):
         }
         response = self._get(url, params=query_params)
         return self._handle_response(response)
-        
+
+    def get_from_url(self, url: str) -> dict[str, Any]:
+        """
+        Makes a GET request to a full @odata.nextLink or @odata.deltaLink URL.
+        """
+        if not url:
+            raise ValueError("Missing required parameter 'url'.")
+        if not url.startswith(self.base_url):
+            raise ValueError(
+                f"The provided URL '{url}' does not start with the expected base URL '{self.base_url}'."
+            )
+        relative_part = url[len(self.base_url):]
+        parsed_relative = urlparse(relative_part)
+        path_only = parsed_relative.path
+        params = {k: v[0] for k, v in parse_qs(parsed_relative.query).items()}
+        response = self._get(path_only, params=params)
+        return self._handle_response(response)
 
     def list_tools(self):
         return [
@@ -366,4 +382,5 @@ class OutlookApp(APIApplication):
             self.user_delete_message,
             self.user_message_list_attachment,
             self.get_user_id,
+            self.get_from_url,
         ]

@@ -6,7 +6,7 @@ from universal_mcp.stores import EnvironmentStore
 from universal_mcp_outlook.app import OutlookApp
 
 env_store = EnvironmentStore()
-integration_instance = AgentRIntegration(name="outlook", store=env_store)
+integration_instance = AgentRIntegration(name="outlook", store=env_store, api_key="", base_url="")
 app_instance = OutlookApp(integration=integration_instance)
 
 mcp = SingleMCPServer(
