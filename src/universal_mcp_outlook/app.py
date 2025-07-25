@@ -4,6 +4,7 @@ from universal_mcp.integrations import Integration
 
 
 class OutlookApp(APIApplication):
+
     def __init__(self, integration: Integration = None, **kwargs) -> None:
         super().__init__(name="outlook", integration=integration, **kwargs)
         self.base_url = "https://graph.microsoft.com/v1.0"
@@ -31,17 +32,13 @@ class OutlookApp(APIApplication):
             HTTPStatusError: Raised when the API request fails with detailed error information including status code and response body.
 
         Tags:
-            users.message, important
-        """
+            users.message, important, destructiveHint"""
         if user_id is None:
             raise ValueError("Missing required parameter 'user-id'.")
         if message_id is None:
             raise ValueError("Missing required parameter 'message-id'.")
         request_body_data = None
-        request_body_data = {
-            "comment": comment,
-            "message": message,
-        }
+        request_body_data = {"comment": comment, "message": message}
         request_body_data = {
             k: v for k, v in request_body_data.items() if v is not None
         }
@@ -76,15 +73,11 @@ class OutlookApp(APIApplication):
             HTTPStatusError: Raised when the API request fails with detailed error information including status code and response body.
 
         Tags:
-            users.user.Actions, important
-        """
+            users.user.Actions, important, destructiveHint"""
         if user_id is None:
             raise ValueError("Missing required parameter 'user-id'.")
         request_body_data = None
-        request_body_data = {
-            "message": message,
-            "saveToSentItems": saveToSentItems,
-        }
+        request_body_data = {"message": message, "saveToSentItems": saveToSentItems}
         request_body_data = {
             k: v for k, v in request_body_data.items() if v is not None
         }
@@ -123,8 +116,7 @@ class OutlookApp(APIApplication):
             HTTPStatusError: Raised when the API request fails with detailed error information including status code and response body.
 
         Tags:
-            users.mailFolder, important
-        """
+            users.mailFolder, important, readOnlyHint"""
         if user_id is None:
             raise ValueError("Missing required parameter 'user-id'.")
         if mailFolder_id is None:
@@ -177,8 +169,7 @@ class OutlookApp(APIApplication):
             HTTPStatusError: Raised when the API request fails with detailed error information including status code and response body.
 
         Tags:
-            users.message, important
-        """
+            users.message, important, readOnlyHint"""
         if user_id is None:
             raise ValueError("Missing required parameter 'user-id'.")
         url = f"{self.base_url}/users/{user_id}/messages"
@@ -225,8 +216,7 @@ class OutlookApp(APIApplication):
             HTTPStatusError: Raised when the API request fails with detailed error information including status code and response body.
 
         Tags:
-            users.message, important
-        """
+            users.message, important, readOnlyHint"""
         if user_id is None:
             raise ValueError("Missing required parameter 'user-id'.")
         if message_id is None:
@@ -259,8 +249,7 @@ class OutlookApp(APIApplication):
             HTTPStatusError: Raised when the API request fails with detailed error information including status code and response body.
 
         Tags:
-            users.message, important
-        """
+            users.message, important, destructiveHint"""
         if user_id is None:
             raise ValueError("Missing required parameter 'user-id'.")
         if message_id is None:
@@ -305,8 +294,7 @@ class OutlookApp(APIApplication):
             HTTPStatusError: Raised when the API request fails with detailed error information including status code and response body.
 
         Tags:
-            users.message, important
-        """
+            users.message, important, readOnlyHint"""
         if user_id is None:
             raise ValueError("Missing required parameter 'user-id'.")
         if message_id is None:
@@ -328,11 +316,8 @@ class OutlookApp(APIApplication):
         }
         response = self._get(url, params=query_params)
         return self._handle_response(response)
-    
-    def get_user_id(
-        self,
-        select: list[str] = ["userPrincipalName"],
-    ) -> dict[str, Any]:
+
+    def get_user_id(self, select: list[str] = ["userPrincipalName"]) -> dict[str, Any]:
         """
         Retrieves the current user.
 
@@ -346,15 +331,11 @@ class OutlookApp(APIApplication):
             HTTPStatusError: Raised when the API request fails with detailed error information including status code and response body.
 
         Tags:
-            me, important
-        """
+            me, important, readOnlyHint"""
         url = f"{self.base_url}/me"
-        query_params = {
-            "$select": select,
-        }
+        query_params = {"$select": select}
         response = self._get(url, params=query_params)
         return self._handle_response(response)
-        
 
     def list_tools(self):
         return [
