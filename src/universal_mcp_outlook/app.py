@@ -2,6 +2,7 @@ from typing import Any, Optional, List
 from universal_mcp.applications import APIApplication
 from universal_mcp.integrations import Integration
 from urllib.parse import urlparse, parse_qs  # <-- THIS IS THE CRITICAL FIX
+import concurrent.futures
 
 class OutlookApp(APIApplication):
     def __init__(self, integration: Integration = None, **kwargs) -> None:
@@ -145,9 +146,10 @@ class OutlookApp(APIApplication):
     def user_list_message(
         self,
         user_id: str,
+        next_link: Optional[str] = None,
         select: list[str] = ["bodyPreview"],
         includeHiddenMessages: Optional[str] = None,
-        top: Optional[int] = None,
+        top: Optional[int] = 5,
         skip: Optional[int] = None,
         search: Optional[str] = None,
         filter: Optional[str] = None,
@@ -156,10 +158,11 @@ class OutlookApp(APIApplication):
         expand: Optional[List[str]] = None,
     ) -> dict[str, Any]:
         """
-        Retrieves a list of messages for a user, allowing optional filtering and sorting of results based on parameters such as includeHiddenMessages, search, filter, top, skip, orderby, select, and expand.
+        Retrieves a list of messages for a user with detailed information, using concurrent processing to efficiently fetch message details.
 
         Args:
             user_id (string): user-id
+            next_link (string): URL from previous response to fetch next page. If provided, other parameters are ignored.
             select (list): Select properties to be returned. Defaults to ['bodyPreview'].
             includeHiddenMessages (string): Include Hidden Messages
             top (integer): Show only the first n items Example: '50'.
@@ -171,7 +174,7 @@ class OutlookApp(APIApplication):
             expand (array): Expand related entities
 
         Returns:
-            dict[str, Any]: Retrieved collection
+            dict[str, Any]: Dictionary containing detailed messages and next page link for pagination
 
         Raises:
             HTTPStatusError: Raised when the API request fails with detailed error information including status code and response body.
@@ -181,25 +184,56 @@ class OutlookApp(APIApplication):
         """
         if user_id is None:
             raise ValueError("Missing required parameter 'user-id'.")
-        url = f"{self.base_url}/users/{user_id}/messages"
-        query_params = {
-            k: v
-            for k, v in [
-                ("includeHiddenMessages", includeHiddenMessages),
-                ("$top", top),
-                ("$skip", skip),
-                ("$search", search),
-                ("$filter", filter),
-                ("$count", count),
-                ("$orderby", orderby),
-                ("$select", select),
-                ("$expand", expand),
-            ]
-            if v is not None
+        if next_link:
+            data = self.get_from_url(next_link)
+        else:
+            url = f"{self.base_url}/users/{user_id}/messages"
+            query_params = {
+                k: v
+                for k, v in [
+                    ("includeHiddenMessages", includeHiddenMessages),
+                    ("$top", top),
+                    ("$skip", skip),
+                    ("$search", search),
+                    ("$filter", filter),
+                    ("$count", count),
+                    ("$orderby", orderby),
+                    ("$select", select),
+                    ("$expand", expand),
+                ]
+                if v is not None
+            }
+            response = self._get(url, params=query_params)
+            data = self._handle_response(response)
+        
+        # Extract message IDs
+        messages = data.get("value", [])
+        message_ids = [msg.get("id") for msg in messages if msg.get("id")]
+        
+        # Use ThreadPoolExecutor to get detailed information for each message in parallel
+        detailed_messages = []
+        if message_ids:
+            with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
+                future_to_message_id = {
+                    executor.submit(self.user_get_message, user_id, message_id): message_id 
+                    for message_id in message_ids
+                }
+                
+                for future in concurrent.futures.as_completed(future_to_message_id):
+                    try:
+                        result = future.result()
+                        detailed_messages.append(result)
+                    except Exception as e:
+                       
+                        pass
+        
+        return {
+            "messages": detailed_messages,
+            "next_link": data.get("@odata.nextLink"),
+            "count": data.get("@odata.count")
         }
-        response = self._get(url, params=query_params)
-        return self._handle_response(response)
 
+ 
     def user_get_message(
         self,
         user_id: str,
