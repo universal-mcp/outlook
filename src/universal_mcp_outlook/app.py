@@ -146,7 +146,7 @@ class OutlookApp(APIApplication):
         self,
         user_id: str,
         select: list[str] = ["bodyPreview"],
-        includeHiddenMessages: Optional[str] = None,
+        includeHiddenMessages: Optional[bool] = None,
         top: Optional[int] = None,
         skip: Optional[int] = None,
         search: Optional[str] = None,
@@ -161,9 +161,16 @@ class OutlookApp(APIApplication):
         Args:
             user_id (string): user-id
             select (list): Select properties to be returned. Defaults to ['bodyPreview'].
-            includeHiddenMessages (string): Include Hidden Messages
-            top (integer): Show only the first n items Example: '50'.
-            skip (integer): Skip the first n items
+                Example: [
+                    'id', 'categories', 'receivedDateTime', 'sentDateTime', 'hasAttachments', 'internetMessageId',
+                    'subject', 'body', 'bodyPreview', 'importance', 'parentFolderId', 'conversationId',
+                    'conversationIndex', 'isDeliveryReceiptRequested', 'isReadReceiptRequested', 'isRead', 'isDraft',
+                    'webLink', 'inferenceClassification', 'sender', 'from', 'toRecipients', 'ccRecipients',
+                    'bccRecipients', 'replyTo', 'flag', 'attachments', 'extensions', 'mentions', 'uniqueBody'
+                ]
+            includeHiddenMessages (boolean): Include Hidden Messages
+            top (integer): Specify the number of items to be included in the result Example: '50'.
+            skip (integer): Specify the number of items to skip in the result Example: '10'.
             search (string): Search items by search phrases
             filter (string): Filter items by property values
             count (boolean): Include count of items
@@ -181,7 +188,14 @@ class OutlookApp(APIApplication):
         """
         if user_id is None:
             raise ValueError("Missing required parameter 'user-id'.")
+        
         url = f"{self.base_url}/users/{user_id}/messages"
+        
+        # Handle list parameters by joining with commas
+        select_str = ",".join(select) if select else None
+        orderby_str = ",".join(orderby) if orderby else None
+        expand_str = ",".join(expand) if expand else None
+        
         query_params = {
             k: v
             for k, v in [
@@ -191,12 +205,13 @@ class OutlookApp(APIApplication):
                 ("$search", search),
                 ("$filter", filter),
                 ("$count", count),
-                ("$orderby", orderby),
-                ("$select", select),
-                ("$expand", expand),
+                ("$orderby", orderby_str),
+                ("$select", select_str),
+                ("$expand", expand_str),
             ]
             if v is not None
         }
+        
         response = self._get(url, params=query_params)
         return self._handle_response(response)
 
